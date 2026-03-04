@@ -9,24 +9,23 @@ import Toybox.Lang;
 class ZabkaFinderView extends WatchUi.View {
 
     private var logo;
-    private var heading = 0.0;
-    private var status = "Szukam GPS...";
-    private var distance = 0.0;
-    private var zabkaBearing = 0.0;
+    private var heading as Lang.Float = 0.0f;
+    private var status as Lang.String = "szukam gps...";
+    private var distance as Lang.Float = 0.0f;
+    private var zabkaBearing as Lang.Float = 0.0f;
 
-    private var myLat = null;
-    private var myLon = null;
-    private var zabkaLat = null;
-    private var zabkaLon = null;
-    private var lastlocation = null;
-
-    private var apiRequested = false;
+    private var myLat as Lang.Double or Null = null;
+    private var myLon as Lang.Double or Null = null;
+    private var zabkaLat as Lang.Double or Null = null;
+    private var zabkaLon as Lang.Double or Null = null;
+    private var lastLocation as Position.Location or Null = null;
+    private var apiRequested as Lang.Boolean = false;
 
     function initialize() {
         View.initialize();
     }
 
-    function onLayout(dc as Dc) as Void {
+    function onLayout(dc as Graphics.Dc) as Void {
         logo = WatchUi.loadResource(Rez.Drawables.LogoIcon);
     }
 
@@ -36,14 +35,19 @@ class ZabkaFinderView extends WatchUi.View {
     }
 
     function onPosition(info as Position.Info) as Void {
-        if (info.position != null) {
-            var loc = info.position.toDegrees();
-            myLat = loc[0];
-            myLon = loc[1];
+        var pos = info.position;
+        if (pos != null) {
+            var currentPos = pos as Position.Location;
+            var loc = currentPos.toDegrees();
+
+            // bezpieczne rzutowanie na double
+            myLat = loc[0].toDouble();
+            myLon = loc[1].toDouble();
 
             if (!apiRequested) {
                 apiRequested = true;
-                status = "Szukam Zabki...";
+                lastLocation = currentPos;
+                status = "szukam zabki...";
                 fetchZabka();
             } else if (zabkaLat != null) {
                 calculateRouting();
@@ -53,18 +57,26 @@ class ZabkaFinderView extends WatchUi.View {
         }
     }
 
-function fetchZabka() as Void {
+    function fetchZabka() as Void {
+        if (myLat == null || myLon == null) {
+            status = "brak GPS";
+            WatchUi.requestUpdate();
+            return;
+        }
+
+        var query = "[out:json][timeout:5];node(around:500," + myLat + "," + myLon + ")[\"name\"~\"abka\",i];out center;";
         var url = "https://overpass-api.de/api/interpreter";
-
-        var query = "[out:json];(node(around:2000," + myLat + "," + myLon + ")[\"shop\"=\"convenience\"][\"name\"~\"abka\"];way(around:2000," + myLat + "," + myLon + ")[\"shop\"=\"convenience\"][\"name\"~\"abka\"];relation(around:2000," + myLat + "," + myLon + ")[\"shop\"=\"convenience\"][\"name\"~\"abka\"];);out center 1;";
-
-        var options = {
-            :method => Communications.HTTP_REQUEST_METHOD_POST,
-            :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
-        };
 
         var params = {
             "data" => query
+        };
+
+        var options = {
+            :method => Communications.HTTP_REQUEST_METHOD_POST,
+            :headers => {
+                "Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED
+            },
+            :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
 
         Communications.makeWebRequest(url, params, options, method(:onReceive));
@@ -72,27 +84,25 @@ function fetchZabka() as Void {
 
     function onReceive(responseCode as Lang.Number, data as Lang.Dictionary or Null) as Void {
         if (responseCode == 200 && data != null) {
-            var elements = data["elements"];
+            var elements = data["elements"] as Lang.Array;
             if (elements != null && elements.size() > 0) {
-                var zabka = elements[0];
-
-                // sprawdzamy czy api zwrocilo obrys (way) z centrem, czy zwykly punkt (node)
+                var zabka = elements[0] as Lang.Dictionary;
                 if (zabka.hasKey("center")) {
-                    zabkaLat = zabka["center"]["lat"];
-                    zabkaLon = zabka["center"]["lon"];
+                    var center = zabka["center"] as Lang.Dictionary;
+                    zabkaLat = center["lat"].toDouble();
+                    zabkaLon = center["lon"].toDouble();
                 } else {
-                    zabkaLat = zabka["lat"];
-                    zabkaLon = zabka["lon"];
+                    zabkaLat = zabka["lat"].toDouble();
+                    zabkaLon = zabka["lon"].toDouble();
                 }
-
                 calculateRouting();
                 status = distance.format("%.0f") + " m";
             } else {
                 status = "brak zabki";
             }
         } else {
-            status = "blad api: " + responseCode;
-            apiRequested = false;
+            status = "blad: " + responseCode;
+            // apiRequested = false;
         }
         WatchUi.requestUpdate();
     }
@@ -106,22 +116,22 @@ function fetchZabka() as Void {
 
             var a = Math.sin(dLat/2.0) * Math.sin(dLat/2.0) + Math.cos(rLat1) * Math.cos(rLat2) * Math.sin(dLon/2.0) * Math.sin(dLon/2.0);
             var c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0-a));
-            distance = 6371000.0 * c;
+            distance = (6371000.0 * c).toFloat();
 
             var y = Math.sin(dLon) * Math.cos(rLat2);
             var x = Math.cos(rLat1) * Math.sin(rLat2) - Math.sin(rLat1) * Math.cos(rLat2) * Math.cos(dLon);
-            zabkaBearing = Math.atan2(y, x);
+            zabkaBearing = Math.atan2(y, x).toFloat();
         }
     }
 
     function onSensorData(sensorInfo as Sensor.Info) as Void {
         if (sensorInfo.heading != null) {
-            heading = sensorInfo.heading;
+            heading = sensorInfo.heading as Lang.Float;
             WatchUi.requestUpdate();
         }
     }
 
-    function onUpdate(dc as Dc) as Void {
+    function onUpdate(dc as Graphics.Dc) as Void {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
@@ -132,18 +142,12 @@ function fetchZabka() as Void {
             dc.drawBitmap(cx - (logo.getWidth() / 2.0), 20, logo);
         }
 
-        var finalAngle = heading;
+        var finalAngle = 0.0f;
         if (zabkaLat != null) {
             finalAngle = zabkaBearing - heading;
         }
 
-        var arrowPoints = [
-            [0, -40],
-            [20, 30],
-            [0, 15],
-            [-20, 30]
-        ];
-
+        var arrowPoints = [[0, -40], [20, 30], [0, 15], [-20, 30]];
         var rotatedPoints = new [4];
         var cos = Math.cos(finalAngle);
         var sin = Math.sin(finalAngle);
@@ -151,18 +155,12 @@ function fetchZabka() as Void {
         for (var i = 0; i < 4; i++) {
             var px = arrowPoints[i][0];
             var py = arrowPoints[i][1];
-
             var rx = (px * cos) - (py * sin);
             var ry = (px * sin) + (py * cos);
-
             rotatedPoints[i] = [cx + rx, cy + ry];
         }
 
-        if (zabkaLat != null) {
-            dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
-        } else {
-            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        }
+        dc.setColor(zabkaLat != null ? Graphics.COLOR_GREEN : Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.fillPolygon(rotatedPoints);
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
