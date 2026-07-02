@@ -12,988 +12,988 @@ import Toybox.Position;
 import Toybox.Communications;
 [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Lang,7,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 9; @symbol_classdef = [ZabkaFinderView,9,6,21]; @symbol_extends<0> = [WatchUi,9,30,37]; @symbol_extends<1> = [View,9,38,42]; ]
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 12; @symbol_classdef = [ZabkaFinderView,12,6,21]; @symbol_extends<0> = [WatchUi,12,30,37]; @symbol_extends<1> = [View,12,38,42]; ]
 class ZabkaFinderView extends WatchUi.View {
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 9; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 12; ]
     <init> {
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 9; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 12; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 11; @position = 16; @symbol_vardef = [logo,11,16,20]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 14; @position = 16; @symbol_vardef = [logo,14,16,20]; ]
     private
     var logo;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 12; @position = 16; @symbol_vardef = [heading,12,16,23]; @symbol_type<0> = [Lang,12,27,31]; @symbol_type<1> = [Float,12,32,37]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 15; @position = 16; @symbol_vardef = [heading,15,16,23]; @symbol_type<0> = [Lang,15,27,31]; @symbol_type<1> = [Float,15,32,37]; ]
     private
     var heading as Lang.Float = 0.0f;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 13; @position = 16; @symbol_vardef = [status,13,16,22]; @symbol_type<0> = [Lang,13,26,30]; @symbol_type<1> = [String,13,31,37]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 18; @position = 16; @symbol_vardef = [status,18,16,22]; @symbol_type<0> = [Lang,18,26,30]; @symbol_type<1> = [String,18,31,37]; ]
     private
     var status as Lang.String = "szukam gps...";
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 14; @position = 16; @symbol_vardef = [distance,14,16,24]; @symbol_type<0> = [Lang,14,28,32]; @symbol_type<1> = [Float,14,33,38]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 19; @position = 16; @symbol_vardef = [distance,19,16,24]; @symbol_type<0> = [Lang,19,28,32]; @symbol_type<1> = [Float,19,33,38]; ]
     private
     var distance as Lang.Float = 0.0f;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 15; @position = 16; @symbol_vardef = [zabkaBearing,15,16,28]; @symbol_type<0> = [Lang,15,32,36]; @symbol_type<1> = [Float,15,37,42]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 20; @position = 16; @symbol_vardef = [zabkaBearing,20,16,28]; @symbol_type<0> = [Lang,20,32,36]; @symbol_type<1> = [Float,20,37,42]; ]
     private
     var zabkaBearing as Lang.Float = 0.0f;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 17; @position = 16; @symbol_vardef = [myLat,17,16,21]; @symbol_type<0> = [Lang,17,25,29]; @symbol_type<1> = [Double,17,30,36]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 22; @position = 16; @symbol_vardef = [myLat,22,16,21]; @symbol_type<0> = [Lang,22,25,29]; @symbol_type<1> = [Double,22,30,36]; ]
     private
     var myLat as Lang.Double or Null = null;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 18; @position = 16; @symbol_vardef = [myLon,18,16,21]; @symbol_type<0> = [Lang,18,25,29]; @symbol_type<1> = [Double,18,30,36]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 23; @position = 16; @symbol_vardef = [myLon,23,16,21]; @symbol_type<0> = [Lang,23,25,29]; @symbol_type<1> = [Double,23,30,36]; ]
     private
     var myLon as Lang.Double or Null = null;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 19; @position = 16; @symbol_vardef = [zabkaLat,19,16,24]; @symbol_type<0> = [Lang,19,28,32]; @symbol_type<1> = [Double,19,33,39]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 24; @position = 16; @symbol_vardef = [zabkaLat,24,16,24]; @symbol_type<0> = [Lang,24,28,32]; @symbol_type<1> = [Double,24,33,39]; ]
     private
     var zabkaLat as Lang.Double or Null = null;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 20; @position = 16; @symbol_vardef = [zabkaLon,20,16,24]; @symbol_type<0> = [Lang,20,28,32]; @symbol_type<1> = [Double,20,33,39]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 25; @position = 16; @symbol_vardef = [zabkaLon,25,16,24]; @symbol_type<0> = [Lang,25,28,32]; @symbol_type<1> = [Double,25,33,39]; ]
     private
     var zabkaLon as Lang.Double or Null = null;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 21; @position = 16; @symbol_vardef = [lastLocation,21,16,28]; @symbol_type<0> = [Position,21,32,40]; @symbol_type<1> = [Location,21,41,49]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 26; @position = 16; @symbol_vardef = [lastLocation,26,16,28]; @symbol_type<0> = [Position,26,32,40]; @symbol_type<1> = [Location,26,41,49]; ]
     private
     var lastLocation as Position.Location or Null = null;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 22; @position = 16; @symbol_vardef = [apiRequested,22,16,28]; @symbol_type<0> = [Lang,22,32,36]; @symbol_type<1> = [Boolean,22,37,44]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 29; @position = 16; @symbol_vardef = [apiRequested,29,16,28]; @symbol_type<0> = [Lang,29,32,36]; @symbol_type<1> = [Boolean,29,37,44]; ]
     private
     var apiRequested as Lang.Boolean = false;
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 24; @symbol_functiondef = [initialize,24,13,23]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 31; @symbol_functiondef = [initialize,31,13,23]; ]
     function initialize() as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_24_26_26_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 25 8 ]
-        symbol [ View %tmp.2 25 8 12 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_31_26_33_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 32 8 ]
+        symbol [ View %tmp.2 32 8 12 ];
         %tmp.2 = getv ? :View;
-        symbol [ initialize %tmp.3 25 13 23 ];
+        symbol [ initialize %tmp.3 32 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_24_26_26_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_31_26_33_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 28; @symbol_functiondef = [onLayout,28,13,21]; @symbol_param<0> = [dc,28,22,24]; @symbol_param<0>_type<0> = [Graphics,28,28,36]; @symbol_param<0>_type<1> = [Dc,28,37,39]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 36; @symbol_functiondef = [onLayout,36,13,21]; @symbol_param<0> = [dc,36,22,24]; @symbol_param<0>_type<0> = [Graphics,36,28,36]; @symbol_param<0>_type<1> = [Dc,36,37,39]; ]
     function onLayout(dc as Graphics.Dc) as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_28_49_30_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 29 8 ]
-        symbol [ WatchUi %tmp.1 29 15 22 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_36_49_38_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 37 8 ]
+        symbol [ WatchUi %tmp.1 37 15 22 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ loadResource %tmp.2 29 23 35 ];
+        symbol [ loadResource %tmp.2 37 23 35 ];
         %tmp.2 = getv function %tmp.1 :loadResource;
-        symbol [ Rez %tmp.4 29 36 39 ];
+        symbol [ Rez %tmp.4 37 36 39 ];
         %tmp.4 = getv ? :Rez;
-        symbol [ Drawables %tmp.5 29 40 49 ];
+        symbol [ Drawables %tmp.5 37 40 49 ];
         %tmp.5 = getv %tmp.4 :Drawables;
-        symbol [ LogoIcon %tmp.6 29 50 58 ];
+        symbol [ LogoIcon %tmp.6 37 50 58 ];
         %tmp.6 = getv %tmp.5 :LogoIcon;
         %tmp.7 = invoke %tmp.1 %tmp.2(%tmp.6);
-        symbol [ logo ? 29 8 12 ];
+        symbol [ logo ? 37 8 12 ];
         putv self :logo %tmp.7;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_28_49_30_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_36_49_38_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 32; @symbol_functiondef = [onShow,32,13,19]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 42; @symbol_functiondef = [onShow,42,13,19]; ]
     function onShow() as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_32_30_35_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 33 8 ]
-        symbol [ Sensor %tmp.1 33 8 14 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_42_30_45_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 43 8 ]
+        symbol [ Sensor %tmp.1 43 8 14 ];
         %tmp.1 = getm $.Toybox.Sensor;
-        symbol [ enableSensorEvents %tmp.2 33 15 33 ];
+        symbol [ enableSensorEvents %tmp.2 43 15 33 ];
         %tmp.2 = getv function %tmp.1 :enableSensorEvents;
         %tmp.3 = self;
-        symbol [ method %tmp.4 33 34 40 ];
+        symbol [ method %tmp.4 43 34 40 ];
         %tmp.4 = getv function %tmp.3 :method;
         %tmp.6 = const :onSensorData;
-        symbol [ onSensorData %tmp.6 33 42 54 const ];
+        symbol [ onSensorData %tmp.6 43 42 54 const ];
         %tmp.7 = invoke %tmp.3 %tmp.4(%tmp.6);
         invoke %tmp.1 %tmp.2(%tmp.7);
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 34 8 ]
-        symbol [ Position %tmp.8 34 8 16 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 44 8 ]
+        symbol [ Position %tmp.8 44 8 16 ];
         %tmp.8 = getm $.Toybox.Position;
-        symbol [ enableLocationEvents %tmp.9 34 17 37 ];
+        symbol [ enableLocationEvents %tmp.9 44 17 37 ];
         %tmp.9 = getv function %tmp.8 :enableLocationEvents;
-        symbol [ Position %tmp.10 34 38 46 ];
+        symbol [ Position %tmp.10 44 38 46 ];
         %tmp.10 = getm $.Toybox.Position;
-        symbol [ LOCATION_CONTINUOUS %tmp.11 34 47 66 ];
+        symbol [ LOCATION_CONTINUOUS %tmp.11 44 47 66 ];
         %tmp.11 = getv %tmp.10 :LOCATION_CONTINUOUS;
         %tmp.12 = self;
-        symbol [ method %tmp.13 34 68 74 ];
+        symbol [ method %tmp.13 44 68 74 ];
         %tmp.13 = getv function %tmp.12 :method;
         %tmp.15 = const :onPosition;
-        symbol [ onPosition %tmp.15 34 76 86 const ];
+        symbol [ onPosition %tmp.15 44 76 86 const ];
         %tmp.16 = invoke %tmp.12 %tmp.13(%tmp.15);
         invoke %tmp.8 %tmp.9(%tmp.11, %tmp.16);
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_32_30_35_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_42_30_45_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 37; @symbol_functiondef = [onPosition,37,13,23]; @symbol_param<0> = [info,37,24,28]; @symbol_param<0>_type<0> = [Position,37,32,40]; @symbol_param<0>_type<1> = [Info,37,41,45]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 48; @symbol_functiondef = [onPosition,48,13,23]; @symbol_param<0> = [info,48,24,28]; @symbol_param<0>_type<0> = [Position,48,32,40]; @symbol_param<0>_type<1> = [Info,48,41,45]; ]
     function onPosition(info as Position.Info) as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_37_55_58_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 38 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_37_55_58_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_37_55_58_4_stop" ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_48_55_74_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 49 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_48_55_74_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_48_55_74_4_stop" ]
         %pos.1 = local;
-        symbol [ pos %pos.1 38 12 15 ];
+        symbol [ pos %pos.1 49 12 15 ];
         %tmp.1 = lgetv %info;
-        symbol [ info %tmp.1 38 18 22 ];
-        symbol [ position %tmp.2 38 23 31 ];
+        symbol [ info %tmp.1 49 18 22 ];
+        symbol [ position %tmp.2 49 23 31 ];
         %tmp.2 = getv %tmp.1 :position;
         lputv %pos.1 %tmp.2;
-        symbol [ pos %pos.1 38 12 15 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 39 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_8_57_8_if_stmt:
+        symbol [ pos %pos.1 49 12 15 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 50 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_8_73_8_if_stmt:
         %tmp.3 = lgetv %pos.1;
-        symbol [ pos %tmp.3 39 12 15 ];
+        symbol [ pos %tmp.3 50 12 15 ];
         %tmp.4 = null;
         %tmp.5 = ne %tmp.3 %tmp.4;
-        bf %tmp.5 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_8_57_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_8_57_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_25_57_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 40 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_25_57_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_25_57_8_stop" ]
+        bf %tmp.5 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_8_73_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_8_73_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_25_73_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 51 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_25_73_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_25_73_8_stop" ]
         %currentPos.2 = local;
-        symbol [ currentPos %currentPos.2 40 16 26 ];
+        symbol [ currentPos %currentPos.2 51 16 26 ];
         %tmp.6 = lgetv %pos.1;
-        symbol [ pos %tmp.6 40 29 32 ];
+        symbol [ pos %tmp.6 51 29 32 ];
         %tmp.7 = as %tmp.6 { (!Null) };
         %tmp.8 = as %tmp.7 Position.Location;
-        symbol [ Position %tmp.8 40 36 44 ];
-        symbol [ Location %tmp.8 40 45 53 ];
+        symbol [ Position %tmp.8 51 36 44 ];
+        symbol [ Location %tmp.8 51 45 53 ];
         lputv %currentPos.2 %tmp.8;
-        symbol [ currentPos %currentPos.2 40 16 26 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 41 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_25_57_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_25_57_8_stop" ]
+        symbol [ currentPos %currentPos.2 51 16 26 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 52 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_25_73_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_25_73_8_stop" ]
         %loc.3 = local;
-        symbol [ loc %loc.3 41 16 19 ];
+        symbol [ loc %loc.3 52 16 19 ];
         %tmp.9 = lgetv %currentPos.2;
-        symbol [ currentPos %tmp.9 41 22 32 ];
-        symbol [ toDegrees %tmp.10 41 33 42 ];
+        symbol [ currentPos %tmp.9 52 22 32 ];
+        symbol [ toDegrees %tmp.10 52 33 42 ];
         %tmp.10 = getv function %tmp.9 :toDegrees;
         %tmp.11 = invoke %tmp.9 %tmp.10();
         lputv %loc.3 %tmp.11;
-        symbol [ loc %loc.3 41 16 19 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 44 12 ]
+        symbol [ loc %loc.3 52 16 19 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 56 12 ]
         %tmp.12 = lgetv %loc.3;
-        symbol [ loc %tmp.12 44 20 23 ];
+        symbol [ loc %tmp.12 56 20 23 ];
         %tmp.13 = 0;
         %tmp.14 = agetv %tmp.12 %tmp.13;
-        symbol [ toDouble %tmp.15 44 27 35 ];
+        symbol [ toDouble %tmp.15 56 27 35 ];
         %tmp.15 = getv function %tmp.14 :toDouble;
         %tmp.16 = invoke %tmp.14 %tmp.15();
-        symbol [ myLat ? 44 12 17 ];
+        symbol [ myLat ? 56 12 17 ];
         putv self :myLat %tmp.16;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 45 12 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 57 12 ]
         %tmp.17 = lgetv %loc.3;
-        symbol [ loc %tmp.17 45 20 23 ];
+        symbol [ loc %tmp.17 57 20 23 ];
         %tmp.18 = 1;
         %tmp.19 = agetv %tmp.17 %tmp.18;
-        symbol [ toDouble %tmp.20 45 27 35 ];
+        symbol [ toDouble %tmp.20 57 27 35 ];
         %tmp.20 = getv function %tmp.19 :toDouble;
         %tmp.21 = invoke %tmp.19 %tmp.20();
-        symbol [ myLon ? 45 12 17 ];
+        symbol [ myLon ? 57 12 17 ];
         putv self :myLon %tmp.21;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 47 12 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_12_55_12_if_stmt:
-        symbol [ apiRequested %tmp.23 47 17 29 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 59 12 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_12_71_12_if_stmt:
+        symbol [ apiRequested %tmp.23 59 17 29 ];
         %tmp.23 = getv ? :apiRequested;
         %tmp.24 = not %tmp.23;
-        bf %tmp.24 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_12_55_12_if_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_12_55_12_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_31_52_12_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 48 16 ]
+        bf %tmp.24 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_12_71_12_if_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_12_71_12_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_31_66_12_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 62 16 ]
         %tmp.25 = true;
-        symbol [ apiRequested ? 48 16 28 ];
+        symbol [ apiRequested ? 62 16 28 ];
         putv self :apiRequested %tmp.25;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 49 16 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 63 16 ]
         %tmp.26 = lgetv %currentPos.2;
-        symbol [ currentPos %tmp.26 49 31 41 ];
-        symbol [ lastLocation ? 49 16 28 ];
+        symbol [ currentPos %tmp.26 63 31 41 ];
+        symbol [ lastLocation ? 63 16 28 ];
         putv self :lastLocation %tmp.26;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 50 16 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 64 16 ]
         %tmp.27 = "szukam zabki...";
-        symbol [ status ? 50 16 22 ];
+        symbol [ status ? 64 16 22 ];
         putv self :status %tmp.27;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 51 16 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 65 16 ]
         %tmp.28 = self;
-        symbol [ fetchZabka %tmp.29 51 16 26 ];
+        symbol [ fetchZabka %tmp.29 65 16 26 ];
         %tmp.29 = getv function %tmp.28 :fetchZabka;
         invoke %tmp.28 %tmp.29();
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_31_52_12_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_12_55_12_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_12_55_12_if_false:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 52 19 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_19_55_12_if_stmt:
-        symbol [ zabkaLat %tmp.31 52 23 31 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_31_66_12_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_12_71_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_12_71_12_if_false:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 66 19 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_19_71_12_if_stmt:
+        symbol [ zabkaLat %tmp.31 66 23 31 ];
         %tmp.31 = getv ? :zabkaLat;
         %tmp.32 = null;
         %tmp.33 = ne %tmp.31 %tmp.32;
-        bf %tmp.33 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_19_55_12_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_19_55_12_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_41_55_12_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 53 16 ]
+        bf %tmp.33 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_19_71_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_19_71_12_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_41_71_12_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 69 16 ]
         %tmp.34 = self;
-        symbol [ calculateRouting %tmp.35 53 16 32 ];
+        symbol [ calculateRouting %tmp.35 69 16 32 ];
         %tmp.35 = getv function %tmp.34 :calculateRouting;
         invoke %tmp.34 %tmp.35();
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 54 16 ]
-        symbol [ distance %tmp.37 54 25 33 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 70 16 ]
+        symbol [ distance %tmp.37 70 25 33 ];
         %tmp.37 = getv ? :distance;
-        symbol [ format %tmp.38 54 34 40 ];
+        symbol [ format %tmp.38 70 34 40 ];
         %tmp.38 = getv function %tmp.37 :format;
         %tmp.39 = "%.0f";
         %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
         %tmp.41 = " m";
         %tmp.42 = add %tmp.40 %tmp.41;
-        symbol [ status ? 54 16 22 ];
+        symbol [ status ? 70 16 22 ];
         putv self :status %tmp.42;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_41_55_12_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_19_55_12_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_52_19_55_12_if_end:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_47_12_55_12_if_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 56 12 ]
-        symbol [ WatchUi %tmp.43 56 12 19 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_41_71_12_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_19_71_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_66_19_71_12_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_59_12_71_12_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 72 12 ]
+        symbol [ WatchUi %tmp.43 72 12 19 ];
         %tmp.43 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.44 56 20 33 ];
+        symbol [ requestUpdate %tmp.44 72 20 33 ];
         %tmp.44 = getv function %tmp.43 :requestUpdate;
         invoke %tmp.43 %tmp.44();
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_25_57_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_8_57_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_39_8_57_8_if_end:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_37_55_58_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_25_73_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_8_73_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_50_8_73_8_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_48_55_74_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 60; @symbol_functiondef = [fetchZabka,60,13,23]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 79; @symbol_functiondef = [fetchZabka,79,13,23]; ]
     function fetchZabka() as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 61 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_8_65_8_if_stmt:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_12_61_38_begin:
-        symbol [ myLat %tmp.2 61 12 17 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 80 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_8_84_8_if_stmt:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_12_80_38_begin:
+        symbol [ myLat %tmp.2 80 12 17 ];
         %tmp.2 = getv ? :myLat;
         %tmp.3 = null;
         %tmp.4 = eq %tmp.2 %tmp.3;
-        bt %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_8_65_8_if_true;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_29_61_38_false:
-        symbol [ myLon %tmp.6 61 29 34 ];
+        bt %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_8_84_8_if_true;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_29_80_38_false:
+        symbol [ myLon %tmp.6 80 29 34 ];
         %tmp.6 = getv ? :myLon;
         %tmp.7 = null;
         %tmp.8 = eq %tmp.6 %tmp.7;
         push %tmp.8;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_29_61_38_end:
-        %tmp.9 = phi [%tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_12_61_38_begin] [%tmp.8 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_29_61_38_false] [%tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_29_61_38_end];
-        bf %tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_8_65_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_8_65_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_44_65_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 62 12 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_29_80_38_end:
+        %tmp.9 = phi [%tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_12_80_38_begin] [%tmp.8 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_29_80_38_false] [%tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_29_80_38_end];
+        bf %tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_8_84_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_8_84_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_44_84_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 81 12 ]
         %tmp.10 = "brak GPS";
-        symbol [ status ? 62 12 18 ];
+        symbol [ status ? 81 12 18 ];
         putv self :status %tmp.10;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 63 12 ]
-        symbol [ WatchUi %tmp.11 63 12 19 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 82 12 ]
+        symbol [ WatchUi %tmp.11 82 12 19 ];
         %tmp.11 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.12 63 20 33 ];
+        symbol [ requestUpdate %tmp.12 82 20 33 ];
         %tmp.12 = getv function %tmp.11 :requestUpdate;
         invoke %tmp.11 %tmp.12();
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 64 12 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 83 12 ]
         ret ?;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_44_65_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_8_65_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_61_8_65_8_if_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 67 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_stop" ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_44_84_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_8_84_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_80_8_84_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 86 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_stop" ]
         %query.1 = local;
-        symbol [ query %query.1 67 12 17 ];
+        symbol [ query %query.1 86 12 17 ];
         %tmp.13 = "[out:json][timeout:5];node(around:500,";
-        symbol [ myLat %tmp.15 67 63 68 ];
+        symbol [ myLat %tmp.15 86 63 68 ];
         %tmp.15 = getv ? :myLat;
         %tmp.16 = add %tmp.13 %tmp.15;
         %tmp.17 = ",";
         %tmp.18 = add %tmp.16 %tmp.17;
-        symbol [ myLon %tmp.20 67 77 82 ];
+        symbol [ myLon %tmp.20 86 77 82 ];
         %tmp.20 = getv ? :myLon;
         %tmp.21 = add %tmp.18 %tmp.20;
         %tmp.22 = ")[\"name\"~\"abka\",i];out center;";
         %tmp.23 = add %tmp.21 %tmp.22;
         lputv %query.1 %tmp.23;
-        symbol [ query %query.1 67 12 17 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 68 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_stop" ]
+        symbol [ query %query.1 86 12 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 87 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_stop" ]
         %url.2 = local;
-        symbol [ url %url.2 68 12 15 ];
+        symbol [ url %url.2 87 12 15 ];
         %tmp.24 = "https://overpass-api.de/api/interpreter";
         lputv %url.2 %tmp.24;
-        symbol [ url %url.2 68 12 15 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 70 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_stop" ]
+        symbol [ url %url.2 87 12 15 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 89 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_stop" ]
         %params.3 = local;
-        symbol [ params %params.3 70 12 18 ];
+        symbol [ params %params.3 89 12 18 ];
         %tmp.25 = newd 1;
         %tmp.26 = "data";
         %tmp.27 = lgetv %query.1;
-        symbol [ query %tmp.27 71 22 27 ];
+        symbol [ query %tmp.27 90 22 27 ];
         %tmp.28 = dup %tmp.25;
         %tmp.29 = aputv %tmp.28 %tmp.26 %tmp.27;
         lputv %params.3 %tmp.29;
-        symbol [ params %params.3 70 12 18 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 74 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_stop" ]
+        symbol [ params %params.3 89 12 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 93 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_stop" ]
         %options.4 = local;
-        symbol [ options %options.4 74 12 19 ];
+        symbol [ options %options.4 93 12 19 ];
         %tmp.30 = newd 3;
         %tmp.32 = const :method;
-        symbol [ method %tmp.32 75 13 19 const ];
-        symbol [ Communications %tmp.33 75 23 37 ];
+        symbol [ method %tmp.32 94 13 19 const ];
+        symbol [ Communications %tmp.33 94 23 37 ];
         %tmp.33 = getm $.Toybox.Communications;
-        symbol [ HTTP_REQUEST_METHOD_POST %tmp.34 75 38 62 ];
+        symbol [ HTTP_REQUEST_METHOD_POST %tmp.34 94 38 62 ];
         %tmp.34 = getv %tmp.33 :HTTP_REQUEST_METHOD_POST;
         %tmp.35 = dup %tmp.30;
         %tmp.36 = aputv %tmp.35 %tmp.32 %tmp.34;
         %tmp.38 = const :headers;
-        symbol [ headers %tmp.38 76 13 20 const ];
+        symbol [ headers %tmp.38 95 13 20 const ];
         %tmp.39 = newd 1;
         %tmp.40 = "Content-Type";
-        symbol [ Communications %tmp.41 77 34 48 ];
+        symbol [ Communications %tmp.41 96 34 48 ];
         %tmp.41 = getm $.Toybox.Communications;
-        symbol [ REQUEST_CONTENT_TYPE_URL_ENCODED %tmp.42 77 49 81 ];
+        symbol [ REQUEST_CONTENT_TYPE_URL_ENCODED %tmp.42 96 49 81 ];
         %tmp.42 = getv %tmp.41 :REQUEST_CONTENT_TYPE_URL_ENCODED;
         %tmp.43 = dup %tmp.39;
         %tmp.44 = aputv %tmp.43 %tmp.40 %tmp.42;
         %tmp.45 = dup %tmp.36;
         %tmp.46 = aputv %tmp.45 %tmp.38 %tmp.44;
         %tmp.48 = const :responseType;
-        symbol [ responseType %tmp.48 79 13 25 const ];
-        symbol [ Communications %tmp.49 79 29 43 ];
+        symbol [ responseType %tmp.48 98 13 25 const ];
+        symbol [ Communications %tmp.49 98 29 43 ];
         %tmp.49 = getm $.Toybox.Communications;
-        symbol [ HTTP_RESPONSE_CONTENT_TYPE_JSON %tmp.50 79 44 75 ];
+        symbol [ HTTP_RESPONSE_CONTENT_TYPE_JSON %tmp.50 98 44 75 ];
         %tmp.50 = getv %tmp.49 :HTTP_RESPONSE_CONTENT_TYPE_JSON;
         %tmp.51 = dup %tmp.46;
         %tmp.52 = aputv %tmp.51 %tmp.48 %tmp.50;
         lputv %options.4 %tmp.52;
-        symbol [ options %options.4 74 12 19 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 82 8 ]
-        symbol [ Communications %tmp.53 82 8 22 ];
+        symbol [ options %options.4 93 12 19 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 101 8 ]
+        symbol [ Communications %tmp.53 101 8 22 ];
         %tmp.53 = getm $.Toybox.Communications;
-        symbol [ makeWebRequest %tmp.54 82 23 37 ];
+        symbol [ makeWebRequest %tmp.54 101 23 37 ];
         %tmp.54 = getv function %tmp.53 :makeWebRequest;
         %tmp.55 = lgetv %url.2;
-        symbol [ url %tmp.55 82 38 41 ];
+        symbol [ url %tmp.55 101 38 41 ];
         %tmp.56 = lgetv %params.3;
-        symbol [ params %tmp.56 82 43 49 ];
+        symbol [ params %tmp.56 101 43 49 ];
         %tmp.57 = lgetv %options.4;
-        symbol [ options %tmp.57 82 51 58 ];
+        symbol [ options %tmp.57 101 51 58 ];
         %tmp.58 = self;
-        symbol [ method %tmp.59 82 60 66 ];
+        symbol [ method %tmp.59 101 60 66 ];
         %tmp.59 = getv function %tmp.58 :method;
         %tmp.61 = const :onReceive;
-        symbol [ onReceive %tmp.61 82 68 77 const ];
+        symbol [ onReceive %tmp.61 101 68 77 const ];
         %tmp.62 = invoke %tmp.58 %tmp.59(%tmp.61);
         invoke %tmp.53 %tmp.54(%tmp.55, %tmp.56, %tmp.57, %tmp.62);
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_60_34_83_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_79_34_102_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 85; @symbol_functiondef = [onReceive,85,13,22]; @symbol_param<0> = [responseCode,85,23,35]; @symbol_param<0>_type<0> = [Lang,85,39,43]; @symbol_param<0>_type<1> = [Number,85,44,50]; @symbol_param<1> = [data,85,52,56]; @symbol_param<1>_type<0> = [Lang,85,60,64]; @symbol_param<1>_type<1> = [Dictionary,85,65,75]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 106; @symbol_functiondef = [onReceive,106,13,22]; @symbol_param<0> = [responseCode,106,23,35]; @symbol_param<0>_type<0> = [Lang,106,39,43]; @symbol_param<0>_type<1> = [Number,106,44,50]; @symbol_param<1> = [data,106,52,56]; @symbol_param<1>_type<0> = [Lang,106,60,64]; @symbol_param<1>_type<1> = [Dictionary,106,65,75]; ]
     function onReceive(responseCode as Lang.Number, data as Lang.Dictionary or Null) as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_85_93_108_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 86 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_stmt:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_12_86_43_begin:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_106_93_135_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 107 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_stmt:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_12_107_43_begin:
         %tmp.1 = lgetv %responseCode;
-        symbol [ responseCode %tmp.1 86 12 24 ];
+        symbol [ responseCode %tmp.1 107 12 24 ];
         %tmp.2 = 200;
         %tmp.3 = eq %tmp.1 %tmp.2;
-        bf %tmp.3 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_else_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_35_86_43_true:
+        bf %tmp.3 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_35_107_43_true:
         %tmp.4 = lgetv %data;
-        symbol [ data %tmp.4 86 35 39 ];
+        symbol [ data %tmp.4 107 35 39 ];
         %tmp.5 = null;
         %tmp.6 = ne %tmp.4 %tmp.5;
         push %tmp.6;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_35_86_43_end:
-        %tmp.7 = phi [%tmp.3 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_12_86_43_begin] [%tmp.6 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_35_86_43_true] [%tmp.7 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_35_86_43_end];
-        bf %tmp.7 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_else_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_49_103_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 87 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_49_103_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_49_103_8_stop" ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_35_107_43_end:
+        %tmp.7 = phi [%tmp.3 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_12_107_43_begin] [%tmp.6 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_35_107_43_true] [%tmp.7 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_35_107_43_end];
+        bf %tmp.7 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_49_127_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 108 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_49_127_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_49_127_8_stop" ]
         %elements.1 = local;
-        symbol [ elements %elements.1 87 16 24 ];
+        symbol [ elements %elements.1 108 16 24 ];
         %tmp.8 = lgetv %data;
-        symbol [ data %tmp.8 87 27 31 ];
+        symbol [ data %tmp.8 108 27 31 ];
         %tmp.9 = as %tmp.8 { (!Null) };
         %tmp.10 = "elements";
         %tmp.11 = agetv %tmp.9 %tmp.10;
         %tmp.12 = as %tmp.11 Lang.Array;
-        symbol [ Lang %tmp.12 87 47 51 ];
-        symbol [ Array %tmp.12 87 52 57 ];
+        symbol [ Lang %tmp.12 108 47 51 ];
+        symbol [ Array %tmp.12 108 52 57 ];
         lputv %elements.1 %tmp.12;
-        symbol [ elements %elements.1 87 16 24 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 88 12 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_stmt:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_16_88_54_begin:
+        symbol [ elements %elements.1 108 16 24 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 109 12 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_stmt:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_16_109_54_begin:
         %tmp.13 = lgetv %elements.1;
-        symbol [ elements %tmp.13 88 16 24 ];
+        symbol [ elements %tmp.13 109 16 24 ];
         %tmp.14 = null;
         %tmp.15 = ne %tmp.13 %tmp.14;
-        bf %tmp.15 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_else_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_36_88_54_true:
+        bf %tmp.15 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_36_109_54_true:
         %tmp.16 = lgetv %elements.1;
-        symbol [ elements %tmp.16 88 36 44 ];
+        symbol [ elements %tmp.16 109 36 44 ];
         %tmp.17 = as %tmp.16 { (!Null) };
-        symbol [ size %tmp.18 88 45 49 ];
+        symbol [ size %tmp.18 109 45 49 ];
         %tmp.18 = getv function %tmp.17 :size;
         %tmp.19 = invoke %tmp.17 %tmp.18();
         %tmp.20 = 0;
         %tmp.21 = gt %tmp.19 %tmp.20;
         push %tmp.21;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_36_88_54_end:
-        %tmp.22 = phi [%tmp.15 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_16_88_54_begin] [%tmp.21 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_36_88_54_true] [%tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_36_88_54_end];
-        bf %tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_else_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_57_100_12_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 89 16 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_57_100_12_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_57_100_12_stop" ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_36_109_54_end:
+        %tmp.22 = phi [%tmp.15 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_16_109_54_begin] [%tmp.21 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_36_109_54_true] [%tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_36_109_54_end];
+        bf %tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_57_123_12_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 110 16 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_57_123_12_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_57_123_12_stop" ]
         %zabka.2 = local;
-        symbol [ zabka %zabka.2 89 20 25 ];
+        symbol [ zabka %zabka.2 110 20 25 ];
         %tmp.23 = lgetv %elements.1;
-        symbol [ elements %tmp.23 89 28 36 ];
+        symbol [ elements %tmp.23 110 28 36 ];
         %tmp.24 = as %tmp.23 { (!Null) };
         %tmp.25 = 0;
         %tmp.26 = agetv %tmp.24 %tmp.25;
         %tmp.27 = as %tmp.26 Lang.Dictionary;
-        symbol [ Lang %tmp.27 89 43 47 ];
-        symbol [ Dictionary %tmp.27 89 48 58 ];
+        symbol [ Lang %tmp.27 110 43 47 ];
+        symbol [ Dictionary %tmp.27 110 48 58 ];
         lputv %zabka.2 %tmp.27;
-        symbol [ zabka %zabka.2 89 20 25 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 90 16 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_16_97_16_if_stmt:
+        symbol [ zabka %zabka.2 110 20 25 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 111 16 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_16_120_16_if_stmt:
         %tmp.28 = lgetv %zabka.2;
-        symbol [ zabka %tmp.28 90 20 25 ];
-        symbol [ hasKey %tmp.29 90 26 32 ];
+        symbol [ zabka %tmp.28 111 20 25 ];
+        symbol [ hasKey %tmp.29 111 26 32 ];
         %tmp.29 = getv function %tmp.28 :hasKey;
         %tmp.30 = "center";
         %tmp.31 = invoke %tmp.28 %tmp.29(%tmp.30);
-        bf %tmp.31 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_16_97_16_if_else_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_16_97_16_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_44_94_16_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 91 20 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_44_94_16_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_44_94_16_stop" ]
+        bf %tmp.31 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_16_120_16_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_16_120_16_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_44_116_16_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 113 20 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_44_116_16_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_44_116_16_stop" ]
         %center.3 = local;
-        symbol [ center %center.3 91 24 30 ];
+        symbol [ center %center.3 113 24 30 ];
         %tmp.32 = lgetv %zabka.2;
-        symbol [ zabka %tmp.32 91 33 38 ];
+        symbol [ zabka %tmp.32 113 33 38 ];
         %tmp.33 = "center";
         %tmp.34 = agetv %tmp.32 %tmp.33;
         %tmp.35 = as %tmp.34 Lang.Dictionary;
-        symbol [ Lang %tmp.35 91 52 56 ];
-        symbol [ Dictionary %tmp.35 91 57 67 ];
+        symbol [ Lang %tmp.35 113 52 56 ];
+        symbol [ Dictionary %tmp.35 113 57 67 ];
         lputv %center.3 %tmp.35;
-        symbol [ center %center.3 91 24 30 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 92 20 ]
+        symbol [ center %center.3 113 24 30 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 114 20 ]
         %tmp.36 = lgetv %center.3;
-        symbol [ center %tmp.36 92 31 37 ];
+        symbol [ center %tmp.36 114 31 37 ];
         %tmp.37 = "lat";
         %tmp.38 = agetv %tmp.36 %tmp.37;
-        symbol [ toDouble %tmp.39 92 45 53 ];
+        symbol [ toDouble %tmp.39 114 45 53 ];
         %tmp.39 = getv function %tmp.38 :toDouble;
         %tmp.40 = invoke %tmp.38 %tmp.39();
-        symbol [ zabkaLat ? 92 20 28 ];
+        symbol [ zabkaLat ? 114 20 28 ];
         putv self :zabkaLat %tmp.40;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 93 20 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 115 20 ]
         %tmp.41 = lgetv %center.3;
-        symbol [ center %tmp.41 93 31 37 ];
+        symbol [ center %tmp.41 115 31 37 ];
         %tmp.42 = "lon";
         %tmp.43 = agetv %tmp.41 %tmp.42;
-        symbol [ toDouble %tmp.44 93 45 53 ];
+        symbol [ toDouble %tmp.44 115 45 53 ];
         %tmp.44 = getv function %tmp.43 :toDouble;
         %tmp.45 = invoke %tmp.43 %tmp.44();
-        symbol [ zabkaLon ? 93 20 28 ];
+        symbol [ zabkaLon ? 115 20 28 ];
         putv self :zabkaLon %tmp.45;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_44_94_16_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_16_97_16_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_16_97_16_if_else_false:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_94_23_97_16_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 95 20 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_44_116_16_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_16_120_16_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_16_120_16_if_else_false:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_116_23_120_16_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 118 20 ]
         %tmp.46 = lgetv %zabka.2;
-        symbol [ zabka %tmp.46 95 31 36 ];
+        symbol [ zabka %tmp.46 118 31 36 ];
         %tmp.47 = "lat";
         %tmp.48 = agetv %tmp.46 %tmp.47;
-        symbol [ toDouble %tmp.49 95 44 52 ];
+        symbol [ toDouble %tmp.49 118 44 52 ];
         %tmp.49 = getv function %tmp.48 :toDouble;
         %tmp.50 = invoke %tmp.48 %tmp.49();
-        symbol [ zabkaLat ? 95 20 28 ];
+        symbol [ zabkaLat ? 118 20 28 ];
         putv self :zabkaLat %tmp.50;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 96 20 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 119 20 ]
         %tmp.51 = lgetv %zabka.2;
-        symbol [ zabka %tmp.51 96 31 36 ];
+        symbol [ zabka %tmp.51 119 31 36 ];
         %tmp.52 = "lon";
         %tmp.53 = agetv %tmp.51 %tmp.52;
-        symbol [ toDouble %tmp.54 96 44 52 ];
+        symbol [ toDouble %tmp.54 119 44 52 ];
         %tmp.54 = getv function %tmp.53 :toDouble;
         %tmp.55 = invoke %tmp.53 %tmp.54();
-        symbol [ zabkaLon ? 96 20 28 ];
+        symbol [ zabkaLon ? 119 20 28 ];
         putv self :zabkaLon %tmp.55;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_94_23_97_16_stop:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_90_16_97_16_if_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 98 16 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_116_23_120_16_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_16_120_16_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 121 16 ]
         %tmp.56 = self;
-        symbol [ calculateRouting %tmp.57 98 16 32 ];
+        symbol [ calculateRouting %tmp.57 121 16 32 ];
         %tmp.57 = getv function %tmp.56 :calculateRouting;
         invoke %tmp.56 %tmp.57();
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 99 16 ]
-        symbol [ distance %tmp.59 99 25 33 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 122 16 ]
+        symbol [ distance %tmp.59 122 25 33 ];
         %tmp.59 = getv ? :distance;
-        symbol [ format %tmp.60 99 34 40 ];
+        symbol [ format %tmp.60 122 34 40 ];
         %tmp.60 = getv function %tmp.59 :format;
         %tmp.61 = "%.0f";
         %tmp.62 = invoke %tmp.59 %tmp.60(%tmp.61);
         %tmp.63 = " m";
         %tmp.64 = add %tmp.62 %tmp.63;
-        symbol [ status ? 99 16 22 ];
+        symbol [ status ? 122 16 22 ];
         putv self :status %tmp.64;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_57_100_12_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_else_false:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_100_19_102_12_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 101 16 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_57_123_12_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_else_false:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_123_19_126_12_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 125 16 ]
         %tmp.65 = "brak zabki";
-        symbol [ status ? 101 16 22 ];
+        symbol [ status ? 125 16 22 ];
         putv self :status %tmp.65;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_100_19_102_12_stop:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_88_12_102_12_if_end:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_49_103_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_else_false:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_103_15_106_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 104 12 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_123_19_126_12_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_109_12_126_12_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_49_127_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_else_false:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_127_15_133_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 129 12 ]
         %tmp.66 = "blad: ";
         %tmp.67 = lgetv %responseCode;
-        symbol [ responseCode %tmp.67 104 32 44 ];
+        symbol [ responseCode %tmp.67 129 32 44 ];
         %tmp.68 = add %tmp.66 %tmp.67;
-        symbol [ status ? 104 12 18 ];
+        symbol [ status ? 129 12 18 ];
         putv self :status %tmp.68;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_103_15_106_8_stop:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_86_8_106_8_if_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 107 8 ]
-        symbol [ WatchUi %tmp.69 107 8 15 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_127_15_133_8_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_107_8_133_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 134 8 ]
+        symbol [ WatchUi %tmp.69 134 8 15 ];
         %tmp.69 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.70 107 16 29 ];
+        symbol [ requestUpdate %tmp.70 134 16 29 ];
         %tmp.70 = getv function %tmp.69 :requestUpdate;
         invoke %tmp.69 %tmp.70();
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_85_93_108_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_106_93_135_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 110; @symbol_functiondef = [calculateRouting,110,13,29]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 139; @symbol_functiondef = [calculateRouting,139,13,29]; ]
     function calculateRouting() as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_110_40_125_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 111 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_8_124_8_if_stmt:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_12_111_41_begin:
-        symbol [ myLat %tmp.2 111 12 17 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_139_40_156_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 140 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_8_155_8_if_stmt:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_12_140_41_begin:
+        symbol [ myLat %tmp.2 140 12 17 ];
         %tmp.2 = getv ? :myLat;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_8_124_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_29_111_41_true:
-        symbol [ zabkaLat %tmp.6 111 29 37 ];
+        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_8_155_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_29_140_41_true:
+        symbol [ zabkaLat %tmp.6 140 29 37 ];
         %tmp.6 = getv ? :zabkaLat;
         %tmp.7 = null;
         %tmp.8 = ne %tmp.6 %tmp.7;
         push %tmp.8;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_29_111_41_end:
-        %tmp.9 = phi [%tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_12_111_41_begin] [%tmp.8 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_29_111_41_true] [%tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_29_111_41_end];
-        bf %tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_8_124_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_8_124_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 112 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_29_140_41_end:
+        %tmp.9 = phi [%tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_12_140_41_begin] [%tmp.8 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_29_140_41_true] [%tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_29_140_41_end];
+        bf %tmp.9 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_8_155_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_8_155_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 141 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %rLat1.1 = local;
-        symbol [ rLat1 %rLat1.1 112 16 21 ];
-        symbol [ myLat %tmp.11 112 24 29 ];
+        symbol [ rLat1 %rLat1.1 141 16 21 ];
+        symbol [ myLat %tmp.11 141 24 29 ];
         %tmp.11 = getv ? :myLat;
         %tmp.12 = as %tmp.11 { (!Null) };
-        symbol [ Math %tmp.13 112 32 36 ];
+        symbol [ Math %tmp.13 141 32 36 ];
         %tmp.13 = getm $.Toybox.Math;
-        symbol [ PI %tmp.14 112 37 39 ];
+        symbol [ PI %tmp.14 141 37 39 ];
         %tmp.14 = getv %tmp.13 :PI;
         %tmp.15 = mul %tmp.12 %tmp.14;
         %tmp.16 = 180.0;
         %tmp.17 = div %tmp.15 %tmp.16;
         lputv %rLat1.1 %tmp.17;
-        symbol [ rLat1 %rLat1.1 112 16 21 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 113 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+        symbol [ rLat1 %rLat1.1 141 16 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 142 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %rLat2.2 = local;
-        symbol [ rLat2 %rLat2.2 113 16 21 ];
-        symbol [ zabkaLat %tmp.19 113 24 32 ];
+        symbol [ rLat2 %rLat2.2 142 16 21 ];
+        symbol [ zabkaLat %tmp.19 142 24 32 ];
         %tmp.19 = getv ? :zabkaLat;
         %tmp.20 = as %tmp.19 { (!Null) };
-        symbol [ Math %tmp.21 113 35 39 ];
+        symbol [ Math %tmp.21 142 35 39 ];
         %tmp.21 = getm $.Toybox.Math;
-        symbol [ PI %tmp.22 113 40 42 ];
+        symbol [ PI %tmp.22 142 40 42 ];
         %tmp.22 = getv %tmp.21 :PI;
         %tmp.23 = mul %tmp.20 %tmp.22;
         %tmp.24 = 180.0;
         %tmp.25 = div %tmp.23 %tmp.24;
         lputv %rLat2.2 %tmp.25;
-        symbol [ rLat2 %rLat2.2 113 16 21 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 114 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+        symbol [ rLat2 %rLat2.2 142 16 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 143 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %dLat.3 = local;
-        symbol [ dLat %dLat.3 114 16 20 ];
-        symbol [ zabkaLat %tmp.27 114 24 32 ];
+        symbol [ dLat %dLat.3 143 16 20 ];
+        symbol [ zabkaLat %tmp.27 143 24 32 ];
         %tmp.27 = getv ? :zabkaLat;
         %tmp.28 = as %tmp.27 { (!Null) };
-        symbol [ myLat %tmp.30 114 35 40 ];
+        symbol [ myLat %tmp.30 143 35 40 ];
         %tmp.30 = getv ? :myLat;
         %tmp.31 = as %tmp.30 { (!Null) };
         %tmp.32 = sub %tmp.28 %tmp.31;
-        symbol [ Math %tmp.33 114 44 48 ];
+        symbol [ Math %tmp.33 143 44 48 ];
         %tmp.33 = getm $.Toybox.Math;
-        symbol [ PI %tmp.34 114 49 51 ];
+        symbol [ PI %tmp.34 143 49 51 ];
         %tmp.34 = getv %tmp.33 :PI;
         %tmp.35 = mul %tmp.32 %tmp.34;
         %tmp.36 = 180.0;
         %tmp.37 = div %tmp.35 %tmp.36;
         lputv %dLat.3 %tmp.37;
-        symbol [ dLat %dLat.3 114 16 20 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 115 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+        symbol [ dLat %dLat.3 143 16 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 144 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %dLon.4 = local;
-        symbol [ dLon %dLon.4 115 16 20 ];
-        symbol [ zabkaLon %tmp.39 115 24 32 ];
+        symbol [ dLon %dLon.4 144 16 20 ];
+        symbol [ zabkaLon %tmp.39 144 24 32 ];
         %tmp.39 = getv ? :zabkaLon;
-        symbol [ myLon %tmp.41 115 35 40 ];
+        symbol [ myLon %tmp.41 144 35 40 ];
         %tmp.41 = getv ? :myLon;
         %tmp.42 = sub %tmp.39 %tmp.41;
-        symbol [ Math %tmp.43 115 44 48 ];
+        symbol [ Math %tmp.43 144 44 48 ];
         %tmp.43 = getm $.Toybox.Math;
-        symbol [ PI %tmp.44 115 49 51 ];
+        symbol [ PI %tmp.44 144 49 51 ];
         %tmp.44 = getv %tmp.43 :PI;
         %tmp.45 = mul %tmp.42 %tmp.44;
         %tmp.46 = 180.0;
         %tmp.47 = div %tmp.45 %tmp.46;
         lputv %dLon.4 %tmp.47;
-        symbol [ dLon %dLon.4 115 16 20 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 117 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+        symbol [ dLon %dLon.4 144 16 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 147 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %a.5 = local;
-        symbol [ a %a.5 117 16 17 ];
-        symbol [ Math %tmp.48 117 20 24 ];
+        symbol [ a %a.5 147 16 17 ];
+        symbol [ Math %tmp.48 147 20 24 ];
         %tmp.48 = getm $.Toybox.Math;
-        symbol [ sin %tmp.49 117 25 28 ];
+        symbol [ sin %tmp.49 147 25 28 ];
         %tmp.49 = getv function %tmp.48 :sin;
         %tmp.50 = lgetv %dLat.3;
-        symbol [ dLat %tmp.50 117 29 33 ];
+        symbol [ dLat %tmp.50 147 29 33 ];
         %tmp.51 = 2.0;
         %tmp.52 = div %tmp.50 %tmp.51;
         %tmp.53 = invoke %tmp.48 %tmp.49(%tmp.52);
-        symbol [ Math %tmp.54 117 41 45 ];
+        symbol [ Math %tmp.54 147 41 45 ];
         %tmp.54 = getm $.Toybox.Math;
-        symbol [ sin %tmp.55 117 46 49 ];
+        symbol [ sin %tmp.55 147 46 49 ];
         %tmp.55 = getv function %tmp.54 :sin;
         %tmp.56 = lgetv %dLat.3;
-        symbol [ dLat %tmp.56 117 50 54 ];
+        symbol [ dLat %tmp.56 147 50 54 ];
         %tmp.57 = 2.0;
         %tmp.58 = div %tmp.56 %tmp.57;
         %tmp.59 = invoke %tmp.54 %tmp.55(%tmp.58);
         %tmp.60 = mul %tmp.53 %tmp.59;
-        symbol [ Math %tmp.61 117 62 66 ];
+        symbol [ Math %tmp.61 147 62 66 ];
         %tmp.61 = getm $.Toybox.Math;
-        symbol [ cos %tmp.62 117 67 70 ];
+        symbol [ cos %tmp.62 147 67 70 ];
         %tmp.62 = getv function %tmp.61 :cos;
         %tmp.63 = lgetv %rLat1.1;
-        symbol [ rLat1 %tmp.63 117 71 76 ];
+        symbol [ rLat1 %tmp.63 147 71 76 ];
         %tmp.64 = invoke %tmp.61 %tmp.62(%tmp.63);
-        symbol [ Math %tmp.65 117 80 84 ];
+        symbol [ Math %tmp.65 147 80 84 ];
         %tmp.65 = getm $.Toybox.Math;
-        symbol [ cos %tmp.66 117 85 88 ];
+        symbol [ cos %tmp.66 147 85 88 ];
         %tmp.66 = getv function %tmp.65 :cos;
         %tmp.67 = lgetv %rLat2.2;
-        symbol [ rLat2 %tmp.67 117 89 94 ];
+        symbol [ rLat2 %tmp.67 147 89 94 ];
         %tmp.68 = invoke %tmp.65 %tmp.66(%tmp.67);
         %tmp.69 = mul %tmp.64 %tmp.68;
-        symbol [ Math %tmp.70 117 98 102 ];
+        symbol [ Math %tmp.70 147 98 102 ];
         %tmp.70 = getm $.Toybox.Math;
-        symbol [ sin %tmp.71 117 103 106 ];
+        symbol [ sin %tmp.71 147 103 106 ];
         %tmp.71 = getv function %tmp.70 :sin;
         %tmp.72 = lgetv %dLon.4;
-        symbol [ dLon %tmp.72 117 107 111 ];
+        symbol [ dLon %tmp.72 147 107 111 ];
         %tmp.73 = 2.0;
         %tmp.74 = div %tmp.72 %tmp.73;
         %tmp.75 = invoke %tmp.70 %tmp.71(%tmp.74);
         %tmp.76 = mul %tmp.69 %tmp.75;
-        symbol [ Math %tmp.77 117 119 123 ];
+        symbol [ Math %tmp.77 147 119 123 ];
         %tmp.77 = getm $.Toybox.Math;
-        symbol [ sin %tmp.78 117 124 127 ];
+        symbol [ sin %tmp.78 147 124 127 ];
         %tmp.78 = getv function %tmp.77 :sin;
         %tmp.79 = lgetv %dLon.4;
-        symbol [ dLon %tmp.79 117 128 132 ];
+        symbol [ dLon %tmp.79 147 128 132 ];
         %tmp.80 = 2.0;
         %tmp.81 = div %tmp.79 %tmp.80;
         %tmp.82 = invoke %tmp.77 %tmp.78(%tmp.81);
         %tmp.83 = mul %tmp.76 %tmp.82;
         %tmp.84 = add %tmp.60 %tmp.83;
         lputv %a.5 %tmp.84;
-        symbol [ a %a.5 117 16 17 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 118 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+        symbol [ a %a.5 147 16 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 148 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %c.6 = local;
-        symbol [ c %c.6 118 16 17 ];
+        symbol [ c %c.6 148 16 17 ];
         %tmp.85 = 2.0;
-        symbol [ Math %tmp.86 118 26 30 ];
+        symbol [ Math %tmp.86 148 26 30 ];
         %tmp.86 = getm $.Toybox.Math;
-        symbol [ atan2 %tmp.87 118 31 36 ];
+        symbol [ atan2 %tmp.87 148 31 36 ];
         %tmp.87 = getv function %tmp.86 :atan2;
-        symbol [ Math %tmp.88 118 37 41 ];
+        symbol [ Math %tmp.88 148 37 41 ];
         %tmp.88 = getm $.Toybox.Math;
-        symbol [ sqrt %tmp.89 118 42 46 ];
+        symbol [ sqrt %tmp.89 148 42 46 ];
         %tmp.89 = getv function %tmp.88 :sqrt;
         %tmp.90 = lgetv %a.5;
-        symbol [ a %tmp.90 118 47 48 ];
+        symbol [ a %tmp.90 148 47 48 ];
         %tmp.91 = invoke %tmp.88 %tmp.89(%tmp.90);
-        symbol [ Math %tmp.92 118 51 55 ];
+        symbol [ Math %tmp.92 148 51 55 ];
         %tmp.92 = getm $.Toybox.Math;
-        symbol [ sqrt %tmp.93 118 56 60 ];
+        symbol [ sqrt %tmp.93 148 56 60 ];
         %tmp.93 = getv function %tmp.92 :sqrt;
         %tmp.94 = 1.0;
         %tmp.95 = lgetv %a.5;
-        symbol [ a %tmp.95 118 65 66 ];
+        symbol [ a %tmp.95 148 65 66 ];
         %tmp.96 = sub %tmp.94 %tmp.95;
         %tmp.97 = invoke %tmp.92 %tmp.93(%tmp.96);
         %tmp.98 = invoke %tmp.86 %tmp.87(%tmp.91, %tmp.97);
         %tmp.99 = mul %tmp.85 %tmp.98;
         lputv %c.6 %tmp.99;
-        symbol [ c %c.6 118 16 17 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 119 12 ]
+        symbol [ c %c.6 148 16 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 149 12 ]
         %tmp.100 = 6371000.0;
         %tmp.101 = lgetv %c.6;
-        symbol [ c %tmp.101 119 36 37 ];
+        symbol [ c %tmp.101 149 36 37 ];
         %tmp.102 = mul %tmp.100 %tmp.101;
-        symbol [ toFloat %tmp.103 119 39 46 ];
+        symbol [ toFloat %tmp.103 149 39 46 ];
         %tmp.103 = getv function %tmp.102 :toFloat;
         %tmp.104 = invoke %tmp.102 %tmp.103();
-        symbol [ distance ? 119 12 20 ];
+        symbol [ distance ? 149 12 20 ];
         putv self :distance %tmp.104;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 121 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 152 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %y.7 = local;
-        symbol [ y %y.7 121 16 17 ];
-        symbol [ Math %tmp.105 121 20 24 ];
+        symbol [ y %y.7 152 16 17 ];
+        symbol [ Math %tmp.105 152 20 24 ];
         %tmp.105 = getm $.Toybox.Math;
-        symbol [ sin %tmp.106 121 25 28 ];
+        symbol [ sin %tmp.106 152 25 28 ];
         %tmp.106 = getv function %tmp.105 :sin;
         %tmp.107 = lgetv %dLon.4;
-        symbol [ dLon %tmp.107 121 29 33 ];
+        symbol [ dLon %tmp.107 152 29 33 ];
         %tmp.108 = invoke %tmp.105 %tmp.106(%tmp.107);
-        symbol [ Math %tmp.109 121 37 41 ];
+        symbol [ Math %tmp.109 152 37 41 ];
         %tmp.109 = getm $.Toybox.Math;
-        symbol [ cos %tmp.110 121 42 45 ];
+        symbol [ cos %tmp.110 152 42 45 ];
         %tmp.110 = getv function %tmp.109 :cos;
         %tmp.111 = lgetv %rLat2.2;
-        symbol [ rLat2 %tmp.111 121 46 51 ];
+        symbol [ rLat2 %tmp.111 152 46 51 ];
         %tmp.112 = invoke %tmp.109 %tmp.110(%tmp.111);
         %tmp.113 = mul %tmp.108 %tmp.112;
         lputv %y.7 %tmp.113;
-        symbol [ y %y.7 121 16 17 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 122 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop" ]
+        symbol [ y %y.7 152 16 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 153 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop" ]
         %x.8 = local;
-        symbol [ x %x.8 122 16 17 ];
-        symbol [ Math %tmp.114 122 20 24 ];
+        symbol [ x %x.8 153 16 17 ];
+        symbol [ Math %tmp.114 153 20 24 ];
         %tmp.114 = getm $.Toybox.Math;
-        symbol [ cos %tmp.115 122 25 28 ];
+        symbol [ cos %tmp.115 153 25 28 ];
         %tmp.115 = getv function %tmp.114 :cos;
         %tmp.116 = lgetv %rLat1.1;
-        symbol [ rLat1 %tmp.116 122 29 34 ];
+        symbol [ rLat1 %tmp.116 153 29 34 ];
         %tmp.117 = invoke %tmp.114 %tmp.115(%tmp.116);
-        symbol [ Math %tmp.118 122 38 42 ];
+        symbol [ Math %tmp.118 153 38 42 ];
         %tmp.118 = getm $.Toybox.Math;
-        symbol [ sin %tmp.119 122 43 46 ];
+        symbol [ sin %tmp.119 153 43 46 ];
         %tmp.119 = getv function %tmp.118 :sin;
         %tmp.120 = lgetv %rLat2.2;
-        symbol [ rLat2 %tmp.120 122 47 52 ];
+        symbol [ rLat2 %tmp.120 153 47 52 ];
         %tmp.121 = invoke %tmp.118 %tmp.119(%tmp.120);
         %tmp.122 = mul %tmp.117 %tmp.121;
-        symbol [ Math %tmp.123 122 56 60 ];
+        symbol [ Math %tmp.123 153 56 60 ];
         %tmp.123 = getm $.Toybox.Math;
-        symbol [ sin %tmp.124 122 61 64 ];
+        symbol [ sin %tmp.124 153 61 64 ];
         %tmp.124 = getv function %tmp.123 :sin;
         %tmp.125 = lgetv %rLat1.1;
-        symbol [ rLat1 %tmp.125 122 65 70 ];
+        symbol [ rLat1 %tmp.125 153 65 70 ];
         %tmp.126 = invoke %tmp.123 %tmp.124(%tmp.125);
-        symbol [ Math %tmp.127 122 74 78 ];
+        symbol [ Math %tmp.127 153 74 78 ];
         %tmp.127 = getm $.Toybox.Math;
-        symbol [ cos %tmp.128 122 79 82 ];
+        symbol [ cos %tmp.128 153 79 82 ];
         %tmp.128 = getv function %tmp.127 :cos;
         %tmp.129 = lgetv %rLat2.2;
-        symbol [ rLat2 %tmp.129 122 83 88 ];
+        symbol [ rLat2 %tmp.129 153 83 88 ];
         %tmp.130 = invoke %tmp.127 %tmp.128(%tmp.129);
         %tmp.131 = mul %tmp.126 %tmp.130;
-        symbol [ Math %tmp.132 122 92 96 ];
+        symbol [ Math %tmp.132 153 92 96 ];
         %tmp.132 = getm $.Toybox.Math;
-        symbol [ cos %tmp.133 122 97 100 ];
+        symbol [ cos %tmp.133 153 97 100 ];
         %tmp.133 = getv function %tmp.132 :cos;
         %tmp.134 = lgetv %dLon.4;
-        symbol [ dLon %tmp.134 122 101 105 ];
+        symbol [ dLon %tmp.134 153 101 105 ];
         %tmp.135 = invoke %tmp.132 %tmp.133(%tmp.134);
         %tmp.136 = mul %tmp.131 %tmp.135;
         %tmp.137 = sub %tmp.122 %tmp.136;
         lputv %x.8 %tmp.137;
-        symbol [ x %x.8 122 16 17 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 123 12 ]
-        symbol [ Math %tmp.138 123 27 31 ];
+        symbol [ x %x.8 153 16 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 154 12 ]
+        symbol [ Math %tmp.138 154 27 31 ];
         %tmp.138 = getm $.Toybox.Math;
-        symbol [ atan2 %tmp.139 123 32 37 ];
+        symbol [ atan2 %tmp.139 154 32 37 ];
         %tmp.139 = getv function %tmp.138 :atan2;
         %tmp.140 = lgetv %y.7;
-        symbol [ y %tmp.140 123 38 39 ];
+        symbol [ y %tmp.140 154 38 39 ];
         %tmp.141 = lgetv %x.8;
-        symbol [ x %tmp.141 123 41 42 ];
+        symbol [ x %tmp.141 154 41 42 ];
         %tmp.142 = invoke %tmp.138 %tmp.139(%tmp.140, %tmp.141);
-        symbol [ toFloat %tmp.143 123 44 51 ];
+        symbol [ toFloat %tmp.143 154 44 51 ];
         %tmp.143 = getv function %tmp.142 :toFloat;
         %tmp.144 = invoke %tmp.142 %tmp.143();
-        symbol [ zabkaBearing ? 123 12 24 ];
+        symbol [ zabkaBearing ? 154 12 24 ];
         putv self :zabkaBearing %tmp.144;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_47_124_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_8_124_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_111_8_124_8_if_end:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_110_40_125_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_47_155_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_8_155_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_140_8_155_8_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_139_40_156_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 127; @symbol_functiondef = [onSensorData,127,13,25]; @symbol_param<0> = [sensorInfo,127,26,36]; @symbol_param<0>_type<0> = [Sensor,127,40,46]; @symbol_param<0>_type<1> = [Info,127,47,51]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 159; @symbol_functiondef = [onSensorData,159,13,25]; @symbol_param<0> = [sensorInfo,159,26,36]; @symbol_param<0>_type<0> = [Sensor,159,40,46]; @symbol_param<0>_type<1> = [Info,159,47,51]; ]
     function onSensorData(sensorInfo as Sensor.Info) as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_127_61_132_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 128 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_8_131_8_if_stmt:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_159_61_164_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 160 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_8_163_8_if_stmt:
         %tmp.1 = lgetv %sensorInfo;
-        symbol [ sensorInfo %tmp.1 128 12 22 ];
-        symbol [ heading %tmp.2 128 23 30 ];
+        symbol [ sensorInfo %tmp.1 160 12 22 ];
+        symbol [ heading %tmp.2 160 23 30 ];
         %tmp.2 = getv %tmp.1 :heading;
         %tmp.3 = null;
         %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_8_131_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_8_131_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_40_131_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 129 12 ]
+        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_8_163_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_8_163_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_40_163_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 161 12 ]
         %tmp.5 = lgetv %sensorInfo;
-        symbol [ sensorInfo %tmp.5 129 22 32 ];
-        symbol [ heading %tmp.6 129 33 40 ];
+        symbol [ sensorInfo %tmp.5 161 22 32 ];
+        symbol [ heading %tmp.6 161 33 40 ];
         %tmp.6 = getv %tmp.5 :heading;
         %tmp.7 = as %tmp.6 Lang.Float;
-        symbol [ Lang %tmp.7 129 44 48 ];
-        symbol [ Float %tmp.7 129 49 54 ];
-        symbol [ heading ? 129 12 19 ];
+        symbol [ Lang %tmp.7 161 44 48 ];
+        symbol [ Float %tmp.7 161 49 54 ];
+        symbol [ heading ? 161 12 19 ];
         putv self :heading %tmp.7;
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 130 12 ]
-        symbol [ WatchUi %tmp.8 130 12 19 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 162 12 ]
+        symbol [ WatchUi %tmp.8 162 12 19 ];
         %tmp.8 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.9 130 20 33 ];
+        symbol [ requestUpdate %tmp.9 162 20 33 ];
         %tmp.9 = getv function %tmp.8 :requestUpdate;
         invoke %tmp.8 %tmp.9();
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_40_131_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_8_131_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_128_8_131_8_if_end:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_127_61_132_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_40_163_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_8_163_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_160_8_163_8_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_159_61_164_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 134; @symbol_functiondef = [onUpdate,134,13,21]; @symbol_param<0> = [dc,134,22,24]; @symbol_param<0>_type<0> = [Graphics,134,28,36]; @symbol_param<0>_type<1> = [Dc,134,37,39]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 168; @symbol_functiondef = [onUpdate,168,13,21]; @symbol_param<0> = [dc,168,22,24]; @symbol_param<0>_type<0> = [Graphics,168,28,36]; @symbol_param<0>_type<1> = [Dc,168,37,39]; ]
     function onUpdate(dc as Graphics.Dc) as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 135 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 169 8 ]
         %tmp.1 = lgetv %dc;
-        symbol [ dc %tmp.1 135 8 10 ];
-        symbol [ setColor %tmp.2 135 11 19 ];
+        symbol [ dc %tmp.1 169 8 10 ];
+        symbol [ setColor %tmp.2 169 11 19 ];
         %tmp.2 = getv function %tmp.1 :setColor;
-        symbol [ Graphics %tmp.3 135 20 28 ];
+        symbol [ Graphics %tmp.3 169 20 28 ];
         %tmp.3 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.4 135 29 40 ];
+        symbol [ COLOR_BLACK %tmp.4 169 29 40 ];
         %tmp.4 = getv %tmp.3 :COLOR_BLACK;
-        symbol [ Graphics %tmp.5 135 42 50 ];
+        symbol [ Graphics %tmp.5 169 42 50 ];
         %tmp.5 = getm $.Toybox.Graphics;
-        symbol [ COLOR_BLACK %tmp.6 135 51 62 ];
+        symbol [ COLOR_BLACK %tmp.6 169 51 62 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 136 8 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 170 8 ]
         %tmp.7 = lgetv %dc;
-        symbol [ dc %tmp.7 136 8 10 ];
-        symbol [ clear %tmp.8 136 11 16 ];
+        symbol [ dc %tmp.7 170 8 10 ];
+        symbol [ clear %tmp.8 170 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 138 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 172 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %cx.1 = local;
-        symbol [ cx %cx.1 138 12 14 ];
+        symbol [ cx %cx.1 172 12 14 ];
         %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 138 17 19 ];
-        symbol [ getWidth %tmp.10 138 20 28 ];
+        symbol [ dc %tmp.9 172 17 19 ];
+        symbol [ getWidth %tmp.10 172 20 28 ];
         %tmp.10 = getv function %tmp.9 :getWidth;
         %tmp.11 = invoke %tmp.9 %tmp.10();
         %tmp.12 = 2.0;
         %tmp.13 = div %tmp.11 %tmp.12;
         lputv %cx.1 %tmp.13;
-        symbol [ cx %cx.1 138 12 14 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 139 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+        symbol [ cx %cx.1 172 12 14 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 173 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %cy.2 = local;
-        symbol [ cy %cy.2 139 12 14 ];
+        symbol [ cy %cy.2 173 12 14 ];
         %tmp.14 = lgetv %dc;
-        symbol [ dc %tmp.14 139 17 19 ];
-        symbol [ getHeight %tmp.15 139 20 29 ];
+        symbol [ dc %tmp.14 173 17 19 ];
+        symbol [ getHeight %tmp.15 173 20 29 ];
         %tmp.15 = getv function %tmp.14 :getHeight;
         %tmp.16 = invoke %tmp.14 %tmp.15();
         %tmp.17 = 2.0;
         %tmp.18 = div %tmp.16 %tmp.17;
         lputv %cy.2 %tmp.18;
-        symbol [ cy %cy.2 139 12 14 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 141 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_8_143_8_if_stmt:
-        symbol [ logo %tmp.20 141 12 16 ];
+        symbol [ cy %cy.2 173 12 14 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 175 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_8_177_8_if_stmt:
+        symbol [ logo %tmp.20 175 12 16 ];
         %tmp.20 = getv ? :logo;
         %tmp.21 = null;
         %tmp.22 = ne %tmp.20 %tmp.21;
-        bf %tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_8_143_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_8_143_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_26_143_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 142 12 ]
+        bf %tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_8_177_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_8_177_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_26_177_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 176 12 ]
         %tmp.23 = lgetv %dc;
-        symbol [ dc %tmp.23 142 12 14 ];
-        symbol [ drawBitmap %tmp.24 142 15 25 ];
+        symbol [ dc %tmp.23 176 12 14 ];
+        symbol [ drawBitmap %tmp.24 176 15 25 ];
         %tmp.24 = getv function %tmp.23 :drawBitmap;
         %tmp.25 = lgetv %cx.1;
-        symbol [ cx %tmp.25 142 26 28 ];
-        symbol [ logo %tmp.27 142 32 36 ];
+        symbol [ cx %tmp.25 176 26 28 ];
+        symbol [ logo %tmp.27 176 32 36 ];
         %tmp.27 = getv ? :logo;
         %tmp.28 = as %tmp.27 { (!Null) };
-        symbol [ getWidth %tmp.29 142 37 45 ];
+        symbol [ getWidth %tmp.29 176 37 45 ];
         %tmp.29 = getv function %tmp.28 :getWidth;
         %tmp.30 = invoke %tmp.28 %tmp.29();
         %tmp.31 = 2.0;
         %tmp.32 = div %tmp.30 %tmp.31;
         %tmp.33 = sub %tmp.25 %tmp.32;
         %tmp.34 = 20;
-        symbol [ logo %tmp.36 142 60 64 ];
+        symbol [ logo %tmp.36 176 60 64 ];
         %tmp.36 = getv ? :logo;
         invoke %tmp.23 %tmp.24(%tmp.33, %tmp.34, %tmp.36);
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_26_143_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_8_143_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_141_8_143_8_if_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 145 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_26_177_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_8_177_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_175_8_177_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 181 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %finalAngle.3 = local;
-        symbol [ finalAngle %finalAngle.3 145 12 22 ];
+        symbol [ finalAngle %finalAngle.3 181 12 22 ];
         %tmp.37 = 0.0f;
         lputv %finalAngle.3 %tmp.37;
-        symbol [ finalAngle %finalAngle.3 145 12 22 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 146 8 ]
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_8_148_8_if_stmt:
-        symbol [ zabkaLat %tmp.39 146 12 20 ];
+        symbol [ finalAngle %finalAngle.3 181 12 22 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 182 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_8_184_8_if_stmt:
+        symbol [ zabkaLat %tmp.39 182 12 20 ];
         %tmp.39 = getv ? :zabkaLat;
         %tmp.40 = null;
         %tmp.41 = ne %tmp.39 %tmp.40;
-        bf %tmp.41 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_8_148_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_8_148_8_if_true:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_30_148_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 147 12 ]
-        symbol [ zabkaBearing %tmp.43 147 25 37 ];
+        bf %tmp.41 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_8_184_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_8_184_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_30_184_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 183 12 ]
+        symbol [ zabkaBearing %tmp.43 183 25 37 ];
         %tmp.43 = getv ? :zabkaBearing;
-        symbol [ heading %tmp.45 147 40 47 ];
+        symbol [ heading %tmp.45 183 40 47 ];
         %tmp.45 = getv ? :heading;
         %tmp.46 = sub %tmp.43 %tmp.45;
         lputv %finalAngle.3 %tmp.46;
-        symbol [ finalAngle %finalAngle.3 147 12 22 ];
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_30_148_8_stop:
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_8_148_8_if_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_146_8_148_8_if_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 150 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+        symbol [ finalAngle %finalAngle.3 183 12 22 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_30_184_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_8_184_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_182_8_184_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 187 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %arrowPoints.4 = local;
-        symbol [ arrowPoints %arrowPoints.4 150 12 23 ];
+        symbol [ arrowPoints %arrowPoints.4 187 12 23 ];
         %tmp.47 = newa 4;
         %tmp.48 = newa 2;
         %tmp.49 = 0;
@@ -1032,253 +1032,253 @@ C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_14
         %tmp.82 = dup %tmp.74;
         %tmp.83 = aputv %tmp.82 3 %tmp.81;
         lputv %arrowPoints.4 %tmp.83;
-        symbol [ arrowPoints %arrowPoints.4 150 12 23 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 151 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+        symbol [ arrowPoints %arrowPoints.4 187 12 23 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 188 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %rotatedPoints.5 = local;
-        symbol [ rotatedPoints %rotatedPoints.5 151 12 25 ];
+        symbol [ rotatedPoints %rotatedPoints.5 188 12 25 ];
         %tmp.85 = 4;
         %tmp.84 = newa %tmp.85;
         lputv %rotatedPoints.5 %tmp.84;
-        symbol [ rotatedPoints %rotatedPoints.5 151 12 25 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 152 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+        symbol [ rotatedPoints %rotatedPoints.5 188 12 25 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 189 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %cos.6 = local;
-        symbol [ cos %cos.6 152 12 15 ];
-        symbol [ Math %tmp.86 152 18 22 ];
+        symbol [ cos %cos.6 189 12 15 ];
+        symbol [ Math %tmp.86 189 18 22 ];
         %tmp.86 = getm $.Toybox.Math;
-        symbol [ cos %tmp.87 152 23 26 ];
+        symbol [ cos %tmp.87 189 23 26 ];
         %tmp.87 = getv function %tmp.86 :cos;
         %tmp.88 = lgetv %finalAngle.3;
-        symbol [ finalAngle %tmp.88 152 27 37 ];
+        symbol [ finalAngle %tmp.88 189 27 37 ];
         %tmp.89 = invoke %tmp.86 %tmp.87(%tmp.88);
         lputv %cos.6 %tmp.89;
-        symbol [ cos %cos.6 152 12 15 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 153 8 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop" ]
+        symbol [ cos %cos.6 189 12 15 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 190 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop" ]
         %sin.7 = local;
-        symbol [ sin %sin.7 153 12 15 ];
-        symbol [ Math %tmp.90 153 18 22 ];
+        symbol [ sin %sin.7 190 12 15 ];
+        symbol [ Math %tmp.90 190 18 22 ];
         %tmp.90 = getm $.Toybox.Math;
-        symbol [ sin %tmp.91 153 23 26 ];
+        symbol [ sin %tmp.91 190 23 26 ];
         %tmp.91 = getv function %tmp.90 :sin;
         %tmp.92 = lgetv %finalAngle.3;
-        symbol [ finalAngle %tmp.92 153 27 37 ];
+        symbol [ finalAngle %tmp.92 190 27 37 ];
         %tmp.93 = invoke %tmp.90 %tmp.91(%tmp.92);
         lputv %sin.7 %tmp.93;
-        symbol [ sin %sin.7 153 12 15 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 155 8 ]
-        for @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_test @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_incr @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_init:
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_begin" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_end" ]
+        symbol [ sin %sin.7 190 12 15 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 192 8 ]
+        for @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_test @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_incr @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_init:
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_begin" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_end" ]
         %i.8 = local;
-        symbol [ i %i.8 155 17 18 ];
+        symbol [ i %i.8 192 17 18 ];
         %tmp.94 = 0;
         lputv %i.8 %tmp.94;
-        symbol [ i %i.8 155 17 18 ];
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_test:
+        symbol [ i %i.8 192 17 18 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_test:
         %tmp.95 = lgetv %i.8;
-        symbol [ i %tmp.95 155 24 25 ];
+        symbol [ i %tmp.95 192 24 25 ];
         %tmp.96 = 4;
         %tmp.97 = lt %tmp.95 %tmp.96;
-        bf %tmp.97 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_begin:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 156 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_stop" ]
+        bf %tmp.97 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_begin:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 193 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_stop" ]
         %px.9 = local;
-        symbol [ px %px.9 156 16 18 ];
+        symbol [ px %px.9 193 16 18 ];
         %tmp.98 = lgetv %arrowPoints.4;
-        symbol [ arrowPoints %tmp.98 156 21 32 ];
+        symbol [ arrowPoints %tmp.98 193 21 32 ];
         %tmp.99 = lgetv %i.8;
-        symbol [ i %tmp.99 156 33 34 ];
+        symbol [ i %tmp.99 193 33 34 ];
         %tmp.100 = agetv %tmp.98 %tmp.99;
         %tmp.101 = 0;
         %tmp.102 = agetv %tmp.100 %tmp.101;
         lputv %px.9 %tmp.102;
-        symbol [ px %px.9 156 16 18 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 157 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_stop" ]
+        symbol [ px %px.9 193 16 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 194 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_stop" ]
         %py.10 = local;
-        symbol [ py %py.10 157 16 18 ];
+        symbol [ py %py.10 194 16 18 ];
         %tmp.103 = lgetv %arrowPoints.4;
-        symbol [ arrowPoints %tmp.103 157 21 32 ];
+        symbol [ arrowPoints %tmp.103 194 21 32 ];
         %tmp.104 = lgetv %i.8;
-        symbol [ i %tmp.104 157 33 34 ];
+        symbol [ i %tmp.104 194 33 34 ];
         %tmp.105 = agetv %tmp.103 %tmp.104;
         %tmp.106 = 1;
         %tmp.107 = agetv %tmp.105 %tmp.106;
         lputv %py.10 %tmp.107;
-        symbol [ py %py.10 157 16 18 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 158 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_stop" ]
+        symbol [ py %py.10 194 16 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 197 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_stop" ]
         %rx.11 = local;
-        symbol [ rx %rx.11 158 16 18 ];
+        symbol [ rx %rx.11 197 16 18 ];
         %tmp.108 = lgetv %px.9;
-        symbol [ px %tmp.108 158 22 24 ];
+        symbol [ px %tmp.108 197 22 24 ];
         %tmp.109 = lgetv %cos.6;
-        symbol [ cos %tmp.109 158 27 30 ];
+        symbol [ cos %tmp.109 197 27 30 ];
         %tmp.110 = mul %tmp.108 %tmp.109;
         %tmp.111 = lgetv %py.10;
-        symbol [ py %tmp.111 158 35 37 ];
+        symbol [ py %tmp.111 197 35 37 ];
         %tmp.112 = lgetv %sin.7;
-        symbol [ sin %tmp.112 158 40 43 ];
+        symbol [ sin %tmp.112 197 40 43 ];
         %tmp.113 = mul %tmp.111 %tmp.112;
         %tmp.114 = sub %tmp.110 %tmp.113;
         lputv %rx.11 %tmp.114;
-        symbol [ rx %rx.11 158 16 18 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 159 12 ]
-        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_stop" ]
+        symbol [ rx %rx.11 197 16 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 198 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_stop" ]
         %ry.12 = local;
-        symbol [ ry %ry.12 159 16 18 ];
+        symbol [ ry %ry.12 198 16 18 ];
         %tmp.115 = lgetv %px.9;
-        symbol [ px %tmp.115 159 22 24 ];
+        symbol [ px %tmp.115 198 22 24 ];
         %tmp.116 = lgetv %sin.7;
-        symbol [ sin %tmp.116 159 27 30 ];
+        symbol [ sin %tmp.116 198 27 30 ];
         %tmp.117 = mul %tmp.115 %tmp.116;
         %tmp.118 = lgetv %py.10;
-        symbol [ py %tmp.118 159 35 37 ];
+        symbol [ py %tmp.118 198 35 37 ];
         %tmp.119 = lgetv %cos.6;
-        symbol [ cos %tmp.119 159 40 43 ];
+        symbol [ cos %tmp.119 198 40 43 ];
         %tmp.120 = mul %tmp.118 %tmp.119;
         %tmp.121 = add %tmp.117 %tmp.120;
         lputv %ry.12 %tmp.121;
-        symbol [ ry %ry.12 159 16 18 ];
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 160 12 ]
+        symbol [ ry %ry.12 198 16 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 199 12 ]
         %tmp.122 = lgetv %rotatedPoints.5;
-        symbol [ rotatedPoints %tmp.122 160 12 25 ];
+        symbol [ rotatedPoints %tmp.122 199 12 25 ];
         %tmp.123 = newa 2;
         %tmp.124 = lgetv %cx.1;
-        symbol [ cx %tmp.124 160 32 34 ];
+        symbol [ cx %tmp.124 199 32 34 ];
         %tmp.125 = lgetv %rx.11;
-        symbol [ rx %tmp.125 160 37 39 ];
+        symbol [ rx %tmp.125 199 37 39 ];
         %tmp.126 = add %tmp.124 %tmp.125;
         %tmp.127 = dup %tmp.123;
         %tmp.128 = aputv %tmp.127 0 %tmp.126;
         %tmp.129 = lgetv %cy.2;
-        symbol [ cy %tmp.129 160 41 43 ];
+        symbol [ cy %tmp.129 199 41 43 ];
         %tmp.130 = lgetv %ry.12;
-        symbol [ ry %tmp.130 160 46 48 ];
+        symbol [ ry %tmp.130 199 46 48 ];
         %tmp.131 = add %tmp.129 %tmp.130;
         %tmp.132 = dup %tmp.128;
         %tmp.133 = aputv %tmp.132 1 %tmp.131;
         %tmp.134 = lgetv %i.8;
-        symbol [ i %tmp.134 160 26 27 ];
+        symbol [ i %tmp.134 199 26 27 ];
         aputv %tmp.122 %tmp.134 %tmp.133;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_36_161_8_stop:
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_incr:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 155 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_36_200_8_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_incr:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 192 ]
         %tmp.137 = lgetv %i.8;
-        symbol [ i %tmp.137 155 31 32 ];
+        symbol [ i %tmp.137 192 31 32 ];
         %tmp.138 = add %tmp.137 1;
         lputv %i.8 %tmp.138;
-        symbol [ i %i.8 155 31 32 ];
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_test;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_155_8_161_8_for_end:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 163 8 ]
+        symbol [ i %i.8 192 31 32 ];
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_test;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_192_8_200_8_for_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 204 8 ]
         %tmp.139 = lgetv %dc;
-        symbol [ dc %tmp.139 163 8 10 ];
-        symbol [ setColor %tmp.140 163 11 19 ];
+        symbol [ dc %tmp.139 204 8 10 ];
+        symbol [ setColor %tmp.140 204 11 19 ];
         %tmp.140 = getv function %tmp.139 :setColor;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_begin:
-        symbol [ zabkaLat %tmp.142 163 20 28 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_begin:
+        symbol [ zabkaLat %tmp.142 204 20 28 ];
         %tmp.142 = getv ? :zabkaLat;
         %tmp.143 = null;
         %tmp.144 = ne %tmp.142 %tmp.143;
-        bf %tmp.144 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_else_false;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_true:
-        symbol [ Graphics %tmp.145 163 39 47 ];
+        bf %tmp.144 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_true:
+        symbol [ Graphics %tmp.145 204 39 47 ];
         %tmp.145 = getm $.Toybox.Graphics;
-        symbol [ COLOR_GREEN %tmp.146 163 48 59 ];
+        symbol [ COLOR_GREEN %tmp.146 204 48 59 ];
         %tmp.146 = getv %tmp.145 :COLOR_GREEN;
         push %tmp.146;
-        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_end;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_else_false:
-        symbol [ Graphics %tmp.147 163 62 70 ];
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_else_false:
+        symbol [ Graphics %tmp.147 204 62 70 ];
         %tmp.147 = getm $.Toybox.Graphics;
-        symbol [ COLOR_LT_GRAY %tmp.148 163 71 84 ];
+        symbol [ COLOR_LT_GRAY %tmp.148 204 71 84 ];
         %tmp.148 = getv %tmp.147 :COLOR_LT_GRAY;
         push %tmp.148;
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_end:
-        %tmp.149 = phi [%tmp.144 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_begin] [%tmp.146 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_true] [%tmp.148 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_else_false] [%tmp.149 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_163_20_163_71_end];
-        symbol [ Graphics %tmp.150 163 86 94 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_end:
+        %tmp.149 = phi [%tmp.144 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_begin] [%tmp.146 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_true] [%tmp.148 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_else_false] [%tmp.149 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_204_20_204_71_end];
+        symbol [ Graphics %tmp.150 204 86 94 ];
         %tmp.150 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.151 163 95 112 ];
+        symbol [ COLOR_TRANSPARENT %tmp.151 204 95 112 ];
         %tmp.151 = getv %tmp.150 :COLOR_TRANSPARENT;
         invoke %tmp.139 %tmp.140(%tmp.149, %tmp.151);
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 164 8 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 205 8 ]
         %tmp.152 = lgetv %dc;
-        symbol [ dc %tmp.152 164 8 10 ];
-        symbol [ fillPolygon %tmp.153 164 11 22 ];
+        symbol [ dc %tmp.152 205 8 10 ];
+        symbol [ fillPolygon %tmp.153 205 11 22 ];
         %tmp.153 = getv function %tmp.152 :fillPolygon;
         %tmp.154 = lgetv %rotatedPoints.5;
-        symbol [ rotatedPoints %tmp.154 164 23 36 ];
+        symbol [ rotatedPoints %tmp.154 205 23 36 ];
         invoke %tmp.152 %tmp.153(%tmp.154);
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 166 8 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 207 8 ]
         %tmp.155 = lgetv %dc;
-        symbol [ dc %tmp.155 166 8 10 ];
-        symbol [ setColor %tmp.156 166 11 19 ];
+        symbol [ dc %tmp.155 207 8 10 ];
+        symbol [ setColor %tmp.156 207 11 19 ];
         %tmp.156 = getv function %tmp.155 :setColor;
-        symbol [ Graphics %tmp.157 166 20 28 ];
+        symbol [ Graphics %tmp.157 207 20 28 ];
         %tmp.157 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.158 166 29 40 ];
+        symbol [ COLOR_WHITE %tmp.158 207 29 40 ];
         %tmp.158 = getv %tmp.157 :COLOR_WHITE;
-        symbol [ Graphics %tmp.159 166 42 50 ];
+        symbol [ Graphics %tmp.159 207 42 50 ];
         %tmp.159 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.160 166 51 68 ];
+        symbol [ COLOR_TRANSPARENT %tmp.160 207 51 68 ];
         %tmp.160 = getv %tmp.159 :COLOR_TRANSPARENT;
         invoke %tmp.155 %tmp.156(%tmp.158, %tmp.160);
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 167 8 ]
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 208 8 ]
         %tmp.161 = lgetv %dc;
-        symbol [ dc %tmp.161 167 8 10 ];
-        symbol [ drawText %tmp.162 167 11 19 ];
+        symbol [ dc %tmp.161 208 8 10 ];
+        symbol [ drawText %tmp.162 208 11 19 ];
         %tmp.162 = getv function %tmp.161 :drawText;
         %tmp.163 = lgetv %cx.1;
-        symbol [ cx %tmp.163 167 20 22 ];
+        symbol [ cx %tmp.163 208 20 22 ];
         %tmp.164 = lgetv %cy.2;
-        symbol [ cy %tmp.164 167 24 26 ];
+        symbol [ cy %tmp.164 208 24 26 ];
         %tmp.165 = 80;
         %tmp.166 = add %tmp.164 %tmp.165;
-        symbol [ Graphics %tmp.167 167 33 41 ];
+        symbol [ Graphics %tmp.167 208 33 41 ];
         %tmp.167 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.168 167 42 53 ];
+        symbol [ FONT_MEDIUM %tmp.168 208 42 53 ];
         %tmp.168 = getv %tmp.167 :FONT_MEDIUM;
-        symbol [ status %tmp.170 167 55 61 ];
+        symbol [ status %tmp.170 208 55 61 ];
         %tmp.170 = getv ? :status;
-        symbol [ Graphics %tmp.171 167 63 71 ];
+        symbol [ Graphics %tmp.171 208 63 71 ];
         %tmp.171 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.172 167 72 91 ];
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.172 208 72 91 ];
         %tmp.172 = getv %tmp.171 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.161 %tmp.162(%tmp.163, %tmp.166, %tmp.168, %tmp.170, %tmp.172);
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_134_49_168_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_168_49_209_4_stop:
     }
-    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 170; @symbol_functiondef = [onHide,170,13,19]; ]
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 213; @symbol_functiondef = [onHide,213,13,19]; ]
     function onHide() as Void {
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_170_30_173_4_start:
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 171 8 ]
-        symbol [ Sensor %tmp.1 171 8 14 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_213_30_216_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 214 8 ]
+        symbol [ Sensor %tmp.1 214 8 14 ];
         %tmp.1 = getm $.Toybox.Sensor;
-        symbol [ enableSensorEvents %tmp.2 171 15 33 ];
+        symbol [ enableSensorEvents %tmp.2 214 15 33 ];
         %tmp.2 = getv function %tmp.1 :enableSensorEvents;
         %tmp.3 = null;
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 172 8 ]
-        symbol [ Position %tmp.4 172 8 16 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc" 215 8 ]
+        symbol [ Position %tmp.4 215 8 16 ];
         %tmp.4 = getm $.Toybox.Position;
-        symbol [ enableLocationEvents %tmp.5 172 17 37 ];
+        symbol [ enableLocationEvents %tmp.5 215 17 37 ];
         %tmp.5 = getv function %tmp.4 :enableLocationEvents;
-        symbol [ Position %tmp.6 172 38 46 ];
+        symbol [ Position %tmp.6 215 38 46 ];
         %tmp.6 = getm $.Toybox.Position;
-        symbol [ LOCATION_DISABLE %tmp.7 172 47 63 ];
+        symbol [ LOCATION_DISABLE %tmp.7 215 47 63 ];
         %tmp.7 = getv %tmp.6 :LOCATION_DISABLE;
         %tmp.8 = self;
-        symbol [ method %tmp.9 172 65 71 ];
+        symbol [ method %tmp.9 215 65 71 ];
         %tmp.9 = getv function %tmp.8 :method;
         %tmp.11 = const :onPosition;
-        symbol [ onPosition %tmp.11 172 73 83 const ];
+        symbol [ onPosition %tmp.11 215 73 83 const ];
         %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
         invoke %tmp.4 %tmp.5(%tmp.7, %tmp.12);
-C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_170_30_173_4_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_ZabkaFinderView_mc_213_30_216_4_stop:
     }
 }
 [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\ZabkaFinderView.mc"; @line = 1; ]
