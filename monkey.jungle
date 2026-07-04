@@ -1,1 +1,28 @@
 project.manifest = manifest.xml
+
+# Per-device launcher icon overrides. Each resources-launcher-NxN
+# folder redefines Drawables.LauncherIcon with a bitmap pre-scaled to
+# that device's native launcher icon size, appended AFTER the base
+# resource path so it wins over the 80x80 fallback in resources/.
+# Base LogoIcon (80x80) stays shared for the in-app logo.
+
+# 40x40: Fenix 7 series, FR 255 series, FR 955
+fenix7.resourcePath = $(fenix7.resourcePath);resources-launcher-40x40
+fenix7s.resourcePath = $(fenix7s.resourcePath);resources-launcher-40x40
+fenix7x.resourcePath = $(fenix7x.resourcePath);resources-launcher-40x40
+fr255.resourcePath = $(fr255.resourcePath);resources-launcher-40x40
+fr255m.resourcePath = $(fr255m.resourcePath);resources-launcher-40x40
+fr255s.resourcePath = $(fr255s.resourcePath);resources-launcher-40x40
+fr255sm.resourcePath = $(fr255sm.resourcePath);resources-launcher-40x40
+fr955.resourcePath = $(fr955.resourcePath);resources-launcher-40x40
+
+# 60x60: Epix (Gen 2), FR 265 series
+epix2.resourcePath = $(epix2.resourcePath);resources-launcher-60x60
+fr265.resourcePath = $(fr265.resourcePath);resources-launcher-60x60
+fr265s.resourcePath = $(fr265s.resourcePath);resources-launcher-60x60
+
+# 65x65: FR 965
+fr965.resourcePath = $(fr965.resourcePath);resources-launcher-65x65
+
+# 70x70: Venu 2
+venu2.resourcePath = $(venu2.resourcePath);resources-launcher-70x70

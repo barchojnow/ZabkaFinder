@@ -2,8 +2,9 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-// Application entry point. A Connect IQ "widget" only has a single
-// view, defined below in getInitialView().
+// Application entry point. Wires the single view together with its
+// BehaviorDelegate (needed for the store-selection menu) in
+// getInitialView().
 class ZabkaFinderApp extends Application.AppBase {
 
     function initialize() {
@@ -20,7 +21,8 @@ class ZabkaFinderApp extends Application.AppBase {
 
     // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new ZabkaFinderView() ];
+        var view = new ZabkaFinderView();
+        return [ view, new ZabkaFinderDelegate(view) ];
     }
 
 }
