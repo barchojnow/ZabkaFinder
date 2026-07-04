@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "monkeyc",
+            "request": "launch",
+            "name": "Run App (wybierz urzadzenie)",
+            "device": "${command:GetTargetDevice}"
+        },
+        {
+            "type": "monkeyc",
+            "request": "launch",
+            "name": "Run Venu 2",
+            "device": "venu2"
+        },
+        {
+            "type": "monkeyc",
+            "request": "launch",
+            "name": "Run Fenix 7",
+            "device": "fenix7"
+        },
+        {
+            "type": "monkeyc",
+            "request": "launch",
+            "name": "Run Forerunner 965",
+            "device": "fr965"
+        }
+    ]
+}

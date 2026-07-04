@@ -2,389 +2,598 @@
 <debugInfo>
     <manifest filename="C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\manifest.xml"/>
     <pcToLineNum>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="1" lineNum="15" parent="globals/ZabkaFinderView" pc="268435460" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="2" lineNum="30" parent="globals" pc="268435472" symbol="getApp"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="2" lineNum="31" parent="globals" pc="268435482" symbol="getApp"/>
-        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3703-00\\source\\Rez.mcgen" id="3" lineNum="7" parent="globals/Rez" pc="268435493" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="4" lineNum="7" parent="globals/ZabkaFinderApp" pc="268435513" symbol="&lt;init&gt;"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="104" parent="globals/ZabkaFinderView" pc="268435525" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="105" parent="globals/ZabkaFinderView" pc="268435528" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="106" parent="globals/ZabkaFinderView" pc="268435536" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="107" parent="globals/ZabkaFinderView" pc="268435542" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="110" parent="globals/ZabkaFinderView" pc="268435546" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="111" parent="globals/ZabkaFinderView" pc="268435550" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="115" parent="globals/ZabkaFinderView" pc="268435559" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="116" parent="globals/ZabkaFinderView" pc="268435576" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="118" parent="globals/ZabkaFinderView" pc="268435594" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="123" parent="globals/ZabkaFinderView" pc="268435603" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="124" parent="globals/ZabkaFinderView" pc="268435631" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="129" parent="globals/ZabkaFinderView" pc="268435644" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="130" parent="globals/ZabkaFinderView" pc="268435651" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="5" lineNum="133" parent="globals/ZabkaFinderView" pc="268435682" symbol="onPosition"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="166" parent="globals/ZabkaFinderView" pc="268435694" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="167" parent="globals/ZabkaFinderView" pc="268435697" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="170" parent="globals/ZabkaFinderView" pc="268435706" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="173" parent="globals/ZabkaFinderView" pc="268435710" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="174" parent="globals/ZabkaFinderView" pc="268435718" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="175" parent="globals/ZabkaFinderView" pc="268435726" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="176" parent="globals/ZabkaFinderView" pc="268435738" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="177" parent="globals/ZabkaFinderView" pc="268435753" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="178" parent="globals/ZabkaFinderView" pc="268435764" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="179" parent="globals/ZabkaFinderView" pc="268435773" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="181" parent="globals/ZabkaFinderView" pc="268435781" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="6" lineNum="182" parent="globals/ZabkaFinderView" pc="268435801" symbol="onRequestTimeout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="402" parent="globals/ZabkaFinderView" pc="268435813" symbol="currentAccentColor"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="403" parent="globals/ZabkaFinderView" pc="268435815" symbol="currentAccentColor"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="404" parent="globals/ZabkaFinderView" pc="268435824" symbol="currentAccentColor"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="406" parent="globals/ZabkaFinderView" pc="268435833" symbol="currentAccentColor"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="407" parent="globals/ZabkaFinderView" pc="268435847" symbol="currentAccentColor"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="409" parent="globals/ZabkaFinderView" pc="268435855" symbol="currentAccentColor"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="327" parent="globals/ZabkaFinderView" pc="268435861" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="328" parent="globals/ZabkaFinderView" pc="268435864" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="329" parent="globals/ZabkaFinderView" pc="268435880" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="330" parent="globals/ZabkaFinderView" pc="268435896" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="331" parent="globals/ZabkaFinderView" pc="268435915" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="333" parent="globals/ZabkaFinderView" pc="268435934" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="334" parent="globals/ZabkaFinderView" pc="268436049" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="335" parent="globals/ZabkaFinderView" pc="268436103" symbol="haversineDistance"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="361" parent="globals/ZabkaFinderView" pc="268436112" symbol="onSensorData"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="362" parent="globals/ZabkaFinderView" pc="268436114" symbol="onSensorData"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="363" parent="globals/ZabkaFinderView" pc="268436124" symbol="onSensorData"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="364" parent="globals/ZabkaFinderView" pc="268436137" symbol="onSensorData"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="510" parent="globals/ZabkaFinderView" pc="268436152" symbol="onHide"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="511" parent="globals/ZabkaFinderView" pc="268436154" symbol="onHide"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="512" parent="globals/ZabkaFinderView" pc="268436161" symbol="onHide"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="513" parent="globals/ZabkaFinderView" pc="268436175" symbol="onHide"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="296" parent="globals/ZabkaFinderView" pc="268436204" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="297" parent="globals/ZabkaFinderView" pc="268436207" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="298" parent="globals/ZabkaFinderView" pc="268436210" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="299" parent="globals/ZabkaFinderView" pc="268436213" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="301" parent="globals/ZabkaFinderView" pc="268436216" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="302" parent="globals/ZabkaFinderView" pc="268436232" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="303" parent="globals/ZabkaFinderView" pc="268436239" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="304" parent="globals/ZabkaFinderView" pc="268436249" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="308" parent="globals/ZabkaFinderView" pc="268436259" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="309" parent="globals/ZabkaFinderView" pc="268436271" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="311" parent="globals/ZabkaFinderView" pc="268436284" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="312" parent="globals/ZabkaFinderView" pc="268436308" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="313" parent="globals/ZabkaFinderView" pc="268436331" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="314" parent="globals/ZabkaFinderView" pc="268436335" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="315" parent="globals/ZabkaFinderView" pc="268436339" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="319" parent="globals/ZabkaFinderView" pc="268436356" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="320" parent="globals/ZabkaFinderView" pc="268436362" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="322" parent="globals/ZabkaFinderView" pc="268436367" symbol="pickNearestFeature"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="154" parent="globals/ZabkaFinderView" pc="268436382" symbol="stopWatchdog"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="155" parent="globals/ZabkaFinderView" pc="268436384" symbol="stopWatchdog"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="156" parent="globals/ZabkaFinderView" pc="268436393" symbol="stopWatchdog"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="157" parent="globals/ZabkaFinderView" pc="268436405" symbol="stopWatchdog"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="98" parent="globals/ZabkaFinderView" pc="268436417" symbol="onShow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="99" parent="globals/ZabkaFinderView" pc="268436419" symbol="onShow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="100" parent="globals/ZabkaFinderView" pc="268436445" symbol="onShow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="489" parent="globals/ZabkaFinderView" pc="268436474" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="490" parent="globals/ZabkaFinderView" pc="268436477" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="491" parent="globals/ZabkaFinderView" pc="268436481" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="493" parent="globals/ZabkaFinderView" pc="268436488" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="500" parent="globals/ZabkaFinderView" pc="268436497" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="501" parent="globals/ZabkaFinderView" pc="268436501" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="504" parent="globals/ZabkaFinderView" pc="268436512" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="505" parent="globals/ZabkaFinderView" pc="268436526" symbol="drawStatus"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="92" parent="globals/ZabkaFinderView" pc="268436553" symbol="onLayout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="93" parent="globals/ZabkaFinderView" pc="268436555" symbol="onLayout"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="137" parent="globals/ZabkaFinderView" pc="268436594" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="138" parent="globals/ZabkaFinderView" pc="268436596" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="139" parent="globals/ZabkaFinderView" pc="268436614" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="140" parent="globals/ZabkaFinderView" pc="268436626" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="142" parent="globals/ZabkaFinderView" pc="268436630" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="143" parent="globals/ZabkaFinderView" pc="268436638" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="144" parent="globals/ZabkaFinderView" pc="268436650" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="149" parent="globals/ZabkaFinderView" pc="268436657" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="150" parent="globals/ZabkaFinderView" pc="268436686" symbol="requestZabkaUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="245" parent="globals/ZabkaFinderView" pc="268436718" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="248" parent="globals/ZabkaFinderView" pc="268436721" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="249" parent="globals/ZabkaFinderView" pc="268436728" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="250" parent="globals/ZabkaFinderView" pc="268436736" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="252" parent="globals/ZabkaFinderView" pc="268436767" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="258" parent="globals/ZabkaFinderView" pc="268436782" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="259" parent="globals/ZabkaFinderView" pc="268436792" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="261" parent="globals/ZabkaFinderView" pc="268436814" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="262" parent="globals/ZabkaFinderView" pc="268436820" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="263" parent="globals/ZabkaFinderView" pc="268436831" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="264" parent="globals/ZabkaFinderView" pc="268436843" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="265" parent="globals/ZabkaFinderView" pc="268436850" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="266" parent="globals/ZabkaFinderView" pc="268436881" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="267" parent="globals/ZabkaFinderView" pc="268436889" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="272" parent="globals/ZabkaFinderView" pc="268436900" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="273" parent="globals/ZabkaFinderView" pc="268436912" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="274" parent="globals/ZabkaFinderView" pc="268436920" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="279" parent="globals/ZabkaFinderView" pc="268436944" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="280" parent="globals/ZabkaFinderView" pc="268436959" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="281" parent="globals/ZabkaFinderView" pc="268436974" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="282" parent="globals/ZabkaFinderView" pc="268436985" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="283" parent="globals/ZabkaFinderView" pc="268436994" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="285" parent="globals/ZabkaFinderView" pc="268437002" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="288" parent="globals/ZabkaFinderView" pc="268437022" symbol="onReceive"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="471" parent="globals/ZabkaFinderView" pc="268437034" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="473" parent="globals/ZabkaFinderView" pc="268437037" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="474" parent="globals/ZabkaFinderView" pc="268437059" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="479" parent="globals/ZabkaFinderView" pc="268437081" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="480" parent="globals/ZabkaFinderView" pc="268437099" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="482" parent="globals/ZabkaFinderView" pc="268437121" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="483" parent="globals/ZabkaFinderView" pc="268437137" symbol="drawCloseIndicator"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="340" parent="globals/ZabkaFinderView" pc="268437154" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="341" parent="globals/ZabkaFinderView" pc="268437157" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="342" parent="globals/ZabkaFinderView" pc="268437175" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="343" parent="globals/ZabkaFinderView" pc="268437182" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="344" parent="globals/ZabkaFinderView" pc="268437189" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="345" parent="globals/ZabkaFinderView" pc="268437196" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="347" parent="globals/ZabkaFinderView" pc="268437203" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="349" parent="globals/ZabkaFinderView" pc="268437232" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="350" parent="globals/ZabkaFinderView" pc="268437248" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="351" parent="globals/ZabkaFinderView" pc="268437264" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="354" parent="globals/ZabkaFinderView" pc="268437283" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="355" parent="globals/ZabkaFinderView" pc="268437314" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="356" parent="globals/ZabkaFinderView" pc="268437390" symbol="calculateRouting"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="371" parent="globals/ZabkaFinderView" pc="268437423" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="372" parent="globals/ZabkaFinderView" pc="268437426" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="373" parent="globals/ZabkaFinderView" pc="268437430" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="374" parent="globals/ZabkaFinderView" pc="268437441" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="376" parent="globals/ZabkaFinderView" pc="268437454" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="377" parent="globals/ZabkaFinderView" pc="268437465" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="379" parent="globals/ZabkaFinderView" pc="268437478" symbol="normalizeAngle"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="194" parent="globals/ZabkaFinderView" pc="268437481" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="195" parent="globals/ZabkaFinderView" pc="268437484" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="196" parent="globals/ZabkaFinderView" pc="268437491" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="202" parent="globals/ZabkaFinderView" pc="268437498" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="203" parent="globals/ZabkaFinderView" pc="268437514" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="204" parent="globals/ZabkaFinderView" pc="268437521" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="206" parent="globals/ZabkaFinderView" pc="268437553" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="207" parent="globals/ZabkaFinderView" pc="268437573" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="208" parent="globals/ZabkaFinderView" pc="268437593" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="209" parent="globals/ZabkaFinderView" pc="268437613" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="213" parent="globals/ZabkaFinderView" pc="268437633" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="220" parent="globals/ZabkaFinderView" pc="268437664" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="228" parent="globals/ZabkaFinderView" pc="268437681" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="236" parent="globals/ZabkaFinderView" pc="268437714" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="238" parent="globals/ZabkaFinderView" pc="268437735" symbol="fetchZabka"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="87" parent="globals/ZabkaFinderView" pc="268437771" symbol="initialize"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="88" parent="globals/ZabkaFinderView" pc="268437773" symbol="initialize"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="384" parent="globals/ZabkaFinderView" pc="268437786" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="385" parent="globals/ZabkaFinderView" pc="268437789" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="386" parent="globals/ZabkaFinderView" pc="268437801" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="388" parent="globals/ZabkaFinderView" pc="268437809" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="389" parent="globals/ZabkaFinderView" pc="268437824" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="391" parent="globals/ZabkaFinderView" pc="268437839" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="392" parent="globals/ZabkaFinderView" pc="268437848" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="395" parent="globals/ZabkaFinderView" pc="268437888" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="396" parent="globals/ZabkaFinderView" pc="268437903" symbol="onUpdate"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="415" parent="globals/ZabkaFinderView" pc="268437919" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="416" parent="globals/ZabkaFinderView" pc="268437922" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="417" parent="globals/ZabkaFinderView" pc="268437925" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="418" parent="globals/ZabkaFinderView" pc="268437934" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="425" parent="globals/ZabkaFinderView" pc="268437958" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="426" parent="globals/ZabkaFinderView" pc="268437976" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="428" parent="globals/ZabkaFinderView" pc="268438005" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="429" parent="globals/ZabkaFinderView" pc="268438024" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="432" parent="globals/ZabkaFinderView" pc="268438043" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="437" parent="globals/ZabkaFinderView" pc="268438081" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="439" parent="globals/ZabkaFinderView" pc="268438088" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="440" parent="globals/ZabkaFinderView" pc="268438093" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="442" parent="globals/ZabkaFinderView" pc="268438098" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="443" parent="globals/ZabkaFinderView" pc="268438109" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="444" parent="globals/ZabkaFinderView" pc="268438118" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="448" parent="globals/ZabkaFinderView" pc="268438128" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="449" parent="globals/ZabkaFinderView" pc="268438141" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="450" parent="globals/ZabkaFinderView" pc="268438154" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="452" parent="globals/ZabkaFinderView" pc="268438179" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="453" parent="globals/ZabkaFinderView" pc="268438198" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="454" parent="globals/ZabkaFinderView" pc="268438217" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="457" parent="globals/ZabkaFinderView" pc="268438252" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="458" parent="globals/ZabkaFinderView" pc="268438268" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="460" parent="globals/ZabkaFinderView" pc="268438280" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="461" parent="globals/ZabkaFinderView" pc="268438298" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="463" parent="globals/ZabkaFinderView" pc="268438310" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="464" parent="globals/ZabkaFinderView" pc="268438333" symbol="drawArrow"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="25" lineNum="14" parent="globals/ZabkaFinderApp" pc="268438357" symbol="onStart"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="26" lineNum="22" parent="globals/ZabkaFinderApp" pc="268438360" symbol="getInitialView"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="26" lineNum="23" parent="globals/ZabkaFinderApp" pc="268438362" symbol="getInitialView"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="27" lineNum="9" parent="globals/ZabkaFinderApp" pc="268438388" symbol="initialize"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="27" lineNum="10" parent="globals/ZabkaFinderApp" pc="268438390" symbol="initialize"/>
-        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="28" lineNum="18" parent="globals/ZabkaFinderApp" pc="268438403" symbol="onStop"/>
-        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3703-00\\source\\Rez.mcgen" id="29" lineNum="15" parent="globals/Rez/Layouts" pc="268438406" symbol="MainLayout"/>
-        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3703-00\\source\\Rez.mcgen" id="29" lineNum="16" parent="globals/Rez/Layouts" pc="268438417" symbol="MainLayout"/>
-        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3703-00\\source\\Rez.mcgen" id="29" lineNum="17" parent="globals/Rez/Layouts" pc="268438504" symbol="MainLayout"/>
-        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3703-00\\source\\Rez.mcgen" id="29" lineNum="19" parent="globals/Rez/Layouts" pc="268438554" symbol="MainLayout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="1" lineNum="14" parent="globals/ZabkaFinderView" pc="268435460" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="1" lineNum="47" parent="globals/ZabkaFinderView" pc="268435471" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="2" lineNum="32" parent="globals" pc="268435481" symbol="getApp"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="2" lineNum="33" parent="globals" pc="268435491" symbol="getApp"/>
+        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3905-00\\source\\Rez.mcgen" id="3" lineNum="7" parent="globals/Rez" pc="268435502" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="4" lineNum="54" parent="globals/StoreMenuDelegate" pc="268435522" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="5" lineNum="8" parent="globals/ZabkaFinderApp" pc="268435534" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="6" lineNum="8" parent="globals/ZabkaFinderDelegate" pc="268435546" symbol="&lt;init&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="131" parent="globals/ZabkaFinderView" pc="268435558" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="132" parent="globals/ZabkaFinderView" pc="268435561" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="133" parent="globals/ZabkaFinderView" pc="268435576" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="135" parent="globals/ZabkaFinderView" pc="268435593" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="136" parent="globals/ZabkaFinderView" pc="268435609" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="137" parent="globals/ZabkaFinderView" pc="268435621" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="138" parent="globals/ZabkaFinderView" pc="268435630" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="139" parent="globals/ZabkaFinderView" pc="268435655" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="141" parent="globals/ZabkaFinderView" pc="268435689" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="142" parent="globals/ZabkaFinderView" pc="268435701" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="144" parent="globals/ZabkaFinderView" pc="268435716" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="145" parent="globals/ZabkaFinderView" pc="268435732" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="147" parent="globals/ZabkaFinderView" pc="268435747" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="7" lineNum="150" parent="globals/ZabkaFinderView" pc="268435762" symbol="onSearchResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="102" parent="globals/ZabkaFinderView" pc="268435774" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="103" parent="globals/ZabkaFinderView" pc="268435777" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="104" parent="globals/ZabkaFinderView" pc="268435785" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="105" parent="globals/ZabkaFinderView" pc="268435791" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="108" parent="globals/ZabkaFinderView" pc="268435795" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="109" parent="globals/ZabkaFinderView" pc="268435805" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="110" parent="globals/ZabkaFinderView" pc="268435822" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="112" parent="globals/ZabkaFinderView" pc="268435840" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="115" parent="globals/ZabkaFinderView" pc="268435849" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="116" parent="globals/ZabkaFinderView" pc="268435863" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="117" parent="globals/ZabkaFinderView" pc="268435875" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="121" parent="globals/ZabkaFinderView" pc="268435905" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="122" parent="globals/ZabkaFinderView" pc="268435912" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="8" lineNum="125" parent="globals/ZabkaFinderView" pc="268435943" symbol="onPosition"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="267" parent="globals/ZabkaFinderView" pc="268435955" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;vibrateShort&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="268" parent="globals/ZabkaFinderView" pc="268435958" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;vibrateShort&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="269" parent="globals/ZabkaFinderView" pc="268435973" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;vibrateShort&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="9" lineNum="274" parent="globals/ZabkaFinderView" pc="268436067" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;vibrateShort&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="307" parent="globals/ZabkaFinderView" pc="268436086" symbol="currentAccentColor"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="308" parent="globals/ZabkaFinderView" pc="268436088" symbol="currentAccentColor"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="309" parent="globals/ZabkaFinderView" pc="268436097" symbol="currentAccentColor"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="311" parent="globals/ZabkaFinderView" pc="268436106" symbol="currentAccentColor"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="312" parent="globals/ZabkaFinderView" pc="268436120" symbol="currentAccentColor"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="10" lineNum="314" parent="globals/ZabkaFinderView" pc="268436128" symbol="currentAccentColor"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="83" parent="globals/ZabkaFinderView" pc="268436134" symbol="setMenuOpen"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="11" lineNum="84" parent="globals/ZabkaFinderView" pc="268436136" symbol="setMenuOpen"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="222" parent="globals/ZabkaFinderView" pc="268436146" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="223" parent="globals/ZabkaFinderView" pc="268436148" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="224" parent="globals/ZabkaFinderView" pc="268436157" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="225" parent="globals/ZabkaFinderView" pc="268436166" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="12" lineNum="226" parent="globals/ZabkaFinderView" pc="268436174" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="281" parent="globals/ZabkaFinderView" pc="268436182" symbol="onSensorData"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="282" parent="globals/ZabkaFinderView" pc="268436184" symbol="onSensorData"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="283" parent="globals/ZabkaFinderView" pc="268436194" symbol="onSensorData"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="13" lineNum="284" parent="globals/ZabkaFinderView" pc="268436207" symbol="onSensorData"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="90" parent="globals/ZabkaFinderView" pc="268436222" symbol="onHide"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="91" parent="globals/ZabkaFinderView" pc="268436224" symbol="onHide"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="92" parent="globals/ZabkaFinderView" pc="268436232" symbol="onHide"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="94" parent="globals/ZabkaFinderView" pc="268436236" symbol="onHide"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="95" parent="globals/ZabkaFinderView" pc="268436248" symbol="onHide"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="14" lineNum="96" parent="globals/ZabkaFinderView" pc="268436262" symbol="onHide"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="252" parent="globals/ZabkaFinderView" pc="268436291" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="253" parent="globals/ZabkaFinderView" pc="268436293" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="254" parent="globals/ZabkaFinderView" pc="268436307" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="255" parent="globals/ZabkaFinderView" pc="268436316" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="256" parent="globals/ZabkaFinderView" pc="268436324" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="258" parent="globals/ZabkaFinderView" pc="268436337" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="15" lineNum="260" parent="globals/ZabkaFinderView" pc="268436351" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="75" parent="globals/ZabkaFinderView" pc="268436363" symbol="onShow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="76" parent="globals/ZabkaFinderView" pc="268436365" symbol="onShow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="77" parent="globals/ZabkaFinderView" pc="268436373" symbol="onShow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="16" lineNum="78" parent="globals/ZabkaFinderView" pc="268436399" symbol="onShow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="387" parent="globals/ZabkaFinderView" pc="268436428" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="388" parent="globals/ZabkaFinderView" pc="268436431" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="389" parent="globals/ZabkaFinderView" pc="268436435" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="391" parent="globals/ZabkaFinderView" pc="268436442" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="394" parent="globals/ZabkaFinderView" pc="268436451" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="395" parent="globals/ZabkaFinderView" pc="268436455" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="398" parent="globals/ZabkaFinderView" pc="268436466" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="17" lineNum="399" parent="globals/ZabkaFinderView" pc="268436480" symbol="drawStatus"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="69" parent="globals/ZabkaFinderView" pc="268436507" symbol="onLayout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="18" lineNum="70" parent="globals/ZabkaFinderView" pc="268436509" symbol="onLayout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="193" parent="globals/ZabkaFinderView" pc="268436548" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="194" parent="globals/ZabkaFinderView" pc="268436551" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="195" parent="globals/ZabkaFinderView" pc="268436555" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="196" parent="globals/ZabkaFinderView" pc="268436564" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="198" parent="globals/ZabkaFinderView" pc="268436570" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="199" parent="globals/ZabkaFinderView" pc="268436605" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="200" parent="globals/ZabkaFinderView" pc="268436616" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="201" parent="globals/ZabkaFinderView" pc="268436626" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="203" parent="globals/ZabkaFinderView" pc="268436666" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="19" lineNum="205" parent="globals/ZabkaFinderView" pc="268436741" symbol="getNearestStores"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="210" parent="globals/ZabkaFinderView" pc="268436744" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="211" parent="globals/ZabkaFinderView" pc="268436747" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="212" parent="globals/ZabkaFinderView" pc="268436771" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="214" parent="globals/ZabkaFinderView" pc="268436775" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="215" parent="globals/ZabkaFinderView" pc="268436785" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="216" parent="globals/ZabkaFinderView" pc="268436810" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="20" lineNum="217" parent="globals/ZabkaFinderView" pc="268436841" symbol="selectStore"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="370" parent="globals/ZabkaFinderView" pc="268436853" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="372" parent="globals/ZabkaFinderView" pc="268436856" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="373" parent="globals/ZabkaFinderView" pc="268436878" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="378" parent="globals/ZabkaFinderView" pc="268436900" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="379" parent="globals/ZabkaFinderView" pc="268436918" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="381" parent="globals/ZabkaFinderView" pc="268436940" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="21" lineNum="382" parent="globals/ZabkaFinderView" pc="268436956" symbol="drawCloseIndicator"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="232" parent="globals/ZabkaFinderView" pc="268436973" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="233" parent="globals/ZabkaFinderView" pc="268436976" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="234" parent="globals/ZabkaFinderView" pc="268436994" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="236" parent="globals/ZabkaFinderView" pc="268436998" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="237" parent="globals/ZabkaFinderView" pc="268437005" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="238" parent="globals/ZabkaFinderView" pc="268437012" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="239" parent="globals/ZabkaFinderView" pc="268437019" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="241" parent="globals/ZabkaFinderView" pc="268437026" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="242" parent="globals/ZabkaFinderView" pc="268437059" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="22" lineNum="244" parent="globals/ZabkaFinderView" pc="268437086" symbol="calculateRouting"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="157" parent="globals/ZabkaFinderView" pc="268437094" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="158" parent="globals/ZabkaFinderView" pc="268437097" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="159" parent="globals/ZabkaFinderView" pc="268437104" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="161" parent="globals/ZabkaFinderView" pc="268437111" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="162" parent="globals/ZabkaFinderView" pc="268437115" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="164" parent="globals/ZabkaFinderView" pc="268437119" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="165" parent="globals/ZabkaFinderView" pc="268437135" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="166" parent="globals/ZabkaFinderView" pc="268437142" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="167" parent="globals/ZabkaFinderView" pc="268437152" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="168" parent="globals/ZabkaFinderView" pc="268437162" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="169" parent="globals/ZabkaFinderView" pc="268437184" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="170" parent="globals/ZabkaFinderView" pc="268437200" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="174" parent="globals/ZabkaFinderView" pc="268437206" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="175" parent="globals/ZabkaFinderView" pc="268437209" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="176" parent="globals/ZabkaFinderView" pc="268437236" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="178" parent="globals/ZabkaFinderView" pc="268437246" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="179" parent="globals/ZabkaFinderView" pc="268437257" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="180" parent="globals/ZabkaFinderView" pc="268437268" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="181" parent="globals/ZabkaFinderView" pc="268437288" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="182" parent="globals/ZabkaFinderView" pc="268437301" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="184" parent="globals/ZabkaFinderView" pc="268437324" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="185" parent="globals/ZabkaFinderView" pc="268437331" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="23" lineNum="187" parent="globals/ZabkaFinderView" pc="268437381" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="63" parent="globals/ZabkaFinderView" pc="268437384" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="64" parent="globals/ZabkaFinderView" pc="268437386" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="24" lineNum="65" parent="globals/ZabkaFinderView" pc="268437398" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="290" parent="globals/ZabkaFinderView" pc="268437437" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="291" parent="globals/ZabkaFinderView" pc="268437440" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="292" parent="globals/ZabkaFinderView" pc="268437452" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="294" parent="globals/ZabkaFinderView" pc="268437460" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="295" parent="globals/ZabkaFinderView" pc="268437475" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="297" parent="globals/ZabkaFinderView" pc="268437490" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="298" parent="globals/ZabkaFinderView" pc="268437499" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="301" parent="globals/ZabkaFinderView" pc="268437539" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="25" lineNum="302" parent="globals/ZabkaFinderView" pc="268437554" symbol="onUpdate"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="320" parent="globals/ZabkaFinderView" pc="268437570" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="321" parent="globals/ZabkaFinderView" pc="268437573" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="322" parent="globals/ZabkaFinderView" pc="268437576" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="323" parent="globals/ZabkaFinderView" pc="268437585" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="328" parent="globals/ZabkaFinderView" pc="268437613" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="329" parent="globals/ZabkaFinderView" pc="268437635" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="331" parent="globals/ZabkaFinderView" pc="268437668" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="332" parent="globals/ZabkaFinderView" pc="268437687" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="335" parent="globals/ZabkaFinderView" pc="268437706" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="338" parent="globals/ZabkaFinderView" pc="268437744" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="340" parent="globals/ZabkaFinderView" pc="268437751" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="341" parent="globals/ZabkaFinderView" pc="268437756" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="343" parent="globals/ZabkaFinderView" pc="268437761" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="344" parent="globals/ZabkaFinderView" pc="268437772" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="345" parent="globals/ZabkaFinderView" pc="268437781" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="348" parent="globals/ZabkaFinderView" pc="268437791" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="349" parent="globals/ZabkaFinderView" pc="268437804" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="350" parent="globals/ZabkaFinderView" pc="268437817" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="352" parent="globals/ZabkaFinderView" pc="268437842" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="353" parent="globals/ZabkaFinderView" pc="268437861" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="354" parent="globals/ZabkaFinderView" pc="268437880" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="357" parent="globals/ZabkaFinderView" pc="268437915" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="358" parent="globals/ZabkaFinderView" pc="268437931" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="360" parent="globals/ZabkaFinderView" pc="268437943" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="361" parent="globals/ZabkaFinderView" pc="268437961" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="363" parent="globals/ZabkaFinderView" pc="268437973" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderView.mc" id="26" lineNum="364" parent="globals/ZabkaFinderView" pc="268437996" symbol="drawArrow"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="27" lineNum="125" parent="globals/NominatimClient" pc="268438020" symbol="stopWatchdog"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="27" lineNum="126" parent="globals/NominatimClient" pc="268438022" symbol="stopWatchdog"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="27" lineNum="127" parent="globals/NominatimClient" pc="268438031" symbol="stopWatchdog"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="27" lineNum="128" parent="globals/NominatimClient" pc="268438043" symbol="stopWatchdog"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="28" lineNum="63" parent="globals/NominatimClient" pc="268438055" symbol="shouldRequest"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="28" lineNum="64" parent="globals/NominatimClient" pc="268438057" symbol="shouldRequest"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="29" lineNum="249" parent="globals/NominatimClient" pc="268438086" symbol="registerSuccess"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="29" lineNum="250" parent="globals/NominatimClient" pc="268438088" symbol="registerSuccess"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="29" lineNum="251" parent="globals/NominatimClient" pc="268438096" symbol="registerSuccess"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="30" lineNum="254" parent="globals/NominatimClient" pc="268438105" symbol="registerNoResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="30" lineNum="258" parent="globals/NominatimClient" pc="268438107" symbol="registerNoResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="30" lineNum="259" parent="globals/NominatimClient" pc="268438115" symbol="registerNoResult"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="134" parent="globals/NominatimClient" pc="268438137" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="135" parent="globals/NominatimClient" pc="268438139" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="137" parent="globals/NominatimClient" pc="268438148" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="139" parent="globals/NominatimClient" pc="268438152" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="140" parent="globals/NominatimClient" pc="268438160" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="141" parent="globals/NominatimClient" pc="268438168" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="31" lineNum="142" parent="globals/NominatimClient" pc="268438175" symbol="onRequestTimeout"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="147" parent="globals/NominatimClient" pc="268438194" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="148" parent="globals/NominatimClient" pc="268438197" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="149" parent="globals/NominatimClient" pc="268438204" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="150" parent="globals/NominatimClient" pc="268438212" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="152" parent="globals/NominatimClient" pc="268438243" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="158" parent="globals/NominatimClient" pc="268438258" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="159" parent="globals/NominatimClient" pc="268438268" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="161" parent="globals/NominatimClient" pc="268438297" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="32" lineNum="162" parent="globals/NominatimClient" pc="268438304" symbol="onReceive"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="227" parent="globals/NominatimClient" pc="268438322" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="228" parent="globals/NominatimClient" pc="268438325" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="234" parent="globals/NominatimClient" pc="268438332" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="235" parent="globals/NominatimClient" pc="268438341" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="236" parent="globals/NominatimClient" pc="268438348" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="237" parent="globals/NominatimClient" pc="268438364" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="238" parent="globals/NominatimClient" pc="268438377" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="239" parent="globals/NominatimClient" pc="268438384" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="33" lineNum="241" parent="globals/NominatimClient" pc="268438421" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="170" parent="globals/NominatimClient" pc="268438424" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="171" parent="globals/NominatimClient" pc="268438427" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="172" parent="globals/NominatimClient" pc="268438431" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="173" parent="globals/NominatimClient" pc="268438437" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="175" parent="globals/NominatimClient" pc="268438443" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="176" parent="globals/NominatimClient" pc="268438459" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="177" parent="globals/NominatimClient" pc="268438466" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="178" parent="globals/NominatimClient" pc="268438476" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="179" parent="globals/NominatimClient" pc="268438486" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="34" lineNum="185" parent="globals/NominatimClient" pc="268438560" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="35" lineNum="262" parent="globals/NominatimClient" pc="268438563" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="35" lineNum="263" parent="globals/NominatimClient" pc="268438566" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="35" lineNum="264" parent="globals/NominatimClient" pc="268438581" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="35" lineNum="265" parent="globals/NominatimClient" pc="268438592" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="35" lineNum="266" parent="globals/NominatimClient" pc="268438601" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="35" lineNum="268" parent="globals/NominatimClient" pc="268438609" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="69" parent="globals/NominatimClient" pc="268438630" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="70" parent="globals/NominatimClient" pc="268438633" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="76" parent="globals/NominatimClient" pc="268438641" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="77" parent="globals/NominatimClient" pc="268438657" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="78" parent="globals/NominatimClient" pc="268438668" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="80" parent="globals/NominatimClient" pc="268438704" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="81" parent="globals/NominatimClient" pc="268438724" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="82" parent="globals/NominatimClient" pc="268438744" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="83" parent="globals/NominatimClient" pc="268438764" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="87" parent="globals/NominatimClient" pc="268438784" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="93" parent="globals/NominatimClient" pc="268438815" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="104" parent="globals/NominatimClient" pc="268438832" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="112" parent="globals/NominatimClient" pc="268438865" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="114" parent="globals/NominatimClient" pc="268438886" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="119" parent="globals/NominatimClient" pc="268438921" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="36" lineNum="120" parent="globals/NominatimClient" pc="268438950" symbol="search"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="191" parent="globals/NominatimClient" pc="268438982" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="192" parent="globals/NominatimClient" pc="268438985" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="193" parent="globals/NominatimClient" pc="268438995" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="194" parent="globals/NominatimClient" pc="268439001" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="197" parent="globals/NominatimClient" pc="268439010" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="198" parent="globals/NominatimClient" pc="268439020" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="199" parent="globals/NominatimClient" pc="268439026" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="200" parent="globals/NominatimClient" pc="268439036" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="201" parent="globals/NominatimClient" pc="268439042" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="202" parent="globals/NominatimClient" pc="268439046" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="203" parent="globals/NominatimClient" pc="268439056" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="204" parent="globals/NominatimClient" pc="268439062" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="206" parent="globals/NominatimClient" pc="268439078" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="212" parent="globals/NominatimClient" pc="268439095" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="213" parent="globals/NominatimClient" pc="268439105" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="214" parent="globals/NominatimClient" pc="268439111" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="215" parent="globals/NominatimClient" pc="268439115" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="216" parent="globals/NominatimClient" pc="268439131" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="217" parent="globals/NominatimClient" pc="268439137" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="219" parent="globals/NominatimClient" pc="268439154" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="37" lineNum="221" parent="globals/NominatimClient" pc="268439168" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="38" lineNum="57" parent="globals/NominatimClient" pc="268439174" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\NominatimClient.mc" id="38" lineNum="58" parent="globals/NominatimClient" pc="268439176" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="39" lineNum="70" parent="globals/StoreMenuDelegate" pc="268439186" symbol="onBack"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="39" lineNum="71" parent="globals/StoreMenuDelegate" pc="268439188" symbol="onBack"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="40" lineNum="58" parent="globals/StoreMenuDelegate" pc="268439204" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="40" lineNum="59" parent="globals/StoreMenuDelegate" pc="268439206" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="40" lineNum="60" parent="globals/StoreMenuDelegate" pc="268439218" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="41" lineNum="63" parent="globals/StoreMenuDelegate" pc="268439228" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="41" lineNum="66" parent="globals/StoreMenuDelegate" pc="268439230" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="41" lineNum="67" parent="globals/StoreMenuDelegate" pc="268439251" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="42" lineNum="15" parent="globals/ZabkaFinderApp" pc="268439267" symbol="onStart"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="43" lineNum="23" parent="globals/ZabkaFinderApp" pc="268439270" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="43" lineNum="24" parent="globals/ZabkaFinderApp" pc="268439273" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="43" lineNum="25" parent="globals/ZabkaFinderApp" pc="268439293" symbol="getInitialView"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="44" lineNum="10" parent="globals/ZabkaFinderApp" pc="268439326" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="44" lineNum="11" parent="globals/ZabkaFinderApp" pc="268439328" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderApp.mc" id="45" lineNum="19" parent="globals/ZabkaFinderApp" pc="268439341" symbol="onStop"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="46" lineNum="14" parent="globals/ZabkaFinderDelegate" pc="268439344" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="46" lineNum="15" parent="globals/ZabkaFinderDelegate" pc="268439346" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="46" lineNum="16" parent="globals/ZabkaFinderDelegate" pc="268439358" symbol="initialize"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="21" parent="globals/ZabkaFinderDelegate" pc="268439368" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="22" parent="globals/ZabkaFinderDelegate" pc="268439371" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="23" parent="globals/ZabkaFinderDelegate" pc="268439388" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="26" parent="globals/ZabkaFinderDelegate" pc="268439400" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="29" parent="globals/ZabkaFinderDelegate" pc="268439405" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="30" parent="globals/ZabkaFinderDelegate" pc="268439445" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="31" parent="globals/ZabkaFinderDelegate" pc="268439461" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="32" parent="globals/ZabkaFinderDelegate" pc="268439468" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="33" parent="globals/ZabkaFinderDelegate" pc="268439478" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="36" parent="globals/ZabkaFinderDelegate" pc="268439508" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="47" parent="globals/ZabkaFinderDelegate" pc="268439576" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="48" parent="globals/ZabkaFinderDelegate" pc="268439591" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\ZabkaFinderDelegate.mc" id="47" lineNum="49" parent="globals/ZabkaFinderDelegate" pc="268439631" symbol="onSelect"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="19" parent="globals/GeoMath" pc="268439633" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="21" parent="globals/GeoMath" pc="268439644" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="22" parent="globals/GeoMath" pc="268439656" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="23" parent="globals/GeoMath" pc="268439668" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="24" parent="globals/GeoMath" pc="268439683" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="26" parent="globals/GeoMath" pc="268439698" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="28" parent="globals/GeoMath" pc="268439813" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="48" lineNum="29" parent="globals/GeoMath" pc="268439867" symbol="haversineDistance"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="33" parent="globals/GeoMath" pc="268439880" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="35" parent="globals/GeoMath" pc="268439891" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="36" parent="globals/GeoMath" pc="268439903" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="37" parent="globals/GeoMath" pc="268439915" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="39" parent="globals/GeoMath" pc="268439930" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="40" parent="globals/GeoMath" pc="268439961" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="49" lineNum="42" parent="globals/GeoMath" pc="268440037" symbol="initialBearing"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="48" parent="globals/GeoMath" pc="268440060" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="49" parent="globals/GeoMath" pc="268440071" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="50" parent="globals/GeoMath" pc="268440075" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="51" parent="globals/GeoMath" pc="268440086" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="53" parent="globals/GeoMath" pc="268440099" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="54" parent="globals/GeoMath" pc="268440110" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="50" lineNum="56" parent="globals/GeoMath" pc="268440123" symbol="normalizeAngle"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="51" lineNum="13" parent="globals/GeoMath" pc="268440126" symbol="toRadians"/>
+        <entry filename="C:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\source\\GeoMath.mc" id="51" lineNum="14" parent="globals/GeoMath" pc="268440136" symbol="toRadians"/>
+        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3905-00\\source\\Rez.mcgen" id="52" lineNum="15" parent="globals/Rez/Layouts" pc="268440151" symbol="MainLayout"/>
+        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3905-00\\source\\Rez.mcgen" id="52" lineNum="16" parent="globals/Rez/Layouts" pc="268440162" symbol="MainLayout"/>
+        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3905-00\\source\\Rez.mcgen" id="52" lineNum="17" parent="globals/Rez/Layouts" pc="268440249" symbol="MainLayout"/>
+        <entry filename="c:\\Users\\chojn\\vs_projects\\zabka_finder\\ZabkaFinder\\bin\\gen\\006-B3905-00\\source\\Rez.mcgen" id="52" lineNum="19" parent="globals/Rez/Layouts" pc="268440299" symbol="MainLayout"/>
     </pcToLineNum>
     <symbolTable>
+        <entry field="true" id="42" symbol="SEARCH_RADIUS_M"/>
         <entry id="8388639" module="true" symbol="Graphics"/>
-        <entry field="true" id="31" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;status&gt;"/>
+        <entry field="true" id="36" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;status&gt;"/>
+        <entry id="34" method="true" symbol="setMenuOpen"/>
+        <entry id="72" symbol="dist"/>
+        <entry id="8389308" method="true" symbol="toRadians"/>
         <entry id="8388632" method="true" symbol="&lt;init&gt;"/>
-        <entry id="41" method="true" symbol="MainLayout"/>
-        <entry field="true" id="8" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;apiInFlight&gt;"/>
-        <entry id="13" method="true" symbol="drawArrow"/>
-        <entry field="true" id="30" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;retryCount&gt;"/>
-        <entry id="24" method="true" symbol="onPosition"/>
-        <entry id="15" method="true" symbol="drawStatus"/>
-        <entry field="true" id="22" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;nextRetryAllowedMs&gt;"/>
-        <entry field="true" id="36" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;zabkaLon&gt;"/>
+        <entry field="true" id="59" symbol="&lt;globals/NominatimClient/&lt;&gt;watchdogTimer&gt;"/>
+        <entry field="true" id="47" symbol="&lt;globals/NominatimClient/&lt;&gt;nextRetryAllowedMs&gt;"/>
+        <entry id="69" method="true" symbol="MainLayout"/>
+        <entry field="true" id="16" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;client&gt;"/>
+        <entry id="20" method="true" symbol="drawArrow"/>
+        <entry field="true" id="55" symbol="&lt;globals/NominatimClient/&lt;&gt;retryCount&gt;"/>
+        <entry id="50" method="true" symbol="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;"/>
+        <entry id="30" method="true" symbol="onPosition"/>
+        <entry id="22" method="true" symbol="drawStatus"/>
+        <entry field="true" id="41" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;zabkaLon&gt;"/>
         <entry field="true" id="8388611" module="true" symbol="Toybox"/>
-        <entry field="true" id="33" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;watchdogTimer&gt;"/>
-        <entry id="27" method="true" symbol="onSensorData"/>
-        <entry id="26" method="true" symbol="onRequestTimeout"/>
-        <entry id="28" method="true" symbol="pickNearestFeature"/>
-        <entry field="true" id="42" symbol="AppName"/>
-        <entry id="5" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="32" method="true" symbol="onSensorData"/>
+        <entry id="49" method="true" symbol="onRequestTimeout"/>
+        <entry field="true" id="70" symbol="AppName"/>
+        <entry id="6" module="true" symbol="globals/Rez/Strings"/>
+        <entry id="53" method="true" symbol="registerSuccess"/>
         <entry id="8389594" symbol="headers"/>
-        <entry field="true" id="21" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;myLon&gt;"/>
+        <entry field="true" id="29" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;myLon&gt;"/>
         <entry id="8389345" symbol="rezId"/>
-        <entry id="10" method="true" symbol="currentAccentColor"/>
+        <entry id="17" method="true" symbol="currentAccentColor"/>
+        <entry id="13" method="true" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;"/>
         <entry id="8388648" module="true" symbol="WatchUi"/>
-        <entry id="2" module="true" symbol="globals/Rez"/>
-        <entry field="true" id="40" symbol="id_monkey"/>
-        <entry field="true" id="35" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;zabkaLat&gt;"/>
+        <entry field="true" id="43" symbol="TIMEOUT_RESPONSE_CODE"/>
+        <entry id="8389081" method="true" symbol="onBack"/>
+        <entry id="3" module="true" symbol="globals/Rez"/>
+        <entry field="true" id="68" symbol="id_monkey"/>
+        <entry id="15" method="true" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;"/>
+        <entry field="true" id="40" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;zabkaLat&gt;"/>
         <entry id="8389124" method="true" symbol="onUpdate"/>
         <entry field="true" id="8389065" symbol="locY"/>
         <entry field="true" id="8389064" symbol="locX"/>
+        <entry id="57" method="true" symbol="shouldRequest"/>
         <entry id="8388771" module="true" object="true" symbol="Drawables"/>
+        <entry id="51" method="true" symbol="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;"/>
         <entry id="8389275" method="true" symbol="getApp"/>
-        <entry id="4" module="true" symbol="globals/Rez/Layouts"/>
-        <entry id="16" method="true" symbol="fetchZabka"/>
+        <entry id="5" module="true" symbol="globals/Rez/Layouts"/>
+        <entry id="71" symbol="addr"/>
+        <entry field="true" id="61" symbol="&lt;globals/StoreMenuDelegate/&lt;&gt;view&gt;"/>
         <entry id="8389122" method="true" symbol="onLayout"/>
-        <entry field="true" id="20" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;myLat&gt;"/>
+        <entry field="true" id="28" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;myLat&gt;"/>
         <entry field="true" id="8389063" symbol="identifier"/>
-        <entry field="true" id="11" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;displayedAngle&gt;"/>
-        <entry id="7" object="true" symbol="ZabkaFinderView"/>
+        <entry id="8388987" method="true" symbol="vibrate"/>
+        <entry field="true" id="37" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;stores&gt;"/>
+        <entry field="true" id="18" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;displayedAngle&gt;"/>
+        <entry id="31" method="true" symbol="onSearchResult"/>
+        <entry id="2" module="true" symbol="globals/GeoMath"/>
+        <entry field="true" id="8389306" symbol="lon"/>
+        <entry id="12" object="true" symbol="ZabkaFinderView"/>
         <entry id="8388637" module="true" symbol="Communications"/>
-        <entry id="3" module="true" symbol="globals/Rez/Drawables"/>
-        <entry id="32" method="true" symbol="stopWatchdog"/>
+        <entry id="4" module="true" symbol="globals/Rez/Drawables"/>
+        <entry id="56" method="true" symbol="search"/>
+        <entry field="true" id="46" symbol="&lt;globals/NominatimClient/&lt;&gt;inFlight&gt;"/>
+        <entry id="58" method="true" symbol="stopWatchdog"/>
         <entry id="8389844" symbol="responseType"/>
-        <entry id="6" object="true" symbol="ZabkaFinderApp"/>
+        <entry id="10" object="true" symbol="ZabkaFinderApp"/>
+        <entry field="true" id="8389305" symbol="lat"/>
+        <entry id="23" method="true" symbol="getNearestStores"/>
         <entry id="8388786" method="true" symbol="method"/>
+        <entry field="true" id="27" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;menuOpen&gt;"/>
         <entry id="8388644" module="true" symbol="System"/>
+        <entry id="8389619" method="true" symbol="onSelect"/>
         <entry id="8388769" module="true" object="true" symbol="Rez"/>
-        <entry id="25" method="true" symbol="onReceive"/>
-        <entry id="29" method="true" symbol="requestZabkaUpdate"/>
+        <entry id="9" object="true" symbol="StoreMenuDelegate"/>
+        <entry id="48" method="true" symbol="onReceive"/>
         <entry id="8388640" module="true" symbol="Lang"/>
-        <entry field="true" id="12" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;distance&gt;"/>
-        <entry field="true" id="34" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;zabkaBearing&gt;"/>
-        <entry field="true" id="39" symbol="LogoIcon"/>
-        <entry field="true" id="38" symbol="LauncherIcon"/>
+        <entry field="true" id="19" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;distance&gt;"/>
+        <entry field="true" id="62" symbol="&lt;globals/ZabkaFinderDelegate/&lt;&gt;view&gt;"/>
+        <entry field="true" id="39" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;zabkaBearing&gt;"/>
+        <entry field="true" id="67" symbol="LogoIcon"/>
+        <entry field="true" id="66" symbol="LauncherIcon"/>
         <entry id="8388610" symbol="statics"/>
         <entry id="8389123" method="true" symbol="onShow"/>
+        <entry id="11" object="true" symbol="ZabkaFinderDelegate"/>
         <entry id="8388643" module="true" symbol="Sensor"/>
-        <entry id="17" method="true" symbol="haversineDistance"/>
+        <entry field="true" id="54" symbol="&lt;globals/NominatimClient/&lt;&gt;resultCallback&gt;"/>
+        <entry id="63" method="true" symbol="haversineDistance"/>
         <entry id="8389350" module="true" symbol="globals"/>
         <entry id="8388770" module="true" object="true" symbol="Strings"/>
+        <entry id="38" method="true" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;vibrateShort&gt;"/>
+        <entry id="44" method="true" symbol="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;"/>
         <entry id="8388702" method="true" symbol="initialize"/>
+        <entry id="45" method="true" symbol="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;"/>
         <entry id="8389279" method="true" symbol="onStart"/>
+        <entry id="52" method="true" symbol="registerNoResult"/>
+        <entry field="true" id="24" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;hasVibrated&gt;"/>
         <entry id="8388641" module="true" symbol="Math"/>
-        <entry id="23" method="true" symbol="normalizeAngle"/>
+        <entry id="65" method="true" symbol="normalizeAngle"/>
+        <entry id="64" method="true" symbol="initialBearing"/>
         <entry id="8389280" method="true" symbol="getInitialView"/>
         <entry id="8389281" method="true" symbol="onStop"/>
+        <entry id="33" method="true" symbol="selectStore"/>
         <entry id="8388646" module="true" object="true" symbol="Timer"/>
-        <entry id="37" module="true" symbol="Layouts"/>
-        <entry field="true" id="18" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;heading&gt;"/>
+        <entry id="60" module="true" symbol="Layouts"/>
+        <entry id="8388636" module="true" symbol="Attention"/>
+        <entry field="true" id="25" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;heading&gt;"/>
         <entry id="8388642" module="true" symbol="Position"/>
-        <entry field="true" id="19" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;logo&gt;"/>
+        <entry id="7" module="true" symbol="GeoMath"/>
+        <entry field="true" id="26" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;logo&gt;"/>
+        <entry id="35" method="true" symbol="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;"/>
         <entry id="8389125" method="true" symbol="onHide"/>
-        <entry id="14" method="true" symbol="drawCloseIndicator"/>
-        <entry id="9" method="true" symbol="calculateRouting"/>
+        <entry id="21" method="true" symbol="drawCloseIndicator"/>
+        <entry id="14" method="true" symbol="calculateRouting"/>
         <entry id="8388635" module="true" symbol="Application"/>
+        <entry field="true" id="8389642" symbol="title"/>
+        <entry id="8" object="true" symbol="NominatimClient"/>
     </symbolTable>
     <localVars>
-        <entry arg="true" endPc="268435693" name="info" stackId="1" startPc="268435525"/>
-        <entry endPc="268435692" name="pos" stackId="2" startPc="268435528"/>
-        <entry endPc="268435692" name="currentPos" stackId="3" startPc="268435528"/>
-        <entry endPc="268435692" name="loc" stackId="4" startPc="268435528"/>
-        <entry endPc="268435811" name="delay" stackId="1" startPc="268435697"/>
-        <entry arg="true" endPc="268436111" name="lat1" stackId="1" startPc="268435861"/>
-        <entry arg="true" endPc="268436111" name="lon1" stackId="2" startPc="268435861"/>
-        <entry arg="true" endPc="268436111" name="lat2" stackId="3" startPc="268435861"/>
-        <entry arg="true" endPc="268436111" name="lon2" stackId="4" startPc="268435861"/>
-        <entry endPc="268436111" name="rLat1" stackId="5" startPc="268435864"/>
-        <entry endPc="268436111" name="rLat2" stackId="6" startPc="268435864"/>
-        <entry endPc="268436111" name="dLat" stackId="7" startPc="268435864"/>
-        <entry endPc="268436111" name="dLon" stackId="8" startPc="268435864"/>
-        <entry endPc="268436111" name="a" stackId="9" startPc="268435864"/>
-        <entry endPc="268436111" name="c" stackId="10" startPc="268435864"/>
-        <entry arg="true" endPc="268436151" name="sensorInfo" stackId="1" startPc="268436112"/>
-        <entry arg="true" endPc="268436381" name="features" stackId="1" startPc="268436204"/>
-        <entry endPc="268436381" name="bestLat" stackId="2" startPc="268436207"/>
-        <entry endPc="268436381" name="bestLon" stackId="3" startPc="268436207"/>
-        <entry endPc="268436381" name="bestDist" stackId="4" startPc="268436207"/>
-        <entry endPc="268436355" name="i" stackId="5" startPc="268436232"/>
-        <entry endPc="268436345" name="feature" stackId="6" startPc="268436232"/>
-        <entry endPc="268436345" name="geometry" stackId="7" startPc="268436232"/>
-        <entry endPc="268436345" name="coords" stackId="8" startPc="268436232"/>
-        <entry endPc="268436345" name="candLon" stackId="9" startPc="268436232"/>
-        <entry endPc="268436345" name="candLat" stackId="10" startPc="268436232"/>
-        <entry endPc="268436345" name="d" stackId="11" startPc="268436232"/>
-        <entry arg="true" endPc="268436552" name="dc" stackId="1" startPc="268436474"/>
-        <entry arg="true" endPc="268436552" name="cx" stackId="2" startPc="268436474"/>
-        <entry arg="true" endPc="268436552" name="cy" stackId="3" startPc="268436474"/>
-        <entry endPc="268436551" name="font" stackId="4" startPc="268436477"/>
-        <entry endPc="268436551" name="color" stackId="5" startPc="268436477"/>
-        <entry arg="true" endPc="268436593" name="dc" stackId="1" startPc="268436553"/>
-        <entry arg="true" endPc="268437033" name="responseCode" stackId="1" startPc="268436718"/>
-        <entry arg="true" endPc="268437033" name="data" stackId="2" startPc="268436718"/>
-        <entry endPc="268436940" name="features" stackId="3" startPc="268436782"/>
-        <entry endPc="268436940" name="nearest" stackId="4" startPc="268436782"/>
-        <entry endPc="268437021" name="delay" stackId="5" startPc="268436944"/>
-        <entry arg="true" endPc="268437153" name="dc" stackId="1" startPc="268437034"/>
-        <entry arg="true" endPc="268437153" name="cx" stackId="2" startPc="268437034"/>
-        <entry arg="true" endPc="268437153" name="cy" stackId="3" startPc="268437034"/>
-        <entry arg="true" endPc="268437153" name="angle" stackId="4" startPc="268437034"/>
-        <entry endPc="268437152" name="tipX" stackId="5" startPc="268437037"/>
-        <entry endPc="268437152" name="tipY" stackId="6" startPc="268437037"/>
-        <entry endPc="268437152" name="phase" stackId="7" startPc="268437037"/>
-        <entry endPc="268437152" name="pulse" stackId="8" startPc="268437037"/>
-        <entry endPc="268437418" name="lat1" stackId="1" startPc="268437175"/>
-        <entry endPc="268437418" name="lon1" stackId="2" startPc="268437175"/>
-        <entry endPc="268437418" name="lat2" stackId="3" startPc="268437175"/>
-        <entry endPc="268437418" name="lon2" stackId="4" startPc="268437175"/>
-        <entry endPc="268437418" name="rLat1" stackId="5" startPc="268437175"/>
-        <entry endPc="268437418" name="rLat2" stackId="6" startPc="268437175"/>
-        <entry endPc="268437418" name="dLon" stackId="7" startPc="268437175"/>
-        <entry endPc="268437418" name="y" stackId="8" startPc="268437175"/>
-        <entry endPc="268437418" name="x" stackId="9" startPc="268437175"/>
-        <entry arg="true" endPc="268437480" name="angle" stackId="1" startPc="268437423"/>
-        <entry endPc="268437480" name="result" stackId="2" startPc="268437426"/>
-        <entry endPc="268437769" name="lat" stackId="1" startPc="268437484"/>
-        <entry endPc="268437769" name="lon" stackId="2" startPc="268437484"/>
-        <entry endPc="268437769" name="latRad" stackId="3" startPc="268437484"/>
-        <entry endPc="268437769" name="latDelta" stackId="4" startPc="268437484"/>
-        <entry endPc="268437769" name="lonDelta" stackId="5" startPc="268437484"/>
-        <entry endPc="268437769" name="latMinStr" stackId="6" startPc="268437484"/>
-        <entry endPc="268437769" name="latMaxStr" stackId="7" startPc="268437484"/>
-        <entry endPc="268437769" name="lonMinStr" stackId="8" startPc="268437484"/>
-        <entry endPc="268437769" name="lonMaxStr" stackId="9" startPc="268437484"/>
-        <entry endPc="268437769" name="viewbox" stackId="10" startPc="268437484"/>
-        <entry endPc="268437769" name="params" stackId="11" startPc="268437484"/>
-        <entry endPc="268437769" name="options" stackId="12" startPc="268437484"/>
-        <entry arg="true" endPc="268437918" name="dc" stackId="1" startPc="268437786"/>
-        <entry endPc="268437917" name="cx" stackId="2" startPc="268437789"/>
-        <entry endPc="268437917" name="cy" stackId="3" startPc="268437789"/>
-        <entry arg="true" endPc="268438356" name="dc" stackId="1" startPc="268437919"/>
-        <entry arg="true" endPc="268438356" name="cx" stackId="2" startPc="268437919"/>
-        <entry arg="true" endPc="268438356" name="cy" stackId="3" startPc="268437919"/>
-        <entry endPc="268438355" name="targetAngle" stackId="4" startPc="268437922"/>
-        <entry endPc="268438355" name="diff" stackId="5" startPc="268437922"/>
-        <entry endPc="268438355" name="cosA" stackId="6" startPc="268437922"/>
-        <entry endPc="268438355" name="sinA" stackId="7" startPc="268437922"/>
-        <entry endPc="268438355" name="arrowPoints" stackId="8" startPc="268437922"/>
-        <entry endPc="268438355" name="outlineScale" stackId="9" startPc="268437922"/>
-        <entry endPc="268438355" name="arrowScreen" stackId="10" startPc="268437922"/>
-        <entry endPc="268438355" name="outlineScreen" stackId="11" startPc="268437922"/>
-        <entry endPc="268438251" name="i" stackId="12" startPc="268438109"/>
-        <entry endPc="268438241" name="px" stackId="13" startPc="268438109"/>
-        <entry endPc="268438241" name="py" stackId="14" startPc="268438109"/>
-        <entry endPc="268438241" name="rx" stackId="15" startPc="268438109"/>
-        <entry endPc="268438241" name="ry" stackId="16" startPc="268438109"/>
-        <entry endPc="268438241" name="orx" stackId="17" startPc="268438109"/>
-        <entry endPc="268438241" name="ory" stackId="18" startPc="268438109"/>
-        <entry arg="true" endPc="268438563" name="dc" stackId="1" startPc="268438406"/>
-        <entry endPc="268438563" name="rez_cmp_local_bitmap_id_monkey" stackId="2" startPc="268438417"/>
+        <entry arg="true" endPc="268435773" name="responseCode" stackId="1" startPc="268435558"/>
+        <entry arg="true" endPc="268435773" name="coords" stackId="2" startPc="268435558"/>
+        <entry endPc="268435685" name="nearest" stackId="3" startPc="268435609"/>
+        <entry arg="true" endPc="268435954" name="info" stackId="1" startPc="268435774"/>
+        <entry endPc="268435953" name="pos" stackId="2" startPc="268435777"/>
+        <entry endPc="268435953" name="loc" stackId="3" startPc="268435777"/>
+        <entry endPc="268436081" name="pattern" stackId="1" startPc="268435973"/>
+        <entry arg="true" endPc="268436145" name="open" stackId="1" startPc="268436134"/>
+        <entry arg="true" endPc="268436181" name="lat" stackId="1" startPc="268436146"/>
+        <entry arg="true" endPc="268436181" name="lon" stackId="2" startPc="268436146"/>
+        <entry arg="true" endPc="268436221" name="sensorInfo" stackId="1" startPc="268436182"/>
+        <entry arg="true" endPc="268436506" name="dc" stackId="1" startPc="268436428"/>
+        <entry arg="true" endPc="268436506" name="cx" stackId="2" startPc="268436428"/>
+        <entry arg="true" endPc="268436506" name="cy" stackId="3" startPc="268436428"/>
+        <entry endPc="268436505" name="font" stackId="4" startPc="268436431"/>
+        <entry endPc="268436505" name="color" stackId="5" startPc="268436431"/>
+        <entry arg="true" endPc="268436547" name="dc" stackId="1" startPc="268436507"/>
+        <entry arg="true" endPc="268436743" name="max" stackId="1" startPc="268436548"/>
+        <entry endPc="268436743" name="result" stackId="2" startPc="268436551"/>
+        <entry endPc="268436743" name="count" stackId="3" startPc="268436551"/>
+        <entry endPc="268436740" name="i" stackId="4" startPc="268436616"/>
+        <entry endPc="268436730" name="s" stackId="5" startPc="268436616"/>
+        <entry endPc="268436730" name="d" stackId="6" startPc="268436616"/>
+        <entry arg="true" endPc="268436852" name="index" stackId="1" startPc="268436744"/>
+        <entry endPc="268436851" name="s" stackId="2" startPc="268436747"/>
+        <entry arg="true" endPc="268436972" name="dc" stackId="1" startPc="268436853"/>
+        <entry arg="true" endPc="268436972" name="cx" stackId="2" startPc="268436853"/>
+        <entry arg="true" endPc="268436972" name="cy" stackId="3" startPc="268436853"/>
+        <entry arg="true" endPc="268436972" name="angle" stackId="4" startPc="268436853"/>
+        <entry endPc="268436971" name="tipX" stackId="5" startPc="268436856"/>
+        <entry endPc="268436971" name="tipY" stackId="6" startPc="268436856"/>
+        <entry endPc="268436971" name="phase" stackId="7" startPc="268436856"/>
+        <entry endPc="268436971" name="pulse" stackId="8" startPc="268436856"/>
+        <entry endPc="268437092" name="lat1" stackId="1" startPc="268436976"/>
+        <entry endPc="268437092" name="lon1" stackId="2" startPc="268436976"/>
+        <entry endPc="268437092" name="lat2" stackId="3" startPc="268436976"/>
+        <entry endPc="268437092" name="lon2" stackId="4" startPc="268436976"/>
+        <entry arg="true" endPc="268437383" name="coords" stackId="1" startPc="268437094"/>
+        <entry endPc="268437383" name="lat" stackId="2" startPc="268437097"/>
+        <entry endPc="268437383" name="lon" stackId="3" startPc="268437097"/>
+        <entry endPc="268437383" name="list" stackId="4" startPc="268437097"/>
+        <entry endPc="268437383" name="dists" stackId="5" startPc="268437097"/>
+        <entry endPc="268437380" name="i" stackId="6" startPc="268437135"/>
+        <entry endPc="268437370" name="entry" stackId="7" startPc="268437135"/>
+        <entry endPc="268437370" name="candLat" stackId="8" startPc="268437135"/>
+        <entry endPc="268437370" name="candLon" stackId="9" startPc="268437135"/>
+        <entry endPc="268437370" name="d" stackId="10" startPc="268437135"/>
+        <entry endPc="268437370" name="pos" stackId="11" startPc="268437135"/>
+        <entry endPc="268437323" name="j" stackId="12" startPc="268437288"/>
+        <entry arg="true" endPc="268437569" name="dc" stackId="1" startPc="268437437"/>
+        <entry endPc="268437568" name="cx" stackId="2" startPc="268437440"/>
+        <entry endPc="268437568" name="cy" stackId="3" startPc="268437440"/>
+        <entry arg="true" endPc="268438019" name="dc" stackId="1" startPc="268437570"/>
+        <entry arg="true" endPc="268438019" name="cx" stackId="2" startPc="268437570"/>
+        <entry arg="true" endPc="268438019" name="cy" stackId="3" startPc="268437570"/>
+        <entry endPc="268438018" name="targetAngle" stackId="4" startPc="268437573"/>
+        <entry endPc="268438018" name="diff" stackId="5" startPc="268437573"/>
+        <entry endPc="268438018" name="cosA" stackId="6" startPc="268437573"/>
+        <entry endPc="268438018" name="sinA" stackId="7" startPc="268437573"/>
+        <entry endPc="268438018" name="arrowPoints" stackId="8" startPc="268437573"/>
+        <entry endPc="268438018" name="outlineScale" stackId="9" startPc="268437573"/>
+        <entry endPc="268438018" name="arrowScreen" stackId="10" startPc="268437573"/>
+        <entry endPc="268438018" name="outlineScreen" stackId="11" startPc="268437573"/>
+        <entry endPc="268437914" name="i" stackId="12" startPc="268437772"/>
+        <entry endPc="268437904" name="px" stackId="13" startPc="268437772"/>
+        <entry endPc="268437904" name="py" stackId="14" startPc="268437772"/>
+        <entry endPc="268437904" name="rx" stackId="15" startPc="268437772"/>
+        <entry endPc="268437904" name="ry" stackId="16" startPc="268437772"/>
+        <entry endPc="268437904" name="orx" stackId="17" startPc="268437772"/>
+        <entry endPc="268437904" name="ory" stackId="18" startPc="268437772"/>
+        <entry arg="true" endPc="268438321" name="responseCode" stackId="1" startPc="268438194"/>
+        <entry arg="true" endPc="268438321" name="data" stackId="2" startPc="268438194"/>
+        <entry endPc="268438293" name="features" stackId="3" startPc="268438258"/>
+        <entry arg="true" endPc="268438423" name="text" stackId="1" startPc="268438322"/>
+        <entry endPc="268438423" name="map" stackId="2" startPc="268438325"/>
+        <entry endPc="268438423" name="chars" stackId="3" startPc="268438325"/>
+        <entry endPc="268438423" name="out" stackId="4" startPc="268438325"/>
+        <entry endPc="268438420" name="i" stackId="5" startPc="268438364"/>
+        <entry endPc="268438410" name="code" stackId="6" startPc="268438364"/>
+        <entry endPc="268438410" name="mapped" stackId="7" startPc="268438364"/>
+        <entry arg="true" endPc="268438562" name="features" stackId="1" startPc="268438424"/>
+        <entry endPc="268438562" name="result" stackId="2" startPc="268438427"/>
+        <entry endPc="268438559" name="i" stackId="3" startPc="268438459"/>
+        <entry endPc="268438549" name="feature" stackId="4" startPc="268438459"/>
+        <entry endPc="268438549" name="geometry" stackId="5" startPc="268438459"/>
+        <entry endPc="268438549" name="pair" stackId="6" startPc="268438459"/>
+        <entry endPc="268438628" name="delay" stackId="1" startPc="268438566"/>
+        <entry arg="true" endPc="268438981" name="lat" stackId="1" startPc="268438630"/>
+        <entry arg="true" endPc="268438981" name="lon" stackId="2" startPc="268438630"/>
+        <entry endPc="268438980" name="latRad" stackId="3" startPc="268438633"/>
+        <entry endPc="268438980" name="latDelta" stackId="4" startPc="268438633"/>
+        <entry endPc="268438980" name="lonDelta" stackId="5" startPc="268438633"/>
+        <entry endPc="268438980" name="latMinStr" stackId="6" startPc="268438633"/>
+        <entry endPc="268438980" name="latMaxStr" stackId="7" startPc="268438633"/>
+        <entry endPc="268438980" name="lonMinStr" stackId="8" startPc="268438633"/>
+        <entry endPc="268438980" name="lonMaxStr" stackId="9" startPc="268438633"/>
+        <entry endPc="268438980" name="viewbox" stackId="10" startPc="268438633"/>
+        <entry endPc="268438980" name="params" stackId="11" startPc="268438633"/>
+        <entry endPc="268438980" name="options" stackId="12" startPc="268438633"/>
+        <entry arg="true" endPc="268439173" name="feature" stackId="1" startPc="268438982"/>
+        <entry endPc="268439173" name="props" stackId="2" startPc="268438985"/>
+        <entry endPc="268439173" name="addrDict" stackId="3" startPc="268438985"/>
+        <entry endPc="268439091" name="road" stackId="4" startPc="268439026"/>
+        <entry endPc="268439088" name="label" stackId="5" startPc="268439042"/>
+        <entry endPc="268439088" name="houseNumber" stackId="6" startPc="268439042"/>
+        <entry endPc="268439173" name="displayName" stackId="7" startPc="268438985"/>
+        <entry endPc="268439164" name="s" stackId="8" startPc="268439111"/>
+        <entry endPc="268439164" name="comma" stackId="9" startPc="268439111"/>
+        <entry arg="true" endPc="268439185" name="callback" stackId="1" startPc="268439174"/>
+        <entry arg="true" endPc="268439227" name="view" stackId="1" startPc="268439204"/>
+        <entry arg="true" endPc="268439266" name="item" stackId="1" startPc="268439228"/>
+        <entry endPc="268439325" name="view" stackId="1" startPc="268439273"/>
+        <entry arg="true" endPc="268439367" name="view" stackId="1" startPc="268439344"/>
+        <entry endPc="268439632" name="stores" stackId="1" startPc="268439371"/>
+        <entry endPc="268439632" name="menu" stackId="2" startPc="268439371"/>
+        <entry endPc="268439575" name="i" stackId="3" startPc="268439461"/>
+        <entry endPc="268439565" name="s" stackId="4" startPc="268439461"/>
+        <entry endPc="268439565" name="dist" stackId="5" startPc="268439461"/>
+        <entry endPc="268439565" name="addr" stackId="6" startPc="268439461"/>
+        <entry arg="true" endPc="268439879" name="lat1" stackId="1" startPc="268439633"/>
+        <entry arg="true" endPc="268439879" name="lon1" stackId="2" startPc="268439633"/>
+        <entry arg="true" endPc="268439879" name="lat2" stackId="3" startPc="268439633"/>
+        <entry arg="true" endPc="268439879" name="lon2" stackId="4" startPc="268439633"/>
+        <entry endPc="268439879" name="rLat1" stackId="5" startPc="268439644"/>
+        <entry endPc="268439879" name="rLat2" stackId="6" startPc="268439644"/>
+        <entry endPc="268439879" name="dLat" stackId="7" startPc="268439644"/>
+        <entry endPc="268439879" name="dLon" stackId="8" startPc="268439644"/>
+        <entry endPc="268439879" name="a" stackId="9" startPc="268439644"/>
+        <entry endPc="268439879" name="c" stackId="10" startPc="268439644"/>
+        <entry arg="true" endPc="268440059" name="lat1" stackId="1" startPc="268439880"/>
+        <entry arg="true" endPc="268440059" name="lon1" stackId="2" startPc="268439880"/>
+        <entry arg="true" endPc="268440059" name="lat2" stackId="3" startPc="268439880"/>
+        <entry arg="true" endPc="268440059" name="lon2" stackId="4" startPc="268439880"/>
+        <entry endPc="268440059" name="rLat1" stackId="5" startPc="268439891"/>
+        <entry endPc="268440059" name="rLat2" stackId="6" startPc="268439891"/>
+        <entry endPc="268440059" name="dLon" stackId="7" startPc="268439891"/>
+        <entry endPc="268440059" name="y" stackId="8" startPc="268439891"/>
+        <entry endPc="268440059" name="x" stackId="9" startPc="268439891"/>
+        <entry arg="true" endPc="268440125" name="angle" stackId="1" startPc="268440060"/>
+        <entry endPc="268440125" name="result" stackId="2" startPc="268440071"/>
+        <entry arg="true" endPc="268440150" name="deg" stackId="1" startPc="268440126"/>
+        <entry arg="true" endPc="268440308" name="dc" stackId="1" startPc="268440151"/>
+        <entry endPc="268440308" name="rez_cmp_local_bitmap_id_monkey" stackId="2" startPc="268440162"/>
     </localVars>
-    <deviceInfo deviceVersion="8fc30743a4191ec19bcafa28e3ffcc2b5a958a17" partNumber="006-B3703-00"/>
+    <deviceInfo deviceVersion="3cbcff5b61d759a7585c5fa7606e74c0bd5dfa74" partNumber="006-B3905-00"/>
     <annotations>
         <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LauncherIcon"/>
         <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="LogoIcon"/>
@@ -392,107 +601,167 @@
         <annotationEntry annotation="initialized" class="Drawables" module="globals/Rez" symbol="id_monkey"/>
     </annotations>
     <dataEntryOffsetMappings>
-        <dataEntry label="globals" offset="58" parentId="" symbolId="globals" type="module"/>
-        <dataEntry label="globals/ZabkaFinderView" offset="125" parentId="globals" symbolId="ZabkaFinderView" type="class"/>
-        <dataEntry label="globals/Rez" offset="466" parentId="globals" symbolId="Rez" type="module"/>
-        <dataEntry label="globals/ZabkaFinderApp" offset="519" parentId="globals" symbolId="ZabkaFinderApp" type="class"/>
-        <dataEntry label="globals/Rez/Drawables" offset="590" parentId="Rez" symbolId="Drawables" type="module"/>
-        <dataEntry label="globals/Rez/Layouts" offset="643" parentId="Rez" symbolId="Layouts" type="module"/>
-        <dataEntry label="globals/Rez/Strings" offset="678" parentId="Rez" symbolId="Strings" type="module"/>
+        <dataEntry label="globals" offset="67" parentId="" symbolId="globals" type="module"/>
+        <dataEntry label="globals/ZabkaFinderView" offset="170" parentId="globals" symbolId="ZabkaFinderView" type="class"/>
+        <dataEntry label="globals/NominatimClient" offset="511" parentId="globals" symbolId="NominatimClient" type="class"/>
+        <dataEntry label="globals/Rez" offset="717" parentId="globals" symbolId="Rez" type="module"/>
+        <dataEntry label="globals/StoreMenuDelegate" offset="770" parentId="globals" symbolId="StoreMenuDelegate" type="class"/>
+        <dataEntry label="globals/ZabkaFinderApp" offset="841" parentId="globals" symbolId="ZabkaFinderApp" type="class"/>
+        <dataEntry label="globals/ZabkaFinderDelegate" offset="912" parentId="globals" symbolId="ZabkaFinderDelegate" type="class"/>
+        <dataEntry label="globals/GeoMath" offset="974" parentId="globals" symbolId="GeoMath" type="module"/>
+        <dataEntry label="globals/Rez/Drawables" offset="1036" parentId="Rez" symbolId="Drawables" type="module"/>
+        <dataEntry label="globals/Rez/Layouts" offset="1089" parentId="Rez" symbolId="Layouts" type="module"/>
+        <dataEntry label="globals/Rez/Strings" offset="1124" parentId="Rez" symbolId="Strings" type="module"/>
     </dataEntryOffsetMappings>
     <functions>
-        <functionEntry accessMode="public" endPc="268435471" name="&lt;init&gt;" parent="ZabkaFinderView" startPc="268435460">
+        <functionEntry accessMode="public" endPc="268435480" name="&lt;init&gt;" parent="ZabkaFinderView" startPc="268435460">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268435492" name="getApp" startPc="268435472">
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="NominatimClient">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268435512" name="&lt;init&gt;" parent="Rez" startPc="268435493">
+        <functionEntry accessMode="public" endPc="268435501" name="getApp" startPc="268435481">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268435524" name="&lt;init&gt;" parent="ZabkaFinderApp" startPc="268435513">
+        <functionEntry accessMode="public" endPc="268435521" name="&lt;init&gt;" parent="Rez" startPc="268435502">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268435693" name="onPosition" parent="ZabkaFinderView" startPc="268435525">
+        <functionEntry accessMode="public" endPc="268435533" name="&lt;init&gt;" parent="StoreMenuDelegate" startPc="268435522">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435545" name="&lt;init&gt;" parent="ZabkaFinderApp" startPc="268435534">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435557" name="&lt;init&gt;" parent="ZabkaFinderDelegate" startPc="268435546">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" name="&lt;init&gt;" parent="GeoMath">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435773" name="onSearchResult" parent="ZabkaFinderView" startPc="268435558">
+            <param id="responseCode"/>
+            <param id="coords"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268435954" name="onPosition" parent="ZabkaFinderView" startPc="268435774">
             <param id="info"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268435812" name="onRequestTimeout" parent="ZabkaFinderView" startPc="268435694">
+        <functionEntry accessMode="private" endPc="268436085" name="&lt;globals/ZabkaFinderView/&lt;&gt;vibrateShort&gt;" parent="ZabkaFinderView" startPc="268435955">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268435860" name="currentAccentColor" parent="ZabkaFinderView" startPc="268435813">
+        <functionEntry accessMode="public" endPc="268436133" name="currentAccentColor" parent="ZabkaFinderView" startPc="268436086">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436111" name="haversineDistance" parent="ZabkaFinderView" startPc="268435861">
-            <param id="lat1"/>
-            <param id="lon1"/>
-            <param id="lat2"/>
-            <param id="lon2"/>
+        <functionEntry accessMode="public" endPc="268436145" name="setMenuOpen" parent="ZabkaFinderView" startPc="268436134">
+            <param id="open"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436151" name="onSensorData" parent="ZabkaFinderView" startPc="268436112">
+        <functionEntry accessMode="private" endPc="268436181" name="&lt;globals/ZabkaFinderView/&lt;&gt;setTarget&gt;" parent="ZabkaFinderView" startPc="268436146">
+            <param id="lat"/>
+            <param id="lon"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436221" name="onSensorData" parent="ZabkaFinderView" startPc="268436182">
             <param id="sensorInfo"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436203" name="onHide" parent="ZabkaFinderView" startPc="268436152">
+        <functionEntry accessMode="public" endPc="268436290" name="onHide" parent="ZabkaFinderView" startPc="268436222">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436381" name="pickNearestFeature" parent="ZabkaFinderView" startPc="268436204">
-            <param id="features"/>
+        <functionEntry accessMode="private" endPc="268436362" name="&lt;globals/ZabkaFinderView/&lt;&gt;checkProximityAlert&gt;" parent="ZabkaFinderView" startPc="268436291">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436416" name="stopWatchdog" parent="ZabkaFinderView" startPc="268436382">
+        <functionEntry accessMode="public" endPc="268436427" name="onShow" parent="ZabkaFinderView" startPc="268436363">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436473" name="onShow" parent="ZabkaFinderView" startPc="268436417">
-            <documentation/>
-        </functionEntry>
-        <functionEntry accessMode="public" endPc="268436552" name="drawStatus" parent="ZabkaFinderView" startPc="268436474">
+        <functionEntry accessMode="public" endPc="268436506" name="drawStatus" parent="ZabkaFinderView" startPc="268436428">
             <param id="dc"/>
             <param id="cx"/>
             <param id="cy"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436593" name="onLayout" parent="ZabkaFinderView" startPc="268436553">
+        <functionEntry accessMode="public" endPc="268436547" name="onLayout" parent="ZabkaFinderView" startPc="268436507">
             <param id="dc"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268436717" name="requestZabkaUpdate" parent="ZabkaFinderView" startPc="268436594">
+        <functionEntry accessMode="public" endPc="268436743" name="getNearestStores" parent="ZabkaFinderView" startPc="268436548">
+            <param id="max"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437033" name="onReceive" parent="ZabkaFinderView" startPc="268436718">
+        <functionEntry accessMode="public" endPc="268436852" name="selectStore" parent="ZabkaFinderView" startPc="268436744">
+            <param id="index"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268436972" name="drawCloseIndicator" parent="ZabkaFinderView" startPc="268436853">
+            <param id="dc"/>
+            <param id="cx"/>
+            <param id="cy"/>
+            <param id="angle"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437093" name="calculateRouting" parent="ZabkaFinderView" startPc="268436973">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="private" endPc="268437383" name="&lt;globals/ZabkaFinderView/&lt;&gt;buildSortedStores&gt;" parent="ZabkaFinderView" startPc="268437094">
+            <param id="coords"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437436" name="initialize" parent="ZabkaFinderView" startPc="268437384">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268437569" name="onUpdate" parent="ZabkaFinderView" startPc="268437437">
+            <param id="dc"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438019" name="drawArrow" parent="ZabkaFinderView" startPc="268437570">
+            <param id="dc"/>
+            <param id="cx"/>
+            <param id="cy"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438054" name="stopWatchdog" parent="NominatimClient" startPc="268438020">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438085" name="shouldRequest" parent="NominatimClient" startPc="268438055">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438104" name="registerSuccess" parent="NominatimClient" startPc="268438086">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438136" name="registerNoResult" parent="NominatimClient" startPc="268438105">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438193" name="onRequestTimeout" parent="NominatimClient" startPc="268438137">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268438321" name="onReceive" parent="NominatimClient" startPc="268438194">
             <param id="responseCode"/>
             <param id="data"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437153" name="drawCloseIndicator" parent="ZabkaFinderView" startPc="268437034">
-            <param id="dc"/>
-            <param id="cx"/>
-            <param id="cy"/>
-            <param id="angle"/>
+        <functionEntry accessMode="private" endPc="268438423" name="&lt;globals/NominatimClient/&lt;&gt;foldDiacritics&gt;" parent="NominatimClient" startPc="268438322">
+            <param id="text"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437422" name="calculateRouting" parent="ZabkaFinderView" startPc="268437154">
+        <functionEntry accessMode="private" endPc="268438562" name="&lt;globals/NominatimClient/&lt;&gt;parseFeatures&gt;" parent="NominatimClient" startPc="268438424">
+            <param id="features"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437480" name="normalizeAngle" parent="ZabkaFinderView" startPc="268437423">
-            <param id="angle"/>
+        <functionEntry accessMode="private" endPc="268438629" name="&lt;globals/NominatimClient/&lt;&gt;registerFailure&gt;" parent="NominatimClient" startPc="268438563">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437770" name="fetchZabka" parent="ZabkaFinderView" startPc="268437481">
+        <functionEntry accessMode="public" endPc="268438981" name="search" parent="NominatimClient" startPc="268438630">
+            <param id="lat"/>
+            <param id="lon"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437785" name="initialize" parent="ZabkaFinderView" startPc="268437771">
+        <functionEntry accessMode="private" endPc="268439173" name="&lt;globals/NominatimClient/&lt;&gt;extractAddress&gt;" parent="NominatimClient" startPc="268438982">
+            <param id="feature"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268437918" name="onUpdate" parent="ZabkaFinderView" startPc="268437786">
-            <param id="dc"/>
-            <documentation/>
-        </functionEntry>
-        <functionEntry accessMode="public" endPc="268438356" name="drawArrow" parent="ZabkaFinderView" startPc="268437919">
-            <param id="dc"/>
-            <param id="cx"/>
-            <param id="cy"/>
+        <functionEntry accessMode="public" endPc="268439185" name="initialize" parent="NominatimClient" startPc="268439174">
+            <param id="callback"/>
             <documentation/>
         </functionEntry>
         <functionEntry accessMode="public" name="&lt;init&gt;" parent="Drawables">
@@ -504,21 +773,61 @@
         <functionEntry accessMode="public" name="&lt;init&gt;" parent="Strings">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438359" name="onStart" parent="ZabkaFinderApp" startPc="268438357">
+        <functionEntry accessMode="public" endPc="268439203" name="onBack" parent="StoreMenuDelegate" startPc="268439186">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439227" name="initialize" parent="StoreMenuDelegate" startPc="268439204">
+            <param id="view"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439266" name="onSelect" parent="StoreMenuDelegate" startPc="268439228">
+            <param id="item"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439269" name="onStart" parent="ZabkaFinderApp" startPc="268439267">
             <param id="state"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438387" name="getInitialView" parent="ZabkaFinderApp" startPc="268438360">
+        <functionEntry accessMode="public" endPc="268439325" name="getInitialView" parent="ZabkaFinderApp" startPc="268439270">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438402" name="initialize" parent="ZabkaFinderApp" startPc="268438388">
+        <functionEntry accessMode="public" endPc="268439340" name="initialize" parent="ZabkaFinderApp" startPc="268439326">
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438405" name="onStop" parent="ZabkaFinderApp" startPc="268438403">
+        <functionEntry accessMode="public" endPc="268439343" name="onStop" parent="ZabkaFinderApp" startPc="268439341">
             <param id="state"/>
             <documentation/>
         </functionEntry>
-        <functionEntry accessMode="public" endPc="268438563" name="MainLayout" parent="Layouts" startPc="268438406">
+        <functionEntry accessMode="public" endPc="268439367" name="initialize" parent="ZabkaFinderDelegate" startPc="268439344">
+            <param id="view"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439632" name="onSelect" parent="ZabkaFinderDelegate" startPc="268439368">
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268439879" name="haversineDistance" parent="GeoMath" startPc="268439633">
+            <param id="lat1"/>
+            <param id="lon1"/>
+            <param id="lat2"/>
+            <param id="lon2"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440059" name="initialBearing" parent="GeoMath" startPc="268439880">
+            <param id="lat1"/>
+            <param id="lon1"/>
+            <param id="lat2"/>
+            <param id="lon2"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440125" name="normalizeAngle" parent="GeoMath" startPc="268440060">
+            <param id="angle"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440150" name="toRadians" parent="GeoMath" startPc="268440126">
+            <param id="deg"/>
+            <documentation/>
+        </functionEntry>
+        <functionEntry accessMode="public" endPc="268440308" name="MainLayout" parent="Layouts" startPc="268440151">
             <param id="dc"/>
             <documentation/>
         </functionEntry>

@@ -1,0 +1,1175 @@
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Communications,1,14,28]; ]
+import Toybox.Communications;
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Math,3,14,18]; ]
+import Toybox.Math;
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [System,4,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Timer,5,14,19]; ]
+import Toybox.Timer;
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 25; @symbol_classdef = [NominatimClient,25,6,21]; ]
+class NominatimClient {
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 25; ]
+    <init> {
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 25; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 28; @position = 10; @symbol_constdef = [SEARCH_RADIUS_M,28,10,25]; ]
+    const SEARCH_RADIUS_M = 500;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 32; @position = 10; @symbol_constdef = [RETRY_BASE_DELAY_MS,32,10,29]; ]
+    const RETRY_BASE_DELAY_MS = 5000;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 33; @position = 10; @symbol_constdef = [RETRY_MAX_DELAY_MS,33,10,28]; ]
+    const RETRY_MAX_DELAY_MS = 30000;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 36; @position = 10; @symbol_constdef = [NO_RESULT_RETRY_DELAY_MS,36,10,34]; ]
+    const NO_RESULT_RETRY_DELAY_MS = 10000;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 40; @position = 10; @symbol_constdef = [REQUEST_TIMEOUT_MS,40,10,28]; ]
+    const REQUEST_TIMEOUT_MS = 25000;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 43; @position = 10; @symbol_constdef = [TIMEOUT_RESPONSE_CODE,43,10,31]; ]
+    const TIMEOUT_RESPONSE_CODE = -999;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 45; @position = 10; @symbol_constdef = [NOMINATIM_URL,45,10,23]; ]
+    const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 50; @position = 16; @symbol_vardef = [resultCallback,50,16,30]; @symbol_type<0> = [responseCode,50,42,54]; @symbol_type<1> = [Lang,50,58,62]; @symbol_type<2> = [Number,50,63,69]; @symbol_type<3> = [coords,50,71,77]; @symbol_type<4> = [Lang,50,81,85]; @symbol_type<5> = [Array,50,86,91]; ]
+    private
+    var resultCallback as (callback(responseCode as Lang.Number, coords as Lang.Array or Null) as Void);
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 52; @position = 16; @symbol_vardef = [inFlight,52,16,24]; @symbol_type<0> = [Lang,52,28,32]; @symbol_type<1> = [Boolean,52,33,40]; ]
+    private
+    var inFlight as Lang.Boolean = false;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 53; @position = 16; @symbol_vardef = [watchdogTimer,53,16,29]; @symbol_type<0> = [Timer,53,33,38]; @symbol_type<1> = [Timer,53,39,44]; ]
+    private
+    var watchdogTimer as Timer.Timer or Null = null;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 54; @position = 16; @symbol_vardef = [retryCount,54,16,26]; @symbol_type<0> = [Lang,54,30,34]; @symbol_type<1> = [Number,54,35,41]; ]
+    private
+    var retryCount as Lang.Number = 0;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 55; @position = 16; @symbol_vardef = [nextRetryAllowedMs,55,16,34]; @symbol_type<0> = [Lang,55,38,42]; @symbol_type<1> = [Number,55,43,49]; ]
+    private
+    var nextRetryAllowedMs as Lang.Number = 0;
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 57; @symbol_functiondef = [initialize,57,13,23]; @symbol_param<0> = [callback,57,24,32]; @symbol_param<0>_type<0> = [responseCode,57,44,56]; @symbol_param<0>_type<1> = [Lang,57,60,64]; @symbol_param<0>_type<2> = [Number,57,65,71]; @symbol_param<0>_type<3> = [coords,57,73,79]; @symbol_param<0>_type<4> = [Lang,57,83,87]; @symbol_param<0>_type<5> = [Array,57,88,93]; ]
+    function initialize(callback as (callback(responseCode as Lang.Number, coords as Lang.Array or Null) as Void)) as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_57_113_59_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 58 8 ]
+        %tmp.1 = lgetv %callback;
+        symbol [ callback %tmp.1 58 25 33 ];
+        symbol [ resultCallback ? 58 8 22 ];
+        putv self :resultCallback %tmp.1;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_57_113_59_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 63; @symbol_functiondef = [shouldRequest,63,13,26]; @symbol_return<0> = [Lang,63,32,36]; @symbol_return<1> = [Boolean,63,37,44]; ]
+    function shouldRequest() as Lang.Boolean {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_63_45_65_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 64 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_15_64_49_begin:
+        symbol [ inFlight %tmp.2 64 16 24 ];
+        %tmp.2 = getv ? :inFlight;
+        %tmp.3 = not %tmp.2;
+        %tmp.4 = dup %tmp.3;
+        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_28_64_49_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_28_64_49_true:
+        symbol [ System %tmp.5 64 28 34 ];
+        %tmp.5 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.6 64 35 43 ];
+        %tmp.6 = getv function %tmp.5 :getTimer;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        symbol [ nextRetryAllowedMs %tmp.9 64 49 67 ];
+        %tmp.9 = getv ? :nextRetryAllowedMs;
+        %tmp.10 = gte %tmp.7 %tmp.9;
+        %tmp.11 = and %tmp.3 %tmp.10;
+        push %tmp.11;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_28_64_49_end:
+        %tmp.12 = phi [%tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_15_64_49_begin] [%tmp.11 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_28_64_49_true] [%tmp.12 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_64_28_64_49_end];
+        ret %tmp.12;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_63_45_65_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 69; @symbol_functiondef = [search,69,13,19]; @symbol_param<0> = [lat,69,20,23]; @symbol_param<0>_type<0> = [Lang,69,27,31]; @symbol_param<0>_type<1> = [Double,69,32,38]; @symbol_param<1> = [lon,69,40,43]; @symbol_param<1>_type<0> = [Lang,69,47,51]; @symbol_param<1>_type<1> = [Double,69,52,58]; ]
+    function search(lat as Lang.Double, lon as Lang.Double) as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 70 8 ]
+        %tmp.1 = true;
+        symbol [ inFlight ? 70 8 16 ];
+        putv self :inFlight %tmp.1;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 76 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %latRad.1 = local;
+        symbol [ latRad %latRad.1 76 12 18 ];
+        symbol [ GeoMath %tmp.3 76 21 28 ];
+        %tmp.3 = getv ? :GeoMath;
+        symbol [ toRadians %tmp.4 76 29 38 ];
+        %tmp.4 = getv function %tmp.3 :toRadians;
+        %tmp.5 = lgetv %lat;
+        symbol [ lat %tmp.5 76 39 42 ];
+        %tmp.6 = invoke %tmp.3 %tmp.4(%tmp.5);
+        lputv %latRad.1 %tmp.6;
+        symbol [ latRad %latRad.1 76 12 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 77 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %latDelta.2 = local;
+        symbol [ latDelta %latDelta.2 77 12 20 ];
+        symbol [ SEARCH_RADIUS_M %tmp.8 77 24 39 ];
+        %tmp.8 = getv ? :SEARCH_RADIUS_M;
+        symbol [ GeoMath %tmp.10 77 42 49 ];
+        %tmp.10 = getv ? :GeoMath;
+        symbol [ EARTH_RADIUS_M %tmp.11 77 50 64 ];
+        %tmp.11 = getv %tmp.10 :EARTH_RADIUS_M;
+        %tmp.12 = div %tmp.8 %tmp.11;
+        %tmp.13 = 180.0;
+        symbol [ Math %tmp.14 77 77 81 ];
+        %tmp.14 = getm $.Toybox.Math;
+        symbol [ PI %tmp.15 77 82 84 ];
+        %tmp.15 = getv %tmp.14 :PI;
+        %tmp.16 = div %tmp.13 %tmp.15;
+        %tmp.17 = mul %tmp.12 %tmp.16;
+        lputv %latDelta.2 %tmp.17;
+        symbol [ latDelta %latDelta.2 77 12 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 78 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %lonDelta.3 = local;
+        symbol [ lonDelta %lonDelta.3 78 12 20 ];
+        symbol [ SEARCH_RADIUS_M %tmp.19 78 24 39 ];
+        %tmp.19 = getv ? :SEARCH_RADIUS_M;
+        symbol [ GeoMath %tmp.21 78 43 50 ];
+        %tmp.21 = getv ? :GeoMath;
+        symbol [ EARTH_RADIUS_M %tmp.22 78 51 65 ];
+        %tmp.22 = getv %tmp.21 :EARTH_RADIUS_M;
+        symbol [ Math %tmp.23 78 68 72 ];
+        %tmp.23 = getm $.Toybox.Math;
+        symbol [ cos %tmp.24 78 73 76 ];
+        %tmp.24 = getv function %tmp.23 :cos;
+        %tmp.25 = lgetv %latRad.1;
+        symbol [ latRad %tmp.25 78 77 83 ];
+        %tmp.26 = invoke %tmp.23 %tmp.24(%tmp.25);
+        %tmp.27 = mul %tmp.22 %tmp.26;
+        %tmp.28 = div %tmp.19 %tmp.27;
+        %tmp.29 = 180.0;
+        symbol [ Math %tmp.30 78 98 102 ];
+        %tmp.30 = getm $.Toybox.Math;
+        symbol [ PI %tmp.31 78 103 105 ];
+        %tmp.31 = getv %tmp.30 :PI;
+        %tmp.32 = div %tmp.29 %tmp.31;
+        %tmp.33 = mul %tmp.28 %tmp.32;
+        lputv %lonDelta.3 %tmp.33;
+        symbol [ lonDelta %lonDelta.3 78 12 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 80 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %latMinStr.4 = local;
+        symbol [ latMinStr %latMinStr.4 80 12 21 ];
+        %tmp.34 = lgetv %lat;
+        symbol [ lat %tmp.34 80 25 28 ];
+        %tmp.35 = lgetv %latDelta.2;
+        symbol [ latDelta %tmp.35 80 31 39 ];
+        %tmp.36 = sub %tmp.34 %tmp.35;
+        symbol [ format %tmp.37 80 41 47 ];
+        %tmp.37 = getv function %tmp.36 :format;
+        %tmp.38 = "%.6f";
+        %tmp.39 = invoke %tmp.36 %tmp.37(%tmp.38);
+        lputv %latMinStr.4 %tmp.39;
+        symbol [ latMinStr %latMinStr.4 80 12 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 81 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %latMaxStr.5 = local;
+        symbol [ latMaxStr %latMaxStr.5 81 12 21 ];
+        %tmp.40 = lgetv %lat;
+        symbol [ lat %tmp.40 81 25 28 ];
+        %tmp.41 = lgetv %latDelta.2;
+        symbol [ latDelta %tmp.41 81 31 39 ];
+        %tmp.42 = add %tmp.40 %tmp.41;
+        symbol [ format %tmp.43 81 41 47 ];
+        %tmp.43 = getv function %tmp.42 :format;
+        %tmp.44 = "%.6f";
+        %tmp.45 = invoke %tmp.42 %tmp.43(%tmp.44);
+        lputv %latMaxStr.5 %tmp.45;
+        symbol [ latMaxStr %latMaxStr.5 81 12 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 82 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %lonMinStr.6 = local;
+        symbol [ lonMinStr %lonMinStr.6 82 12 21 ];
+        %tmp.46 = lgetv %lon;
+        symbol [ lon %tmp.46 82 25 28 ];
+        %tmp.47 = lgetv %lonDelta.3;
+        symbol [ lonDelta %tmp.47 82 31 39 ];
+        %tmp.48 = sub %tmp.46 %tmp.47;
+        symbol [ format %tmp.49 82 41 47 ];
+        %tmp.49 = getv function %tmp.48 :format;
+        %tmp.50 = "%.6f";
+        %tmp.51 = invoke %tmp.48 %tmp.49(%tmp.50);
+        lputv %lonMinStr.6 %tmp.51;
+        symbol [ lonMinStr %lonMinStr.6 82 12 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 83 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %lonMaxStr.7 = local;
+        symbol [ lonMaxStr %lonMaxStr.7 83 12 21 ];
+        %tmp.52 = lgetv %lon;
+        symbol [ lon %tmp.52 83 25 28 ];
+        %tmp.53 = lgetv %lonDelta.3;
+        symbol [ lonDelta %tmp.53 83 31 39 ];
+        %tmp.54 = add %tmp.52 %tmp.53;
+        symbol [ format %tmp.55 83 41 47 ];
+        %tmp.55 = getv function %tmp.54 :format;
+        %tmp.56 = "%.6f";
+        %tmp.57 = invoke %tmp.54 %tmp.55(%tmp.56);
+        lputv %lonMaxStr.7 %tmp.57;
+        symbol [ lonMaxStr %lonMaxStr.7 83 12 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 87 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %viewbox.8 = local;
+        symbol [ viewbox %viewbox.8 87 12 19 ];
+        %tmp.58 = lgetv %lonMinStr.6;
+        symbol [ lonMinStr %tmp.58 87 22 31 ];
+        %tmp.59 = ",";
+        %tmp.60 = add %tmp.58 %tmp.59;
+        %tmp.61 = lgetv %latMaxStr.5;
+        symbol [ latMaxStr %tmp.61 87 40 49 ];
+        %tmp.62 = add %tmp.60 %tmp.61;
+        %tmp.63 = ",";
+        %tmp.64 = add %tmp.62 %tmp.63;
+        %tmp.65 = lgetv %lonMaxStr.7;
+        symbol [ lonMaxStr %tmp.65 87 58 67 ];
+        %tmp.66 = add %tmp.64 %tmp.65;
+        %tmp.67 = ",";
+        %tmp.68 = add %tmp.66 %tmp.67;
+        %tmp.69 = lgetv %latMinStr.4;
+        symbol [ latMinStr %tmp.69 87 76 85 ];
+        %tmp.70 = add %tmp.68 %tmp.69;
+        lputv %viewbox.8 %tmp.70;
+        symbol [ viewbox %viewbox.8 87 12 19 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 93 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %params.9 = local;
+        symbol [ params %params.9 93 12 18 ];
+        %tmp.71 = newd 6;
+        %tmp.72 = "q";
+        %tmp.73 = "Zabka";
+        %tmp.74 = dup %tmp.71;
+        %tmp.75 = aputv %tmp.74 %tmp.72 %tmp.73;
+        %tmp.76 = "format";
+        %tmp.77 = "geojson";
+        %tmp.78 = dup %tmp.75;
+        %tmp.79 = aputv %tmp.78 %tmp.76 %tmp.77;
+        %tmp.80 = "limit";
+        %tmp.81 = "20";
+        %tmp.82 = dup %tmp.79;
+        %tmp.83 = aputv %tmp.82 %tmp.80 %tmp.81;
+        %tmp.84 = "viewbox";
+        %tmp.85 = lgetv %viewbox.8;
+        symbol [ viewbox %tmp.85 97 25 32 ];
+        %tmp.86 = dup %tmp.83;
+        %tmp.87 = aputv %tmp.86 %tmp.84 %tmp.85;
+        %tmp.88 = "bounded";
+        %tmp.89 = "1";
+        %tmp.90 = dup %tmp.87;
+        %tmp.91 = aputv %tmp.90 %tmp.88 %tmp.89;
+        %tmp.92 = "addressdetails";
+        %tmp.93 = "1";
+        %tmp.94 = dup %tmp.91;
+        %tmp.95 = aputv %tmp.94 %tmp.92 %tmp.93;
+        lputv %params.9 %tmp.95;
+        symbol [ params %params.9 93 12 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 104 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop" ]
+        %options.10 = local;
+        symbol [ options %options.10 104 12 19 ];
+        %tmp.96 = newd 3;
+        %tmp.98 = const :method;
+        symbol [ method %tmp.98 105 13 19 const ];
+        symbol [ Communications %tmp.99 105 23 37 ];
+        %tmp.99 = getm $.Toybox.Communications;
+        symbol [ HTTP_REQUEST_METHOD_GET %tmp.100 105 38 61 ];
+        %tmp.100 = getv %tmp.99 :HTTP_REQUEST_METHOD_GET;
+        %tmp.101 = dup %tmp.96;
+        %tmp.102 = aputv %tmp.101 %tmp.98 %tmp.100;
+        %tmp.104 = const :headers;
+        symbol [ headers %tmp.104 106 13 20 const ];
+        %tmp.105 = newd 1;
+        %tmp.106 = "User-Agent";
+        %tmp.107 = "ZabkaFinder-GarminWidget/1.0 (open-source hobby project)";
+        %tmp.108 = dup %tmp.105;
+        %tmp.109 = aputv %tmp.108 %tmp.106 %tmp.107;
+        %tmp.110 = dup %tmp.102;
+        %tmp.111 = aputv %tmp.110 %tmp.104 %tmp.109;
+        %tmp.113 = const :responseType;
+        symbol [ responseType %tmp.113 109 13 25 const ];
+        symbol [ Communications %tmp.114 109 29 43 ];
+        %tmp.114 = getm $.Toybox.Communications;
+        symbol [ HTTP_RESPONSE_CONTENT_TYPE_JSON %tmp.115 109 44 75 ];
+        %tmp.115 = getv %tmp.114 :HTTP_RESPONSE_CONTENT_TYPE_JSON;
+        %tmp.116 = dup %tmp.111;
+        %tmp.117 = aputv %tmp.116 %tmp.113 %tmp.115;
+        lputv %options.10 %tmp.117;
+        symbol [ options %options.10 104 12 19 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 112 8 ]
+        symbol [ System %tmp.118 112 8 14 ];
+        %tmp.118 = getm $.Toybox.System;
+        symbol [ println %tmp.119 112 15 22 ];
+        %tmp.119 = getv function %tmp.118 :println;
+        %tmp.120 = "Nominatim viewbox: ";
+        %tmp.121 = lgetv %viewbox.8;
+        symbol [ viewbox %tmp.121 112 47 54 ];
+        %tmp.122 = add %tmp.120 %tmp.121;
+        invoke %tmp.118 %tmp.119(%tmp.122);
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 114 8 ]
+        symbol [ Communications %tmp.123 114 8 22 ];
+        %tmp.123 = getm $.Toybox.Communications;
+        symbol [ makeWebRequest %tmp.124 114 23 37 ];
+        %tmp.124 = getv function %tmp.123 :makeWebRequest;
+        symbol [ NOMINATIM_URL %tmp.126 114 38 51 ];
+        %tmp.126 = getv ? :NOMINATIM_URL;
+        %tmp.127 = lgetv %params.9;
+        symbol [ params %tmp.127 114 53 59 ];
+        %tmp.128 = lgetv %options.10;
+        symbol [ options %tmp.128 114 61 68 ];
+        %tmp.129 = self;
+        symbol [ method %tmp.130 114 70 76 ];
+        %tmp.130 = getv function %tmp.129 :method;
+        %tmp.132 = const :onReceive;
+        symbol [ onReceive %tmp.132 114 78 87 const ];
+        %tmp.133 = invoke %tmp.129 %tmp.130(%tmp.132);
+        invoke %tmp.123 %tmp.124(%tmp.126, %tmp.127, %tmp.128, %tmp.133);
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 119 8 ]
+        symbol [ Timer %tmp.136 119 28 33 ];
+        %tmp.136 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.137 119 34 39 ];
+        %tmp.137 = getv function ? %tmp.136 :Timer;
+        %tmp.134 = newc %tmp.137 ();
+        symbol [ watchdogTimer ? 119 8 21 ];
+        putv self :watchdogTimer %tmp.134;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 120 8 ]
+        symbol [ watchdogTimer %tmp.139 120 9 22 ];
+        %tmp.139 = getv ? :watchdogTimer;
+        %tmp.140 = as %tmp.139 Timer.Timer;
+        symbol [ Timer %tmp.140 120 26 31 ];
+        symbol [ Timer %tmp.140 120 32 37 ];
+        symbol [ start %tmp.141 120 39 44 ];
+        %tmp.141 = getv function %tmp.140 :start;
+        %tmp.142 = self;
+        symbol [ method %tmp.143 120 45 51 ];
+        %tmp.143 = getv function %tmp.142 :method;
+        %tmp.145 = const :onRequestTimeout;
+        symbol [ onRequestTimeout %tmp.145 120 53 69 const ];
+        %tmp.146 = invoke %tmp.142 %tmp.143(%tmp.145);
+        symbol [ REQUEST_TIMEOUT_MS %tmp.148 120 72 90 ];
+        %tmp.148 = getv ? :REQUEST_TIMEOUT_MS;
+        %tmp.149 = false;
+        invoke %tmp.140 %tmp.141(%tmp.146, %tmp.148, %tmp.149);
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_69_68_121_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 125; @symbol_functiondef = [stopWatchdog,125,13,25]; ]
+    function stopWatchdog() as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_125_36_130_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 126 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_8_129_8_if_stmt:
+        symbol [ watchdogTimer %tmp.2 126 12 25 ];
+        %tmp.2 = getv ? :watchdogTimer;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_8_129_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_8_129_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_35_129_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 127 12 ]
+        symbol [ watchdogTimer %tmp.6 127 13 26 ];
+        %tmp.6 = getv ? :watchdogTimer;
+        %tmp.7 = as %tmp.6 { (!Null) };
+        %tmp.8 = as %tmp.7 Timer.Timer;
+        symbol [ Timer %tmp.8 127 30 35 ];
+        symbol [ Timer %tmp.8 127 36 41 ];
+        symbol [ stop %tmp.9 127 43 47 ];
+        %tmp.9 = getv function %tmp.8 :stop;
+        invoke %tmp.8 %tmp.9();
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 128 12 ]
+        %tmp.10 = null;
+        symbol [ watchdogTimer ? 128 12 25 ];
+        putv self :watchdogTimer %tmp.10;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_35_129_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_8_129_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_126_8_129_8_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_125_36_130_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 134; @symbol_functiondef = [onRequestTimeout,134,13,29]; ]
+    function onRequestTimeout() as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_134_40_143_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 135 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_8_138_8_if_stmt:
+        symbol [ inFlight %tmp.2 135 13 21 ];
+        %tmp.2 = getv ? :inFlight;
+        %tmp.3 = not %tmp.2;
+        bf %tmp.3 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_8_138_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_8_138_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_23_138_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 137 12 ]
+        ret ?;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_23_138_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_8_138_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_135_8_138_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 139 8 ]
+        %tmp.4 = false;
+        symbol [ inFlight ? 139 8 16 ];
+        putv self :inFlight %tmp.4;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 140 8 ]
+        %tmp.5 = null;
+        symbol [ watchdogTimer ? 140 8 21 ];
+        putv self :watchdogTimer %tmp.5;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 141 8 ]
+        %tmp.6 = self;
+        symbol [ registerFailure %tmp.7 141 8 23 ];
+        %tmp.7 = getv function %tmp.6 :registerFailure;
+        invoke %tmp.6 %tmp.7();
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 142 8 ]
+        symbol [ resultCallback %tmp.9 142 8 22 ];
+        %tmp.9 = getv ? :resultCallback;
+        symbol [ invoke %tmp.10 142 23 29 ];
+        %tmp.10 = getv function %tmp.9 :invoke;
+        symbol [ TIMEOUT_RESPONSE_CODE %tmp.12 142 30 51 ];
+        %tmp.12 = getv ? :TIMEOUT_RESPONSE_CODE;
+        %tmp.13 = null;
+        invoke %tmp.9 %tmp.10(%tmp.12, %tmp.13);
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_134_40_143_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 147; @symbol_functiondef = [onReceive,147,13,22]; @symbol_param<0> = [responseCode,147,23,35]; @symbol_param<0>_type<0> = [Lang,147,39,43]; @symbol_param<0>_type<1> = [Number,147,44,50]; @symbol_param<1> = [data,147,52,56]; @symbol_param<1>_type<0> = [Lang,147,60,64]; @symbol_param<1>_type<1> = [Dictionary,147,65,75]; ]
+    function onReceive(responseCode as Lang.Number, data as Lang.Dictionary or Null) as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_147_93_164_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 148 8 ]
+        %tmp.1 = self;
+        symbol [ stopWatchdog %tmp.2 148 8 20 ];
+        %tmp.2 = getv function %tmp.1 :stopWatchdog;
+        invoke %tmp.1 %tmp.2();
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 149 8 ]
+        %tmp.3 = false;
+        symbol [ inFlight ? 149 8 16 ];
+        putv self :inFlight %tmp.3;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 150 8 ]
+        symbol [ System %tmp.4 150 8 14 ];
+        %tmp.4 = getm $.Toybox.System;
+        symbol [ println %tmp.5 150 15 22 ];
+        %tmp.5 = getv function %tmp.4 :println;
+        %tmp.6 = "Nominatim response code: ";
+        %tmp.7 = lgetv %responseCode;
+        symbol [ responseCode %tmp.7 150 53 65 ];
+        %tmp.8 = add %tmp.6 %tmp.7;
+        %tmp.9 = ", data null? ";
+        %tmp.10 = add %tmp.8 %tmp.9;
+        %tmp.11 = lgetv %data;
+        symbol [ data %tmp.11 150 87 91 ];
+        %tmp.12 = null;
+        %tmp.13 = eq %tmp.11 %tmp.12;
+        %tmp.14 = add %tmp.10 %tmp.13;
+        invoke %tmp.4 %tmp.5(%tmp.14);
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 152 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_stmt:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_12_152_43_begin:
+        %tmp.15 = lgetv %responseCode;
+        symbol [ responseCode %tmp.15 152 12 24 ];
+        %tmp.16 = 200;
+        %tmp.17 = eq %tmp.15 %tmp.16;
+        bf %tmp.17 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_35_152_43_true:
+        %tmp.18 = lgetv %data;
+        symbol [ data %tmp.18 152 35 39 ];
+        %tmp.19 = null;
+        %tmp.20 = ne %tmp.18 %tmp.19;
+        push %tmp.20;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_35_152_43_end:
+        %tmp.21 = phi [%tmp.17 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_12_152_43_begin] [%tmp.20 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_35_152_43_true] [%tmp.21 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_35_152_43_end];
+        bf %tmp.21 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_49_160_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 158 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_49_160_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_49_160_8_stop" ]
+        %features.1 = local;
+        symbol [ features %features.1 158 16 24 ];
+        %tmp.22 = lgetv %data;
+        symbol [ data %tmp.22 158 27 31 ];
+        %tmp.23 = as %tmp.22 { (!Null) };
+        %tmp.24 = "features";
+        %tmp.25 = agetv %tmp.23 %tmp.24;
+        %tmp.26 = as %tmp.25 Lang.Array or Null;
+        symbol [ Lang %tmp.26 158 47 51 ];
+        symbol [ Array %tmp.26 158 52 57 ];
+        lputv %features.1 %tmp.26;
+        symbol [ features %features.1 158 16 24 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 159 12 ]
+        symbol [ resultCallback %tmp.28 159 12 26 ];
+        %tmp.28 = getv ? :resultCallback;
+        symbol [ invoke %tmp.29 159 27 33 ];
+        %tmp.29 = getv function %tmp.28 :invoke;
+        %tmp.30 = lgetv %responseCode;
+        symbol [ responseCode %tmp.30 159 34 46 ];
+        %tmp.31 = self;
+        symbol [ parseFeatures %tmp.32 159 48 61 ];
+        %tmp.32 = getv function %tmp.31 :parseFeatures;
+        %tmp.33 = lgetv %features.1;
+        symbol [ features %tmp.33 159 62 70 ];
+        %tmp.34 = invoke %tmp.31 %tmp.32(%tmp.33);
+        invoke %tmp.28 %tmp.29(%tmp.30, %tmp.34);
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_49_160_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_else_false:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_160_15_163_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 161 12 ]
+        %tmp.35 = self;
+        symbol [ registerFailure %tmp.36 161 12 27 ];
+        %tmp.36 = getv function %tmp.35 :registerFailure;
+        invoke %tmp.35 %tmp.36();
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 162 12 ]
+        symbol [ resultCallback %tmp.38 162 12 26 ];
+        %tmp.38 = getv ? :resultCallback;
+        symbol [ invoke %tmp.39 162 27 33 ];
+        %tmp.39 = getv function %tmp.38 :invoke;
+        %tmp.40 = lgetv %responseCode;
+        symbol [ responseCode %tmp.40 162 34 46 ];
+        %tmp.41 = null;
+        invoke %tmp.38 %tmp.39(%tmp.40, %tmp.41);
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_160_15_163_8_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_152_8_163_8_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_147_93_164_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 170; @symbol_functiondef = [parseFeatures,170,21,34]; @symbol_param<0> = [features,170,35,43]; @symbol_param<0>_type<0> = [Lang,170,47,51]; @symbol_param<0>_type<1> = [Array,170,52,57]; @symbol_return<0> = [Lang,170,70,74]; @symbol_return<1> = [Array,170,75,80]; ]
+    private
+    function parseFeatures(features as Lang.Array or Null) as Lang.Array {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_170_81_186_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 171 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_170_81_186_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_170_81_186_4_stop" ]
+        %result.1 = local;
+        symbol [ result %result.1 171 12 18 ];
+        %tmp.1 = newa 0 Lang.Array;
+        symbol [ Lang %tmp.1 171 27 31 ];
+        symbol [ Array %tmp.1 171 32 37 ];
+        lputv %result.1 %tmp.1;
+        symbol [ result %result.1 171 12 18 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 172 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_8_174_8_if_stmt:
+        %tmp.2 = lgetv %features;
+        symbol [ features %tmp.2 172 12 20 ];
+        %tmp.3 = null;
+        %tmp.4 = eq %tmp.2 %tmp.3;
+        bf %tmp.4 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_8_174_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_8_174_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_30_174_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 173 12 ]
+        %tmp.5 = lgetv %result.1;
+        symbol [ result %tmp.5 173 19 25 ];
+        ret %tmp.5;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_30_174_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_8_174_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_172_8_174_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 175 8 ]
+        for @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_test @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_incr @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_init:
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_begin" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 175 17 18 ];
+        %tmp.6 = 0;
+        lputv %i.2 %tmp.6;
+        symbol [ i %i.2 175 17 18 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_test:
+        %tmp.7 = lgetv %i.2;
+        symbol [ i %tmp.7 175 24 25 ];
+        %tmp.8 = lgetv %features;
+        symbol [ features %tmp.8 175 28 36 ];
+        symbol [ size %tmp.9 175 37 41 ];
+        %tmp.9 = getv function %tmp.8 :size;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        %tmp.11 = lt %tmp.7 %tmp.10;
+        bf %tmp.11 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_begin:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 176 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_stop" ]
+        %feature.3 = local;
+        symbol [ feature %feature.3 176 16 23 ];
+        %tmp.12 = lgetv %features;
+        symbol [ features %tmp.12 176 26 34 ];
+        %tmp.13 = lgetv %i.2;
+        symbol [ i %tmp.13 176 35 36 ];
+        %tmp.14 = agetv %tmp.12 %tmp.13;
+        %tmp.15 = as %tmp.14 Lang.Dictionary;
+        symbol [ Lang %tmp.15 176 41 45 ];
+        symbol [ Dictionary %tmp.15 176 46 56 ];
+        lputv %feature.3 %tmp.15;
+        symbol [ feature %feature.3 176 16 23 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 177 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_stop" ]
+        %geometry.4 = local;
+        symbol [ geometry %geometry.4 177 16 24 ];
+        %tmp.16 = lgetv %feature.3;
+        symbol [ feature %tmp.16 177 27 34 ];
+        %tmp.17 = "geometry";
+        %tmp.18 = agetv %tmp.16 %tmp.17;
+        %tmp.19 = as %tmp.18 Lang.Dictionary;
+        symbol [ Lang %tmp.19 177 50 54 ];
+        symbol [ Dictionary %tmp.19 177 55 65 ];
+        lputv %geometry.4 %tmp.19;
+        symbol [ geometry %geometry.4 177 16 24 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 178 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_stop" ]
+        %pair.5 = local;
+        symbol [ pair %pair.5 178 16 20 ];
+        %tmp.20 = lgetv %geometry.4;
+        symbol [ geometry %tmp.20 178 23 31 ];
+        %tmp.21 = "coordinates";
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        %tmp.23 = as %tmp.22 Lang.Array;
+        symbol [ Lang %tmp.23 178 50 54 ];
+        symbol [ Array %tmp.23 178 55 60 ];
+        lputv %pair.5 %tmp.23;
+        symbol [ pair %pair.5 178 16 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 179 12 ]
+        %tmp.24 = lgetv %result.1;
+        symbol [ result %tmp.24 179 12 18 ];
+        symbol [ add %tmp.25 179 19 22 ];
+        %tmp.25 = getv function %tmp.24 :add;
+        %tmp.26 = newd 3;
+        %tmp.28 = const :lat;
+        symbol [ lat %tmp.28 180 17 20 const ];
+        %tmp.29 = lgetv %pair.5;
+        symbol [ pair %tmp.29 180 24 28 ];
+        %tmp.30 = 1;
+        %tmp.31 = agetv %tmp.29 %tmp.30;
+        symbol [ toDouble %tmp.32 180 32 40 ];
+        %tmp.32 = getv function %tmp.31 :toDouble;
+        %tmp.33 = invoke %tmp.31 %tmp.32();
+        %tmp.34 = dup %tmp.26;
+        %tmp.35 = aputv %tmp.34 %tmp.28 %tmp.33;
+        %tmp.37 = const :lon;
+        symbol [ lon %tmp.37 181 17 20 const ];
+        %tmp.38 = lgetv %pair.5;
+        symbol [ pair %tmp.38 181 24 28 ];
+        %tmp.39 = 0;
+        %tmp.40 = agetv %tmp.38 %tmp.39;
+        symbol [ toDouble %tmp.41 181 32 40 ];
+        %tmp.41 = getv function %tmp.40 :toDouble;
+        %tmp.42 = invoke %tmp.40 %tmp.41();
+        %tmp.43 = dup %tmp.35;
+        %tmp.44 = aputv %tmp.43 %tmp.37 %tmp.42;
+        %tmp.46 = const :addr;
+        symbol [ addr %tmp.46 182 17 21 const ];
+        %tmp.47 = self;
+        symbol [ extractAddress %tmp.48 182 25 39 ];
+        %tmp.48 = getv function %tmp.47 :extractAddress;
+        %tmp.49 = lgetv %feature.3;
+        symbol [ feature %tmp.49 182 40 47 ];
+        %tmp.50 = invoke %tmp.47 %tmp.48(%tmp.49);
+        %tmp.51 = dup %tmp.44;
+        %tmp.52 = aputv %tmp.51 %tmp.46 %tmp.50;
+        invoke %tmp.24 %tmp.25(%tmp.52);
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_50_184_8_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_incr:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 175 ]
+        %tmp.55 = lgetv %i.2;
+        symbol [ i %tmp.55 175 45 46 ];
+        %tmp.56 = add %tmp.55 1;
+        lputv %i.2 %tmp.56;
+        symbol [ i %i.2 175 45 46 ];
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_test;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_175_8_184_8_for_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 185 8 ]
+        %tmp.57 = lgetv %result.1;
+        symbol [ result %tmp.57 185 15 21 ];
+        ret %tmp.57;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_170_81_186_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 191; @symbol_functiondef = [extractAddress,191,21,35]; @symbol_param<0> = [feature,191,36,43]; @symbol_param<0>_type<0> = [Lang,191,47,51]; @symbol_param<0>_type<1> = [Dictionary,191,52,62]; @symbol_return<0> = [Lang,191,67,71]; @symbol_return<1> = [String,191,72,78]; ]
+    private
+    function extractAddress(feature as Lang.Dictionary) as Lang.String {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 192 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_stop" ]
+        %props.1 = local;
+        symbol [ props %props.1 192 12 17 ];
+        %tmp.1 = lgetv %feature;
+        symbol [ feature %tmp.1 192 20 27 ];
+        %tmp.2 = "properties";
+        %tmp.3 = agetv %tmp.1 %tmp.2;
+        %tmp.4 = as %tmp.3 Lang.Dictionary or Null;
+        symbol [ Lang %tmp.4 192 45 49 ];
+        symbol [ Dictionary %tmp.4 192 50 60 ];
+        lputv %props.1 %tmp.4;
+        symbol [ props %props.1 192 12 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 193 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_8_195_8_if_stmt:
+        %tmp.5 = lgetv %props.1;
+        symbol [ props %tmp.5 193 12 17 ];
+        %tmp.6 = null;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_8_195_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_8_195_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_27_195_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 194 12 ]
+        %tmp.8 = "Zabka";
+        ret %tmp.8;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_27_195_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_8_195_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_193_8_195_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 197 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_stop" ]
+        %addrDict.2 = local;
+        symbol [ addrDict %addrDict.2 197 12 20 ];
+        %tmp.9 = lgetv %props.1;
+        symbol [ props %tmp.9 197 23 28 ];
+        %tmp.10 = "address";
+        %tmp.11 = agetv %tmp.9 %tmp.10;
+        %tmp.12 = as %tmp.11 Lang.Dictionary or Null;
+        symbol [ Lang %tmp.12 197 43 47 ];
+        symbol [ Dictionary %tmp.12 197 48 58 ];
+        lputv %addrDict.2 %tmp.12;
+        symbol [ addrDict %addrDict.2 197 12 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 198 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_8_208_8_if_stmt:
+        %tmp.13 = lgetv %addrDict.2;
+        symbol [ addrDict %tmp.13 198 12 20 ];
+        %tmp.14 = null;
+        %tmp.15 = ne %tmp.13 %tmp.14;
+        bf %tmp.15 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_8_208_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_8_208_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_30_208_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 199 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_30_208_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_30_208_8_stop" ]
+        %road.3 = local;
+        symbol [ road %road.3 199 16 20 ];
+        %tmp.16 = lgetv %addrDict.2;
+        symbol [ addrDict %tmp.16 199 23 31 ];
+        %tmp.17 = as %tmp.16 { (!Null) };
+        %tmp.18 = "road";
+        %tmp.19 = agetv %tmp.17 %tmp.18;
+        lputv %road.3 %tmp.19;
+        symbol [ road %road.3 199 16 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 200 12 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_12_207_12_if_stmt:
+        %tmp.20 = lgetv %road.3;
+        symbol [ road %tmp.20 200 16 20 ];
+        %tmp.21 = null;
+        %tmp.22 = ne %tmp.20 %tmp.21;
+        bf %tmp.22 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_12_207_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_12_207_12_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_30_207_12_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 201 16 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_30_207_12_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_30_207_12_stop" ]
+        %label.4 = local;
+        symbol [ label %label.4 201 20 25 ];
+        %tmp.23 = lgetv %road.3;
+        symbol [ road %tmp.23 201 28 32 ];
+        %tmp.24 = as %tmp.23 { (!Null) };
+        %tmp.25 = as %tmp.24 Lang.String;
+        symbol [ Lang %tmp.25 201 36 40 ];
+        symbol [ String %tmp.25 201 41 47 ];
+        lputv %label.4 %tmp.25;
+        symbol [ label %label.4 201 20 25 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 202 16 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_30_207_12_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_30_207_12_stop" ]
+        %houseNumber.5 = local;
+        symbol [ houseNumber %houseNumber.5 202 20 31 ];
+        %tmp.26 = lgetv %addrDict.2;
+        symbol [ addrDict %tmp.26 202 34 42 ];
+        %tmp.27 = as %tmp.26 { (!Null) };
+        %tmp.28 = "house_number";
+        %tmp.29 = agetv %tmp.27 %tmp.28;
+        lputv %houseNumber.5 %tmp.29;
+        symbol [ houseNumber %houseNumber.5 202 20 31 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 203 16 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_16_205_16_if_stmt:
+        %tmp.30 = lgetv %houseNumber.5;
+        symbol [ houseNumber %tmp.30 203 20 31 ];
+        %tmp.31 = null;
+        %tmp.32 = ne %tmp.30 %tmp.31;
+        bf %tmp.32 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_16_205_16_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_16_205_16_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_41_205_16_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 204 20 ]
+        %tmp.33 = lgetv %label.4;
+        symbol [ label %tmp.33 204 28 33 ];
+        %tmp.34 = " ";
+        %tmp.35 = add %tmp.33 %tmp.34;
+        %tmp.36 = lgetv %houseNumber.5;
+        symbol [ houseNumber %tmp.36 204 42 53 ];
+        %tmp.37 = as %tmp.36 { (!Null) };
+        %tmp.38 = add %tmp.35 %tmp.37;
+        lputv %label.4 %tmp.38;
+        symbol [ label %label.4 204 20 25 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_41_205_16_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_16_205_16_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_203_16_205_16_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 206 16 ]
+        %tmp.39 = self;
+        symbol [ foldDiacritics %tmp.40 206 23 37 ];
+        %tmp.40 = getv function %tmp.39 :foldDiacritics;
+        %tmp.41 = lgetv %label.4;
+        symbol [ label %tmp.41 206 38 43 ];
+        %tmp.42 = invoke %tmp.39 %tmp.40(%tmp.41);
+        ret %tmp.42;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_30_207_12_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_12_207_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_200_12_207_12_if_end:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_30_208_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_8_208_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_198_8_208_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 212 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_stop" ]
+        %displayName.6 = local;
+        symbol [ displayName %displayName.6 212 12 23 ];
+        %tmp.43 = lgetv %props.1;
+        symbol [ props %tmp.43 212 26 31 ];
+        %tmp.44 = "display_name";
+        %tmp.45 = agetv %tmp.43 %tmp.44;
+        lputv %displayName.6 %tmp.45;
+        symbol [ displayName %displayName.6 212 12 23 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 213 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_8_220_8_if_stmt:
+        %tmp.46 = lgetv %displayName.6;
+        symbol [ displayName %tmp.46 213 12 23 ];
+        %tmp.47 = null;
+        %tmp.48 = ne %tmp.46 %tmp.47;
+        bf %tmp.48 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_8_220_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_8_220_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_33_220_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 214 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_33_220_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_33_220_8_stop" ]
+        %s.7 = local;
+        symbol [ s %s.7 214 16 17 ];
+        %tmp.49 = lgetv %displayName.6;
+        symbol [ displayName %tmp.49 214 20 31 ];
+        %tmp.50 = as %tmp.49 { (!Null) };
+        %tmp.51 = as %tmp.50 Lang.String;
+        symbol [ Lang %tmp.51 214 35 39 ];
+        symbol [ String %tmp.51 214 40 46 ];
+        lputv %s.7 %tmp.51;
+        symbol [ s %s.7 214 16 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 215 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_33_220_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_33_220_8_stop" ]
+        %comma.8 = local;
+        symbol [ comma %comma.8 215 16 21 ];
+        %tmp.52 = lgetv %s.7;
+        symbol [ s %tmp.52 215 24 25 ];
+        symbol [ find %tmp.53 215 26 30 ];
+        %tmp.53 = getv function %tmp.52 :find;
+        %tmp.54 = ",";
+        %tmp.55 = invoke %tmp.52 %tmp.53(%tmp.54);
+        lputv %comma.8 %tmp.55;
+        symbol [ comma %comma.8 215 16 21 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 216 12 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_12_218_12_if_stmt:
+        %tmp.56 = lgetv %comma.8;
+        symbol [ comma %tmp.56 216 16 21 ];
+        %tmp.57 = null;
+        %tmp.58 = ne %tmp.56 %tmp.57;
+        bf %tmp.58 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_12_218_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_12_218_12_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_31_218_12_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 217 16 ]
+        %tmp.59 = lgetv %s.7;
+        symbol [ s %tmp.59 217 20 21 ];
+        symbol [ substring %tmp.60 217 22 31 ];
+        %tmp.60 = getv function %tmp.59 :substring;
+        %tmp.61 = 0;
+        %tmp.62 = lgetv %comma.8;
+        symbol [ comma %tmp.62 217 35 40 ];
+        %tmp.63 = as %tmp.62 { (!Null) };
+        %tmp.64 = invoke %tmp.59 %tmp.60(%tmp.61, %tmp.63);
+        %tmp.65 = as %tmp.64 Lang.String;
+        symbol [ Lang %tmp.65 217 45 49 ];
+        symbol [ String %tmp.65 217 50 56 ];
+        lputv %s.7 %tmp.65;
+        symbol [ s %s.7 217 16 17 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_31_218_12_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_12_218_12_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_216_12_218_12_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 219 12 ]
+        %tmp.66 = self;
+        symbol [ foldDiacritics %tmp.67 219 19 33 ];
+        %tmp.67 = getv function %tmp.66 :foldDiacritics;
+        %tmp.68 = lgetv %s.7;
+        symbol [ s %tmp.68 219 34 35 ];
+        %tmp.69 = invoke %tmp.66 %tmp.67(%tmp.68);
+        ret %tmp.69;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_33_220_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_8_220_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_213_8_220_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 221 8 ]
+        %tmp.70 = "Zabka";
+        ret %tmp.70;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_191_79_222_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 227; @symbol_functiondef = [foldDiacritics,227,21,35]; @symbol_param<0> = [text,227,36,40]; @symbol_param<0>_type<0> = [Lang,227,44,48]; @symbol_param<0>_type<1> = [String,227,49,55]; @symbol_return<0> = [Lang,227,60,64]; @symbol_return<1> = [String,227,65,71]; ]
+    private
+    function foldDiacritics(text as Lang.String) as Lang.String {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 228 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_stop" ]
+        %map.1 = local;
+        symbol [ map %map.1 228 12 15 ];
+        %tmp.1 = newd 18;
+        %tmp.2 = 261;
+        %tmp.3 = "a";
+        %tmp.4 = dup %tmp.1;
+        %tmp.5 = aputv %tmp.4 %tmp.2 %tmp.3;
+        %tmp.6 = 263;
+        %tmp.7 = "c";
+        %tmp.8 = dup %tmp.5;
+        %tmp.9 = aputv %tmp.8 %tmp.6 %tmp.7;
+        %tmp.10 = 281;
+        %tmp.11 = "e";
+        %tmp.12 = dup %tmp.9;
+        %tmp.13 = aputv %tmp.12 %tmp.10 %tmp.11;
+        %tmp.14 = 322;
+        %tmp.15 = "l";
+        %tmp.16 = dup %tmp.13;
+        %tmp.17 = aputv %tmp.16 %tmp.14 %tmp.15;
+        %tmp.18 = 324;
+        %tmp.19 = "n";
+        %tmp.20 = dup %tmp.17;
+        %tmp.21 = aputv %tmp.20 %tmp.18 %tmp.19;
+        %tmp.22 = 243;
+        %tmp.23 = "o";
+        %tmp.24 = dup %tmp.21;
+        %tmp.25 = aputv %tmp.24 %tmp.22 %tmp.23;
+        %tmp.26 = 347;
+        %tmp.27 = "s";
+        %tmp.28 = dup %tmp.25;
+        %tmp.29 = aputv %tmp.28 %tmp.26 %tmp.27;
+        %tmp.30 = 378;
+        %tmp.31 = "z";
+        %tmp.32 = dup %tmp.29;
+        %tmp.33 = aputv %tmp.32 %tmp.30 %tmp.31;
+        %tmp.34 = 380;
+        %tmp.35 = "z";
+        %tmp.36 = dup %tmp.33;
+        %tmp.37 = aputv %tmp.36 %tmp.34 %tmp.35;
+        %tmp.38 = 260;
+        %tmp.39 = "A";
+        %tmp.40 = dup %tmp.37;
+        %tmp.41 = aputv %tmp.40 %tmp.38 %tmp.39;
+        %tmp.42 = 262;
+        %tmp.43 = "C";
+        %tmp.44 = dup %tmp.41;
+        %tmp.45 = aputv %tmp.44 %tmp.42 %tmp.43;
+        %tmp.46 = 280;
+        %tmp.47 = "E";
+        %tmp.48 = dup %tmp.45;
+        %tmp.49 = aputv %tmp.48 %tmp.46 %tmp.47;
+        %tmp.50 = 321;
+        %tmp.51 = "L";
+        %tmp.52 = dup %tmp.49;
+        %tmp.53 = aputv %tmp.52 %tmp.50 %tmp.51;
+        %tmp.54 = 323;
+        %tmp.55 = "N";
+        %tmp.56 = dup %tmp.53;
+        %tmp.57 = aputv %tmp.56 %tmp.54 %tmp.55;
+        %tmp.58 = 211;
+        %tmp.59 = "O";
+        %tmp.60 = dup %tmp.57;
+        %tmp.61 = aputv %tmp.60 %tmp.58 %tmp.59;
+        %tmp.62 = 346;
+        %tmp.63 = "S";
+        %tmp.64 = dup %tmp.61;
+        %tmp.65 = aputv %tmp.64 %tmp.62 %tmp.63;
+        %tmp.66 = 377;
+        %tmp.67 = "Z";
+        %tmp.68 = dup %tmp.65;
+        %tmp.69 = aputv %tmp.68 %tmp.66 %tmp.67;
+        %tmp.70 = 379;
+        %tmp.71 = "Z";
+        %tmp.72 = dup %tmp.69;
+        %tmp.73 = aputv %tmp.72 %tmp.70 %tmp.71;
+        lputv %map.1 %tmp.73;
+        symbol [ map %map.1 228 12 15 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 234 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_stop" ]
+        %chars.2 = local;
+        symbol [ chars %chars.2 234 12 17 ];
+        %tmp.74 = lgetv %text;
+        symbol [ text %tmp.74 234 20 24 ];
+        symbol [ toCharArray %tmp.75 234 25 36 ];
+        %tmp.75 = getv function %tmp.74 :toCharArray;
+        %tmp.76 = invoke %tmp.74 %tmp.75();
+        lputv %chars.2 %tmp.76;
+        symbol [ chars %chars.2 234 12 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 235 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_stop" ]
+        %out.3 = local;
+        symbol [ out %out.3 235 12 15 ];
+        %tmp.77 = "";
+        lputv %out.3 %tmp.77;
+        symbol [ out %out.3 235 12 15 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 236 8 ]
+        for @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_test @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_incr @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_init:
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_begin" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 236 17 18 ];
+        %tmp.78 = 0;
+        lputv %i.4 %tmp.78;
+        symbol [ i %i.4 236 17 18 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_test:
+        %tmp.79 = lgetv %i.4;
+        symbol [ i %tmp.79 236 24 25 ];
+        %tmp.80 = lgetv %chars.2;
+        symbol [ chars %tmp.80 236 28 33 ];
+        symbol [ size %tmp.81 236 34 38 ];
+        %tmp.81 = getv function %tmp.80 :size;
+        %tmp.82 = invoke %tmp.80 %tmp.81();
+        %tmp.83 = lt %tmp.79 %tmp.82;
+        bf %tmp.83 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_begin:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_47_240_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 237 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_47_240_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_47_240_8_stop" ]
+        %code.5 = local;
+        symbol [ code %code.5 237 16 20 ];
+        %tmp.84 = lgetv %chars.2;
+        symbol [ chars %tmp.84 237 24 29 ];
+        %tmp.85 = lgetv %i.4;
+        symbol [ i %tmp.85 237 30 31 ];
+        %tmp.86 = agetv %tmp.84 %tmp.85;
+        %tmp.87 = as %tmp.86 Lang.Char;
+        symbol [ Lang %tmp.87 237 36 40 ];
+        symbol [ Char %tmp.87 237 41 45 ];
+        symbol [ toNumber %tmp.88 237 47 55 ];
+        %tmp.88 = getv function %tmp.87 :toNumber;
+        %tmp.89 = invoke %tmp.87 %tmp.88();
+        lputv %code.5 %tmp.89;
+        symbol [ code %code.5 237 16 20 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 238 12 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_47_240_8_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_47_240_8_stop" ]
+        %mapped.6 = local;
+        symbol [ mapped %mapped.6 238 16 22 ];
+        %tmp.90 = lgetv %map.1;
+        symbol [ map %tmp.90 238 25 28 ];
+        %tmp.91 = lgetv %code.5;
+        symbol [ code %tmp.91 238 29 33 ];
+        %tmp.92 = agetv %tmp.90 %tmp.91;
+        lputv %mapped.6 %tmp.92;
+        symbol [ mapped %mapped.6 238 16 22 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 239 12 ]
+        %tmp.93 = lgetv %out.3;
+        symbol [ out %tmp.93 239 12 15 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_begin:
+        %tmp.94 = lgetv %mapped.6;
+        symbol [ mapped %tmp.94 239 20 26 ];
+        %tmp.95 = null;
+        %tmp.96 = ne %tmp.94 %tmp.95;
+        bf %tmp.96 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_else_false;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_true:
+        %tmp.97 = lgetv %mapped.6;
+        symbol [ mapped %tmp.97 239 38 44 ];
+        %tmp.98 = as %tmp.97 { (!Null) };
+        push %tmp.98;
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_else_false:
+        %tmp.99 = lgetv %chars.2;
+        symbol [ chars %tmp.99 239 47 52 ];
+        %tmp.100 = lgetv %i.4;
+        symbol [ i %tmp.100 239 53 54 ];
+        %tmp.101 = agetv %tmp.99 %tmp.100;
+        symbol [ toString %tmp.102 239 56 64 ];
+        %tmp.102 = getv function %tmp.101 :toString;
+        %tmp.103 = invoke %tmp.101 %tmp.102();
+        push %tmp.103;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_end:
+        %tmp.104 = phi [%tmp.96 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_begin] [%tmp.98 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_true] [%tmp.103 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_else_false] [%tmp.104 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_239_19_239_65_end];
+        %tmp.105 = add %tmp.93 %tmp.104;
+        lputv %out.3 %tmp.105;
+        symbol [ out %out.3 239 12 15 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_47_240_8_stop:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_incr:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 236 ]
+        %tmp.108 = lgetv %i.4;
+        symbol [ i %tmp.108 236 42 43 ];
+        %tmp.109 = add %tmp.108 1;
+        lputv %i.4 %tmp.109;
+        symbol [ i %i.4 236 42 43 ];
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_test;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_236_8_240_8_for_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 241 8 ]
+        %tmp.110 = lgetv %out.3;
+        symbol [ out %tmp.110 241 15 18 ];
+        ret %tmp.110;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_227_72_242_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 249; @symbol_functiondef = [registerSuccess,249,13,28]; ]
+    function registerSuccess() as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_249_39_252_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 250 8 ]
+        %tmp.1 = 0;
+        symbol [ retryCount ? 250 8 18 ];
+        putv self :retryCount %tmp.1;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 251 8 ]
+        %tmp.2 = 0;
+        symbol [ nextRetryAllowedMs ? 251 8 26 ];
+        putv self :nextRetryAllowedMs %tmp.2;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_249_39_252_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 254; @symbol_functiondef = [registerNoResult,254,13,29]; ]
+    function registerNoResult() as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_254_40_260_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 258 8 ]
+        %tmp.1 = 0;
+        symbol [ retryCount ? 258 8 18 ];
+        putv self :retryCount %tmp.1;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 259 8 ]
+        symbol [ System %tmp.2 259 29 35 ];
+        %tmp.2 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.3 259 36 44 ];
+        %tmp.3 = getv function %tmp.2 :getTimer;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        symbol [ NO_RESULT_RETRY_DELAY_MS %tmp.6 259 49 73 ];
+        %tmp.6 = getv ? :NO_RESULT_RETRY_DELAY_MS;
+        %tmp.7 = add %tmp.4 %tmp.6;
+        symbol [ nextRetryAllowedMs ? 259 8 26 ];
+        putv self :nextRetryAllowedMs %tmp.7;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_254_40_260_4_stop:
+    }
+    [ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 262; @symbol_functiondef = [registerFailure,262,21,36]; ]
+    private
+    function registerFailure() as Void {
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_262_47_269_4_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 263 8 ]
+        symbol [ retryCount %tmp.1 263 8 18 ];
+        %tmp.1 = getv self :retryCount;
+        %tmp.2 = 1;
+        %tmp.3 = add %tmp.1 %tmp.2;
+        symbol [ retryCount ? 263 8 18 ];
+        putv self :retryCount dup %tmp.3;
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 264 8 ]
+        [ "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_262_47_269_4_start" "C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_262_47_269_4_stop" ]
+        %delay.1 = local;
+        symbol [ delay %delay.1 264 12 17 ];
+        symbol [ RETRY_BASE_DELAY_MS %tmp.5 264 20 39 ];
+        %tmp.5 = getv ? :RETRY_BASE_DELAY_MS;
+        symbol [ retryCount %tmp.7 264 42 52 ];
+        %tmp.7 = getv ? :retryCount;
+        %tmp.8 = mul %tmp.5 %tmp.7;
+        lputv %delay.1 %tmp.8;
+        symbol [ delay %delay.1 264 12 17 ];
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 265 8 ]
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_8_267_8_if_stmt:
+        %tmp.9 = lgetv %delay.1;
+        symbol [ delay %tmp.9 265 12 17 ];
+        symbol [ RETRY_MAX_DELAY_MS %tmp.11 265 20 38 ];
+        %tmp.11 = getv ? :RETRY_MAX_DELAY_MS;
+        %tmp.12 = gt %tmp.9 %tmp.11;
+        bf %tmp.12 @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_8_267_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_8_267_8_if_true:
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_40_267_8_start:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 266 12 ]
+        symbol [ RETRY_MAX_DELAY_MS %tmp.14 266 20 38 ];
+        %tmp.14 = getv ? :RETRY_MAX_DELAY_MS;
+        lputv %delay.1 %tmp.14;
+        symbol [ delay %delay.1 266 12 17 ];
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_40_267_8_stop:
+        goto @C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_8_267_8_if_end;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_265_8_267_8_if_end:
+[ "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc" 268 8 ]
+        symbol [ System %tmp.15 268 29 35 ];
+        %tmp.15 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.16 268 36 44 ];
+        %tmp.16 = getv function %tmp.15 :getTimer;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        %tmp.18 = lgetv %delay.1;
+        symbol [ delay %tmp.18 268 49 54 ];
+        %tmp.19 = add %tmp.17 %tmp.18;
+        symbol [ nextRetryAllowedMs ? 268 8 26 ];
+        putv self :nextRetryAllowedMs %tmp.19;
+C__Users_chojn_vs_projects_zabka_finder_ZabkaFinder_source_NominatimClient_mc_262_47_269_4_stop:
+    }
+}
+[ @file = "C:\Users\chojn\vs_projects\zabka_finder\ZabkaFinder\source\NominatimClient.mc"; @line = 1; ]
+<init> {
+}
