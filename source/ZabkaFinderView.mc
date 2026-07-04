@@ -10,14 +10,16 @@ import Toybox.Lang;
 
 // Main (and only) view of the widget.
 // Shows an arrow pointing towards the nearest "Zabka" store (a Polish
-// convenience store chain) together with the distance to it.
+// convenience store chain) together with the distance to it, using
+// the Nominatim search API (OpenStreetMap data) to find it.
 class ZabkaFinderView extends WatchUi.View {
 
     // --- Tunable constants ------------------------------------------------
 
-    // Mean Earth radius in meters, used by the Haversine formula.
+    // Mean Earth radius in meters, used both by the Haversine formula
+    // and to size the Nominatim search bounding box.
     const EARTH_RADIUS_M = 6371000.0;
-    // Overpass search radius, in meters, around the current position.
+    // Search radius, in meters, around the current position.
     const SEARCH_RADIUS_M = 500;
     // Below this distance the arrow/text switch to a "you're close"
     // color and the tip starts pulsing.
@@ -26,34 +28,32 @@ class ZabkaFinderView extends WatchUi.View {
     // Lower = smoother/slower, higher = snappier but more jittery.
     const ANGLE_SMOOTHING = 0.25;
     // Backoff for retries after a failed (non-200 / network error)
-    // Overpass request. The delay grows with each consecutive
-    // failure, capped at RETRY_MAX_DELAY_MS.
+    // request. The delay grows with each consecutive failure, capped
+    // at RETRY_MAX_DELAY_MS.
     const RETRY_BASE_DELAY_MS = 5000;
     const RETRY_MAX_DELAY_MS = 30000;
     // How long to wait before re-checking after a *successful*
     // request that legitimately found no store nearby (not a
     // failure - the user may simply need to keep walking).
     const NO_RESULT_RETRY_DELAY_MS = 10000;
-    // Hard ceiling on how long we wait for a single Overpass request
-    // before giving up on it entirely, even if makeWebRequest's own
-    // callback never fires (observed in practice: a slow/overloaded
-    // mirror can apparently hang far longer than any reasonable UX
-    // should tolerate). This is a client-side safety net independent
-    // of whatever the network layer is doing.
+    // Hard ceiling on how long we wait for a single request before
+    // giving up on it entirely, even if makeWebRequest's own
+    // callback never fires. This is a client-side safety net
+    // independent of whatever the network layer is doing.
     const REQUEST_TIMEOUT_MS = 25000;
 
-    // Public Overpass instances can be temperamental (outages, rate
-    // limits, anti-bot filtering that misfires on legitimate
-    // clients - overpass-api.de is known to return HTTP 406 for many
-    // clients as of mid-2026). Rotating through a few known-good
-    // mirrors on failure makes the widget noticeably more resilient
-    // than hammering a single endpoint.
-    const OVERPASS_ENDPOINTS = [
-        "https://overpass.osm.jp/api/interpreter",
-        "https://overpass.private.coffee/api/interpreter",
-        "https://overpass.kumi.systems/api/interpreter",
-        "https://overpass-api.de/api/interpreter"
-    ];
+    // Nominatim (OpenStreetMap's search/geocoding service - the same
+    // one behind the search box on openstreetmap.org) is used
+    // instead of the Overpass API. Overpass is community/volunteer
+    // -run and, as of mid-2026, was intermittently unusable (the
+    // primary instance returning HTTP 406 to legitimate clients, and
+    // the handful of known mirrors becoming overloaded once everyone
+    // affected switched to them at once). Nominatim's public
+    // instance is core OSM Foundation infrastructure, built
+    // specifically to serve many small interactive lookups like this
+    // one, which is a much better fit here. See the "Usage" section
+    // in the README for the rate-limit rules this widget follows.
+    const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 
     // --- State --------------------------------------------------------------
 
@@ -83,9 +83,6 @@ class ZabkaFinderView extends WatchUi.View {
     private var watchdogTimer as Timer.Timer or Null = null;
     private var retryCount as Lang.Number = 0;
     private var nextRetryAllowedMs as Lang.Number = 0;
-    // Which entry of OVERPASS_ENDPOINTS we're currently using; moves
-    // to the next one whenever a request fails outright.
-    private var endpointIndex as Lang.Number = 0;
 
     function initialize() {
         View.initialize();
@@ -163,11 +160,9 @@ class ZabkaFinderView extends WatchUi.View {
 
     // Called if a request is still in flight REQUEST_TIMEOUT_MS after
     // it started - i.e. makeWebRequest's own callback never fired in
-    // a reasonable time (an overloaded/unresponsive mirror, for
-    // example). Treated exactly like a failed request: rotate to the
-    // next mirror and schedule a backed-off retry, so the widget
-    // recovers on its own instead of showing "szukam zabki..."
-    // forever.
+    // a reasonable time. Treated exactly like a failed request:
+    // schedule a backed-off retry, so the widget recovers on its own
+    // instead of showing "szukam zabki..." forever.
     function onRequestTimeout() as Void {
         if (!apiInFlight) {
             // The real response actually arrived right around the
@@ -179,7 +174,6 @@ class ZabkaFinderView extends WatchUi.View {
         watchdogTimer = null;
         status = "blad: timeout";
         retryCount += 1;
-        endpointIndex = (endpointIndex + 1) % OVERPASS_ENDPOINTS.size();
         var delay = RETRY_BASE_DELAY_MS * retryCount;
         if (delay > RETRY_MAX_DELAY_MS) {
             delay = RETRY_MAX_DELAY_MS;
@@ -188,60 +182,83 @@ class ZabkaFinderView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
-    // Queries the public Overpass API (OpenStreetMap) for nodes,
-    // ways, and relations ("nwr") whose name contains "abka"
-    // (matches "Zabka"/"Żabka") within SEARCH_RADIUS_M meters of the
-    // current position. Using "nwr" instead of just "node" matters
-    // because many real-world shops are mapped as a building outline
-    // (a "way") rather than a single point.
+    // Queries the Nominatim search API for places named "Zabka"
+    // within a small bounding box around the current position.
+    //
+    // Nominatim usage policy compliance:
+    // - Max 1 request/second: our retry backoff never goes below
+    //   RETRY_BASE_DELAY_MS (5s), and only one request is ever in
+    //   flight at a time (apiInFlight), so we're always well under.
+    // - A descriptive User-Agent identifying the app is sent, as
+    //   requested for non-bulk users of the shared public instance.
     function fetchZabka() as Void {
-        // Force a fixed-point decimal format (never scientific
-        // notation) for the coordinates, since Overpass QL's parser
-        // does not understand scientific notation and Monkey C's
-        // default Double-to-String conversion can sometimes produce
-        // it for certain values.
-        var latStr = (myLat as Lang.Double).format("%.6f");
-        var lonStr = (myLon as Lang.Double).format("%.6f");
+        var lat = myLat as Lang.Double;
+        var lon = myLon as Lang.Double;
 
-        var query = "[out:json][timeout:5];nwr(around:" + SEARCH_RADIUS_M + "," + latStr + "," + lonStr + ")[\"name\"~\"abka\",i];out center;";
-        // Debug aid: prints the exact query being sent, so it can be
-        // copy-pasted into a browser against whichever endpoint is
-        // logged below, to inspect the raw response while
-        // troubleshooting.
-        System.println("Overpass query: " + query);
-        var url = OVERPASS_ENDPOINTS[endpointIndex];
-        System.println("Overpass endpoint: " + url);
+        // Build a bounding box of roughly SEARCH_RADIUS_M around the
+        // current position. Nominatim's "viewbox" is a rectangle, not
+        // a circle, so results are still filtered down to the true
+        // radius afterwards in pickNearestFeature.
+        var latRad = lat * Math.PI / 180.0;
+        var latDelta = (SEARCH_RADIUS_M / EARTH_RADIUS_M) * (180.0 / Math.PI);
+        var lonDelta = (SEARCH_RADIUS_M / (EARTH_RADIUS_M * Math.cos(latRad))) * (180.0 / Math.PI);
 
+        var latMinStr = (lat - latDelta).format("%.6f");
+        var latMaxStr = (lat + latDelta).format("%.6f");
+        var lonMinStr = (lon - lonDelta).format("%.6f");
+        var lonMaxStr = (lon + lonDelta).format("%.6f");
+
+        // Nominatim's viewbox order is left,top,right,bottom, i.e.
+        // lonMin,latMax,lonMax,latMin.
+        var viewbox = lonMinStr + "," + latMaxStr + "," + lonMaxStr + "," + latMinStr;
+
+        // "Zabka" (no diacritics) is used rather than "Żabka": Monkey
+        // C source files and Garmin's watch fonts have inconsistent
+        // support for Polish diacritics, and Nominatim's search
+        // normalizes/folds accents anyway, so this matches just as
+        // well without the risk.
         var params = {
-            "data" => query
+            "q" => "Zabka",
+            "format" => "geojson",
+            "limit" => "20",
+            "viewbox" => viewbox,
+            "bounded" => "1"
         };
 
         var options = {
-            :method => Communications.HTTP_REQUEST_METHOD_POST,
+            :method => Communications.HTTP_REQUEST_METHOD_GET,
             :headers => {
-                "Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED
+                "User-Agent" => "ZabkaFinder-GarminWidget/1.0 (open-source hobby project)"
             },
             :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
         };
 
-        Communications.makeWebRequest(url, params, options, method(:onReceive));
+        System.println("Nominatim viewbox: " + viewbox);
+
+        Communications.makeWebRequest(NOMINATIM_URL, params, options, method(:onReceive));
     }
 
-    // Callback for the Overpass API request. Picks the *nearest*
-    // matching element (not just the first one returned - Overpass
-    // does not guarantee any particular order) and schedules a
-    // backed-off retry if the request itself failed.
+    // Callback for the Nominatim request. Picks the *nearest*
+    // matching feature that's actually within SEARCH_RADIUS_M (not
+    // just the first one returned) and schedules a backed-off retry
+    // if the request itself failed.
     function onReceive(responseCode as Lang.Number, data as Lang.Dictionary or Null) as Void {
         // A real response arrived, so the watchdog is no longer
         // needed for this request.
         stopWatchdog();
         apiInFlight = false;
-        System.println("Overpass response code: " + responseCode + ", data null? " + (data == null));
+        System.println("Nominatim response code: " + responseCode + ", data null? " + (data == null));
 
         if (responseCode == 200 && data != null) {
-            var elements = data["elements"] as Lang.Array;
-            if (elements != null && elements.size() > 0) {
-                var nearest = pickNearestElement(elements);
+            // GeoJSON FeatureCollection: {"type":"FeatureCollection","features":[...]}.
+            // Using format=geojson (an object) rather than the plain
+            // format=json (a top-level array) matters here: Connect
+            // IQ's automatic JSON response parsing rejects a
+            // top-level array with an INVALID_HTTP_BODY error.
+            var features = data["features"] as Lang.Array;
+            var nearest = (features != null) ? pickNearestFeature(features) : null;
+
+            if (nearest != null) {
                 zabkaLat = nearest[0] as Lang.Double;
                 zabkaLon = nearest[1] as Lang.Double;
                 calculateRouting();
@@ -249,7 +266,7 @@ class ZabkaFinderView extends WatchUi.View {
                 retryCount = 0;
                 nextRetryAllowedMs = 0;
             } else {
-                // Valid response, but nothing within the search
+                // Valid response, but nothing within the true search
                 // radius - not a failure, just keep checking as the
                 // user moves, without spamming the API every second.
                 status = "brak zabki w poblizu";
@@ -257,12 +274,10 @@ class ZabkaFinderView extends WatchUi.View {
                 nextRetryAllowedMs = System.getTimer() + NO_RESULT_RETRY_DELAY_MS;
             }
         } else {
-            // Network or server error - rotate to the next mirror
-            // and back off with a growing (capped) delay before
-            // trying again automatically.
+            // Network or server error - back off with a growing
+            // (capped) delay before trying again automatically.
             status = "blad: " + responseCode;
             retryCount += 1;
-            endpointIndex = (endpointIndex + 1) % OVERPASS_ENDPOINTS.size();
             var delay = RETRY_BASE_DELAY_MS * retryCount;
             if (delay > RETRY_MAX_DELAY_MS) {
                 delay = RETRY_MAX_DELAY_MS;
@@ -273,39 +288,38 @@ class ZabkaFinderView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
-    // Given a list of Overpass "elements", returns the [lat, lon] of
-    // the one closest to our current position.
-    function pickNearestElement(elements as Lang.Array) as Lang.Array {
+    // Given a GeoJSON "features" array, returns the [lat, lon] of the
+    // closest one that's within SEARCH_RADIUS_M, or null if none
+    // qualify (Nominatim's viewbox is a rectangle, so results near
+    // its corners can be further away than our true circular
+    // search radius).
+    function pickNearestFeature(features as Lang.Array) as Lang.Array or Null {
         var bestLat = null;
         var bestLon = null;
         var bestDist = null;
 
-        for (var i = 0; i < elements.size(); i++) {
-            var candidate = elements[i] as Lang.Dictionary;
-            var latLon = extractLatLon(candidate);
-            var candLat = latLon[0] as Lang.Double;
-            var candLon = latLon[1] as Lang.Double;
-            var d = haversineDistance(myLat as Lang.Double, myLon as Lang.Double, candLat, candLon);
+        for (var i = 0; i < features.size(); i++) {
+            var feature = features[i] as Lang.Dictionary;
+            var geometry = feature["geometry"] as Lang.Dictionary;
+            var coords = geometry["coordinates"] as Lang.Array;
+            // GeoJSON coordinate order is [longitude, latitude] -
+            // the opposite of the [lat, lon] convention used
+            // elsewhere in this file.
+            var candLon = coords[0].toDouble();
+            var candLat = coords[1].toDouble();
 
-            if (bestDist == null || d < (bestDist as Lang.Double)) {
+            var d = haversineDistance(myLat as Lang.Double, myLon as Lang.Double, candLat, candLon);
+            if (d <= SEARCH_RADIUS_M && (bestDist == null || d < (bestDist as Lang.Double))) {
                 bestDist = d;
                 bestLat = candLat;
                 bestLon = candLon;
             }
         }
 
-        return [bestLat, bestLon];
-    }
-
-    // Extracts [lat, lon] from a single Overpass element - nodes have
-    // lat/lon directly, while ways/relations expose them via
-    // "center" instead.
-    function extractLatLon(node as Lang.Dictionary) as Lang.Array {
-        if (node.hasKey("center")) {
-            var center = node["center"] as Lang.Dictionary;
-            return [center["lat"].toDouble(), center["lon"].toDouble()];
+        if (bestLat == null) {
+            return null;
         }
-        return [node["lat"].toDouble(), node["lon"].toDouble()];
+        return [bestLat, bestLon];
     }
 
     // Great-circle distance between two lat/lon points, in meters
@@ -469,7 +483,7 @@ class ZabkaFinderView extends WatchUi.View {
         dc.fillCircle(tipX, tipY, pulse);
     }
 
-    // Draws the status text: the distance in large colored digits
+    // Draws the status text: the distance in a large colored font
     // once known, or a smaller plain message while searching or on
     // error.
     function drawStatus(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float) as Void {
@@ -477,7 +491,13 @@ class ZabkaFinderView extends WatchUi.View {
         var color = Graphics.COLOR_WHITE;
 
         if (zabkaLat != null) {
-            font = Graphics.FONT_NUMBER_MILD;
+            // NOTE: intentionally NOT Graphics.FONT_NUMBER_MILD (or
+            // any other FONT_NUMBER_* font) here - those only contain
+            // digit glyphs, and since status includes a trailing
+            // " m" unit suffix, the letter "m" would render as an
+            // empty missing-glyph box. FONT_LARGE supports the full
+            // character set while still being bigger than FONT_MEDIUM.
+            font = Graphics.FONT_LARGE;
             color = currentAccentColor();
         }
 
