@@ -11,20 +11,36 @@ you walk.
    (`Position.LOCATION_CONTINUOUS`).
 2. On the first GPS fix, it sends a query to the public
    [Overpass API](https://overpass-api.de/) (an OpenStreetMap data
-   service) asking for any node within a 500 meter radius whose name
-   matches `abka` (case-insensitive) — i.e. "Żabka" / "Zabka".
-3. Once a match is returned, the widget computes:
+   service) asking for every node, way, or relation (`nwr`) within a
+   500 meter radius whose name matches `abka` (case-insensitive) —
+   i.e. "Żabka" / "Zabka" — and picks the **nearest** one (Overpass
+   does not guarantee results are sorted by distance). Querying
+   `nwr` instead of just `node` matters because many real shops are
+   mapped as a building outline rather than a single point.
+3. Once a match is picked, the widget computes:
    - the great-circle **distance** to the store using the
      [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula)
      (Earth radius ≈ 6,371,000 m), and
    - the **initial compass bearing** towards it.
-4. The on-screen arrow is continuously re-rotated using the device's
-   compass heading (`Sensor.Info.heading`) minus the bearing to the
-   store, so it always points the right way as you turn.
-5. To avoid hammering the API, only **one** Overpass request is sent
-   per GPS session (tracked via the `apiRequested` flag); after that,
-   distance/bearing are simply recalculated locally as your position
-   updates.
+4. The on-screen arrow eases towards the target angle (device compass
+   heading minus bearing to the store) on every redraw instead of
+   snapping instantly, which smooths out jitter from noisy compass
+   readings.
+5. The arrow and distance readout change color depending on state:
+   gray while searching, orange once the store is found, and green
+   with a small pulsing dot once you're within ~30 m of it.
+6. Only one Overpass request is in flight at a time, bounded by a
+   25-second client-side watchdog timer — if a response (success or
+   error) doesn't arrive in time, the request is abandoned outright
+   so the widget never gets stuck showing "szukam zabki..."
+   indefinitely, regardless of why the network call didn't complete.
+   Any failure (a real error, an HTTP 406, or a watchdog timeout)
+   rotates to the next mirror in a small built-in list
+   (`overpass.private.coffee`, `overpass.kumi.systems`,
+   `overpass-api.de`) and retries with a growing backoff (5s, 10s,
+   15s, … capped at 30s). If a request succeeds but finds nothing
+   nearby, it quietly re-checks every 10 seconds as you keep walking,
+   without spamming the API.
 
 ## Project structure
 
@@ -70,15 +86,21 @@ for details.
 
 ## Known limitations / ideas for improvement
 
-- Only the *first* matching Overpass result is used — it may not
-  always be the closest one if several are returned.
-- If the Overpass request fails, the widget does not automatically
-  retry on the next GPS fix (by design, to avoid spamming the API).
-- The Overpass endpoint (`overpass-api.de`) is a shared public
-  instance with rate limits; consider adding a fallback mirror for
-  reliability.
+- Once a store is found, the widget keeps tracking that same store
+  even if you walk far enough that a different one would now be
+  closer — it doesn't continuously re-search.
+- The primary Overpass instance (`overpass-api.de`) has been
+  intermittently rejecting legitimate requests with HTTP 406 (see
+  [Overpass-API#791](https://github.com/drolbr/Overpass-API/issues/791)).
+  The widget now rotates through a couple of mirrors automatically
+  (see above), but if all configured mirrors start doing the same,
+  the endpoint list in `ZabkaFinderView.mc` (`OVERPASS_ENDPOINTS`)
+  will need updating.
 - Currently targets a single device (Venu 2); more devices can be
   added in `manifest.xml`.
+- No haptic/vibration feedback when arriving at the store.
+- No support for favorites or showing more than one nearby store at
+  a time.
 
 ## License
 
