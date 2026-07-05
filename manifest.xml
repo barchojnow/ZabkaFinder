@@ -15,6 +15,23 @@
         -->
         <iq:products>
             <iq:product id="venu2"/>
+            <!-- Fenix 7 series -->
+            <iq:product id="fenix7"/>
+            <iq:product id="fenix7s"/>
+            <iq:product id="fenix7x"/>
+            <!-- Forerunner 255 series -->
+            <iq:product id="fr255"/>
+            <iq:product id="fr255m"/>
+            <iq:product id="fr255s"/>
+            <iq:product id="fr255sm"/>
+            <!-- Forerunner 265 series -->
+            <iq:product id="fr265"/>
+            <iq:product id="fr265s"/>
+            <!-- Forerunner 955 / 965 -->
+            <iq:product id="fr955"/>
+            <iq:product id="fr965"/>
+            <!-- Epix (Gen 2) -->
+            <iq:product id="epix2"/>
         </iq:products>
         <!--
             Use "Monkey C: Edit Permissions" from the Visual Studio Code command

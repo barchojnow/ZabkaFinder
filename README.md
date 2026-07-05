@@ -3,7 +3,7 @@
 A Garmin Connect IQ **widget** for watches that points you to the
 nearest [Żabka](https://zabka.pl) convenience store. It shows a
 rotating on-screen arrow and the distance in meters, updated live as
-you walk.
+you walk — and lets you pick from the 5 nearest stores in a menu.
 
 ## How it works
 
@@ -13,25 +13,34 @@ you walk.
    [Nominatim API](https://nominatim.org/) (OpenStreetMap's
    search/geocoding service — the same one behind the search box on
    openstreetmap.org) for places named "Zabka", restricted to a
-   bounding box of roughly 500 meters around the current position,
-   and picks the **nearest** matching result (Nominatim ranks by
-   relevance, not strictly by distance). The app previously used the
-   Overpass API directly, but switched to Nominatim after Overpass's
-   volunteer-run public infrastructure became intermittently
-   unusable (see "Known limitations" below for the history).
-3. Once a match is picked, the widget computes:
-   - the great-circle **distance** to the store using the
-     [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula)
-     (Earth radius ≈ 6,371,000 m), and
-   - the **initial compass bearing** towards it.
-4. The on-screen arrow eases towards the target angle (device compass
+   bounding box of roughly 500 meters around the current position.
+   The app previously used the Overpass API directly, but switched to
+   Nominatim after Overpass's volunteer-run public infrastructure
+   became intermittently unusable (see "Known limitations" below for
+   the history).
+3. All returned results (up to 20) are filtered to the true 500 m
+   circular radius, sorted ascending by great-circle **distance**
+   ([Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula),
+   Earth radius ≈ 6,371,000 m), and the widget locks onto the nearest
+   one, computing the **initial compass bearing** towards it.
+4. **Store selection menu**: tapping the screen (touch devices) or
+   pressing START (button devices) opens a native `Menu2` listing the
+   5 nearest stores — street address as the title, live distance as
+   the subtitle. Picking one retargets the arrow. GPS and the compass
+   keep running while the menu is open, so distances stay fresh and
+   there's no fix re-acquisition after returning.
+5. The on-screen arrow eases towards the target angle (device compass
    heading minus bearing to the store) on every redraw instead of
    snapping instantly, which smooths out jitter from noisy compass
    readings.
-5. The arrow and distance readout change color depending on state:
+6. The arrow and distance readout change color depending on state:
    gray while searching, orange once the store is found, and green
-   with a small pulsing dot once you're within ~30 m of it.
-6. Only one Nominatim request is in flight at a time, bounded by a
+   with a small pulsing dot once you're within ~30 m of it. Crossing
+   the 30 m line also fires a short **double vibration**
+   (`Attention.vibrate`) — exactly once per approach: the trigger
+   re-arms only after walking back out past 50 m (hysteresis), or
+   when a new store is picked from the menu.
+7. Only one Nominatim request is in flight at a time, bounded by a
    25-second client-side watchdog timer — if a response (success or
    error) doesn't arrive in time, the request is abandoned outright
    so the widget never gets stuck showing "szukam zabki..."
@@ -60,23 +69,50 @@ rather than relying indefinitely on the shared public one.
 ## Project structure
 
 ```
-manifest.xml                 Connect IQ app manifest (permissions, target devices, etc.)
-monkey.jungle                 Build configuration
+manifest.xml                  Connect IQ app manifest (permissions, target devices, etc.)
+monkey.jungle                 Build configuration + per-device launcher icon mapping
 source/
-  ZabkaFinderApp.mc            Application entry point
-  ZabkaFinderView.mc            Main (and only) view: GPS, API calls, drawing
+  ZabkaFinderApp.mc           Application entry point (wires view + input delegate)
+  ZabkaFinderView.mc          Main view: UI state, GPS/compass handling, drawing
+  ZabkaFinderDelegate.mc      Input handling + the 5-nearest-stores Menu2
+  NominatimClient.mc          Nominatim requests, watchdog, retry backoff, GeoJSON parsing
+  GeoMath.mc                  Pure math: Haversine distance, bearing, angle normalization
 resources/
-  drawables/                    App icon and logo bitmaps
-  layouts/                      Layout XML (currently unused placeholder layout)
-  strings/                      Localized strings (app name)
+  drawables/                  App icon and logo bitmaps (base, 416x416 screens)
+  layouts/                    Layout XML (currently unused placeholder layout)
+  strings/                    Localized strings (app name)
+resources-round-NxN/          Pre-scaled logo variants per screen size (218–454 px)
+resources-launcher-NxN/       Pre-scaled launcher icons (40/60/65/70 px, mapped in monkey.jungle)
 ```
+
+The UI layout is resolution-independent: all pixel offsets are scaled
+by `screenWidth / 416` (the Venu 2 reference size), fonts drop one
+size on screens narrower than 300 px, and logo bitmaps are shipped
+pre-scaled per screen size via resource qualifiers.
 
 ## Requirements
 
 - [Garmin Connect IQ SDK](https://developer.garmin.com/connect-iq/sdk/)
+  — with device files for all target devices downloaded via the SDK
+  Manager
 - A Garmin device (or simulator) with GPS, a compass sensor, and
   Wi-Fi/Bluetooth connectivity for network requests
-- Target device: Venu 2 (see `manifest.xml`; more devices can be added)
+
+### Supported devices
+
+Declared in `manifest.xml` (`minApiLevel 4.0.0`):
+
+| Series | Product IDs |
+|---|---|
+| Venu 2 | `venu2` |
+| Fenix 7 | `fenix7`, `fenix7s`, `fenix7x` |
+| Epix (Gen 2) | `epix2` |
+| Forerunner 255 | `fr255`, `fr255m`, `fr255s`, `fr255sm` |
+| Forerunner 265 | `fr265`, `fr265s` |
+| Forerunner 955 / 965 | `fr955`, `fr965` |
+
+On touch devices the store menu opens with a screen tap; on 5-button
+devices (Fenix, Forerunner) with the START key.
 
 ## Permissions used
 
@@ -86,13 +122,20 @@ Declared in `manifest.xml`:
 - `Positioning` — to read GPS location
 - `Sensor` — to read the compass heading
 
+(`Attention.vibrate` requires no manifest permission.)
+
 ## Building & running
 
-Using the Connect IQ VS Code extension:
+Using the Monkey C VS Code extension:
 
 1. Open this folder in VS Code with the Monkey C extension installed.
-2. Run **"Monkey C: Build Current Project"** or **"Monkey C: Run"**
-   to launch it in the simulator.
+2. Press **F5** and pick a launch configuration from
+   `.vscode/launch.json` — either a fixed device ("Run Venu 2",
+   "Run Fenix 7", "Run Forerunner 965") or "Run App", which prompts
+   for a device each time.
+3. **"Monkey C: Export Project"** compiles a release `.iq` for every
+   device in the manifest at once — useful as a quick all-devices
+   compile check.
 
 Or from the command line with the Connect IQ SDK tools (`monkeyc`,
 `monkeydo`) — see the
@@ -103,7 +146,8 @@ for details.
 
 - Once a store is found, the widget keeps tracking that same store
   even if you walk far enough that a different one would now be
-  closer — it doesn't continuously re-search.
+  closer — it doesn't continuously re-search (though you can re-pick
+  manually from the menu).
 - **History**: this widget originally used the Overpass API
   directly. As of mid-2026 the primary Overpass instance
   (`overpass-api.de`) was intermittently rejecting legitimate
@@ -118,11 +162,10 @@ for details.
   like Overpass does — in an unusually dense cluster of matching
   results this could in theory miss the true nearest one, though in
   practice this hasn't been an issue for a single small area.
-- Currently targets a single device (Venu 2); more devices can be
-  added in `manifest.xml`.
-- No haptic/vibration feedback when arriving at the store.
-- No support for favorites or showing more than one nearby store at
-  a time.
+- Store addresses come from OSM `addressdetails`; stores with
+  incomplete OSM data fall back to a generic "Zabka" label in the
+  menu. Polish diacritics are folded to ASCII for font compatibility.
+- No support for favorites.
 
 ## License
 
