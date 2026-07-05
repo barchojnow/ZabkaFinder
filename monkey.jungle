@@ -1,28 +1,34 @@
 project.manifest = manifest.xml
 
-# Per-device launcher icon overrides. Each resources-launcher-NxN
-# folder redefines Drawables.LauncherIcon with a bitmap pre-scaled to
-# that device's native launcher icon size, appended AFTER the base
-# resource path so it wins over the 80x80 fallback in resources/.
-# Base LogoIcon (80x80) stays shared for the in-app logo.
+# Device-specific resource variants: pre-scaled logo (LogoIcon) and
+# launcher icon (LauncherIcon) per device class, grouped in one
+# variants/ folder. They live OUTSIDE resources/ on purpose - the
+# resource compiler scans every resourcePath entry recursively and
+# compiles all of it for every device, so opt-in variants must be
+# mapped explicitly here. Each variant path is appended AFTER the
+# base path, so its drawable ids override the 416px fallbacks in
+# resources/.
+#
+# Folder naming: <class>-<screen px>[-<launcher px>]. The 416 screens
+# share the base 80px logo and differ only in launcher size.
 
-# 40x40: Fenix 7 series, FR 255 series, FR 955
-fenix7.resourcePath = $(fenix7.resourcePath);resources-launcher-40x40
-fenix7s.resourcePath = $(fenix7s.resourcePath);resources-launcher-40x40
-fenix7x.resourcePath = $(fenix7x.resourcePath);resources-launcher-40x40
-fr255.resourcePath = $(fr255.resourcePath);resources-launcher-40x40
-fr255m.resourcePath = $(fr255m.resourcePath);resources-launcher-40x40
-fr255s.resourcePath = $(fr255s.resourcePath);resources-launcher-40x40
-fr255sm.resourcePath = $(fr255sm.resourcePath);resources-launcher-40x40
-fr955.resourcePath = $(fr955.resourcePath);resources-launcher-40x40
+fr255s.resourcePath = $(fr255s.resourcePath);variants/small-218
+fr255sm.resourcePath = $(fr255sm.resourcePath);variants/small-218
 
-# 60x60: Epix (Gen 2), FR 265 series
-epix2.resourcePath = $(epix2.resourcePath);resources-launcher-60x60
-fr265.resourcePath = $(fr265.resourcePath);resources-launcher-60x60
-fr265s.resourcePath = $(fr265s.resourcePath);resources-launcher-60x60
+fenix7s.resourcePath = $(fenix7s.resourcePath);variants/small-240
 
-# 65x65: FR 965
-fr965.resourcePath = $(fr965.resourcePath);resources-launcher-65x65
+fenix7.resourcePath = $(fenix7.resourcePath);variants/small-260
+fr255.resourcePath = $(fr255.resourcePath);variants/small-260
+fr255m.resourcePath = $(fr255m.resourcePath);variants/small-260
+fr955.resourcePath = $(fr955.resourcePath);variants/small-260
 
-# 70x70: Venu 2
-venu2.resourcePath = $(venu2.resourcePath);resources-launcher-70x70
+fenix7x.resourcePath = $(fenix7x.resourcePath);variants/small-280
+
+fr265s.resourcePath = $(fr265s.resourcePath);variants/mid-360
+
+epix2.resourcePath = $(epix2.resourcePath);variants/large-416-60
+fr265.resourcePath = $(fr265.resourcePath);variants/large-416-60
+
+venu2.resourcePath = $(venu2.resourcePath);variants/large-416-70
+
+fr965.resourcePath = $(fr965.resourcePath);variants/large-454
