@@ -19,6 +19,32 @@ class ZabkaFinderDelegate extends WatchUi.BehaviorDelegate {
     // On touch devices a screen tap maps to the select behavior; on
     // button devices it's the START key - one handler covers both.
     function onSelect() as Lang.Boolean {
+        // While the "walking away" prompt is showing, tap/START means
+        // "keep going to my chosen store" instead of opening the menu.
+        if (view.isAwayPromptActive()) {
+            view.dismissAwayPrompt();
+            return true;
+        }
+        return openStoreMenu();
+    }
+
+    // MENU (button hold on Fenix/Forerunner, long screen press on
+    // touch devices) always leads to the store list - during the
+    // away-prompt this is the "pick a different store" path.
+    function onMenu() as Lang.Boolean {
+        if (view.isAwayPromptActive()) {
+            view.dismissAwayPrompt();
+        }
+        return openStoreMenu();
+    }
+
+    private function openStoreMenu() as Lang.Boolean {
+        // Opening the menu is a natural moment to refresh a stale
+        // store list. The response is asynchronous, so it benefits
+        // the *next* open, but this menu still shows re-sorted,
+        // distance-fresh entries from the current list.
+        view.maybeResearch();
+
         var stores = view.getNearestStores(MENU_MAX_ITEMS);
         if (stores.size() == 0) {
             // Nothing to choose from yet (no fix / no results):

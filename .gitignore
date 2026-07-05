@@ -1,0 +1,15 @@
+# Connect IQ build output
+bin/
+gen/
+*.prg
+*.prg.debug.xml
+*.iq
+*.barrel
+
+# Developer key - never commit!
+*.der
+developer_key*
+
+# OS junk
+.DS_Store
+Thumbs.db

@@ -40,7 +40,21 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
    (`Attention.vibrate`) — exactly once per approach: the trigger
    re-arms only after walking back out past 50 m (hysteresis), or
    when a new store is picked from the menu.
-7. Only one Nominatim request is in flight at a time, bounded by a
+7. **Background re-search**: after walking more than 100 m from
+   where the last search ran (and at most once per 30 s; opening the
+   store menu also nudges a refresh under the same conditions), the
+   widget silently refreshes the store list. In automatic mode the
+   arrow switches to whichever store is now nearest; a store picked
+   manually from the menu is never overridden — only the menu list
+   updates. Refresh errors are silent while a target is already
+   locked.
+8. **Walking-away guard**: when you picked a store manually and then
+   drift more than 75 m above the closest you've been to it, the
+   widget vibrates and shows a 15-second prompt: tap/START to keep
+   navigating to your choice, MENU to pick a different store from
+   the list, or do nothing — after the countdown it automatically
+   retargets to the nearest store (with a closing vibration).
+9. Only one Nominatim request is in flight at a time, bounded by a
    25-second client-side watchdog timer — if a response (success or
    error) doesn't arrive in time, the request is abandoned outright
    so the widget never gets stuck showing "szukam zabki..."
@@ -81,14 +95,19 @@ resources/
   drawables/                  App icon and logo bitmaps (base, 416x416 screens)
   layouts/                    Layout XML (currently unused placeholder layout)
   strings/                    Localized strings (app name)
-resources-round-NxN/          Pre-scaled logo variants per screen size (218–454 px)
-resources-launcher-NxN/       Pre-scaled launcher icons (40/60/65/70 px, mapped in monkey.jungle)
+variants/                     Per-device-class drawables, mapped in monkey.jungle:
+  small-218 … small-280       pre-scaled logo + 40px launcher icon (Fenix 7, FR 255/955)
+  mid-360                     logo 69px + 60px launcher icon (FR 265S)
+  large-416-60 / -70          launcher icon only, logo from base (Epix 2/FR 265, Venu 2)
+  large-454                   logo 87px + 65px launcher icon (FR 965)
 ```
 
 The UI layout is resolution-independent: all pixel offsets are scaled
 by `screenWidth / 416` (the Venu 2 reference size), fonts drop one
-size on screens narrower than 300 px, and logo bitmaps are shipped
-pre-scaled per screen size via resource qualifiers.
+size on screens narrower than 300 px, and logo/launcher bitmaps are
+shipped pre-scaled per device class via the `variants/` mappings in
+`monkey.jungle` (they can't live inside `resources/`, which is
+compiled in full for every device).
 
 ## Requirements
 
@@ -144,10 +163,6 @@ for details.
 
 ## Known limitations / ideas for improvement
 
-- Once a store is found, the widget keeps tracking that same store
-  even if you walk far enough that a different one would now be
-  closer — it doesn't continuously re-search (though you can re-pick
-  manually from the menu).
 - **History**: this widget originally used the Overpass API
   directly. As of mid-2026 the primary Overpass instance
   (`overpass-api.de`) was intermittently rejecting legitimate
