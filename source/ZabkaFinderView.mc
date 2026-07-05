@@ -23,6 +23,11 @@ class ZabkaFinderView extends WatchUi.View {
     // How much of the remaining angle we close per redraw (0..1).
     // Lower = smoother/slower, higher = snappier but more jittery.
     const ANGLE_SMOOTHING = 0.25;
+    // All pixel offsets below were originally tuned on the Venu 2
+    // (416x416) and are now scaled by dc.getWidth()/REF_SIZE, so the
+    // layout keeps its proportions on smaller screens (Fenix 7S =
+    // 240x240, FR 255 = 260x260, ...).
+    const REF_SIZE = 416.0f;
 
     // --- State --------------------------------------------------------------
 
@@ -293,13 +298,18 @@ class ZabkaFinderView extends WatchUi.View {
 
         var cx = dc.getWidth() / 2.0;
         var cy = dc.getHeight() / 2.0;
+        var s = dc.getWidth() / REF_SIZE;
 
         if (logo != null) {
-            dc.drawBitmap(cx - (logo.getWidth() / 2.0), 20, logo);
+            // The bitmap itself is already the right size for this
+            // screen: resources-round-NxN folders override LogoIcon
+            // with a pre-scaled variant per device (better quality
+            // than runtime scaling, and works on every CIQ level).
+            dc.drawBitmap(cx - (logo.getWidth() / 2.0), 20 * s, logo);
         }
 
-        drawArrow(dc, cx, cy);
-        drawStatus(dc, cx, cy);
+        drawArrow(dc, cx, cy, s);
+        drawStatus(dc, cx, cy, s);
     }
 
     // Color used for both the arrow and the distance readout: gray
@@ -317,7 +327,7 @@ class ZabkaFinderView extends WatchUi.View {
     // Draws the direction arrow, smoothly easing towards the target
     // angle each redraw, with a dark outline for contrast and a
     // pulsing dot at the tip once we're close to the store.
-    function drawArrow(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float) as Void {
+    function drawArrow(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float, s as Lang.Float) as Void {
         var targetAngle = 0.0f;
         if (zabkaLat != null) {
             targetAngle = GeoMath.normalizeAngle(zabkaBearing - heading);
@@ -331,8 +341,9 @@ class ZabkaFinderView extends WatchUi.View {
         var cosA = Math.cos(displayedAngle);
         var sinA = Math.sin(displayedAngle);
 
-        // Base arrow shape (pointing "up"), rotated below.
-        var arrowPoints = [[0, -40], [20, 30], [0, 15], [-20, 30]];
+        // Base arrow shape (pointing "up"), rotated below and scaled
+        // to the screen size.
+        var arrowPoints = [[0, -40 * s], [20 * s, 30 * s], [0, 15 * s], [-20 * s, 30 * s]];
         // Slightly larger copy drawn first in a dark color, so it
         // reads as a thin outline around the colored arrow on top.
         var outlineScale = 1.25;
@@ -361,22 +372,25 @@ class ZabkaFinderView extends WatchUi.View {
         dc.fillPolygon(arrowScreen);
 
         if (zabkaLat != null && distance <= CLOSE_DISTANCE_M) {
-            drawCloseIndicator(dc, cx, cy, displayedAngle);
+            drawCloseIndicator(dc, cx, cy, displayedAngle, s);
         }
     }
 
     // Small pulsing dot just beyond the tip of the arrow, shown once
     // the user is within CLOSE_DISTANCE_M of the store.
-    function drawCloseIndicator(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float, angle as Lang.Float) as Void {
-        // Same rotation formula as the arrow tip point [0, -40].
-        var tipX = cx + (40 * Math.sin(angle));
-        var tipY = cy - (40 * Math.cos(angle));
+    function drawCloseIndicator(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float, angle as Lang.Float, s as Lang.Float) as Void {
+        // Same rotation formula as the (scaled) arrow tip point.
+        var tipX = cx + (40 * s * Math.sin(angle));
+        var tipY = cy - (40 * s * Math.cos(angle));
 
         // Pulse the radius over time using a sine wave driven by the
         // system clock - no extra timer needed, since onUpdate
         // already runs frequently from compass events.
         var phase = System.getTimer() / 250.0;
-        var pulse = 3 + 2 * Math.sin(phase);
+        var pulse = (3 + 2 * Math.sin(phase)) * s;
+        if (pulse < 2) {
+            pulse = 2;
+        }
 
         dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
         dc.fillCircle(tipX, tipY, pulse);
@@ -384,18 +398,22 @@ class ZabkaFinderView extends WatchUi.View {
 
     // Draws the status text: the distance in a large colored font
     // once known, or a smaller plain message otherwise.
-    function drawStatus(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float) as Void {
-        var font = Graphics.FONT_MEDIUM;
+    function drawStatus(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float, s as Lang.Float) as Void {
+        // System fonts don't scale with the screen, so on small
+        // displays (Fenix 7S/FR 255 etc.) drop one font size down or
+        // the text overflows the round screen edges.
+        var small = dc.getWidth() < 300;
+        var font = small ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM;
         var color = Graphics.COLOR_WHITE;
 
         if (zabkaLat != null) {
             // NOT a FONT_NUMBER_* font: those only contain digit
             // glyphs, and status includes a trailing " m" suffix.
-            font = Graphics.FONT_LARGE;
+            font = small ? Graphics.FONT_MEDIUM : Graphics.FONT_LARGE;
             color = currentAccentColor();
         }
 
         dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, cy + 80, font, status, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, cy + 80 * s, font, status, Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
