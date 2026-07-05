@@ -24,8 +24,11 @@ import Toybox.Timer;
 //   requested for non-bulk users of the shared public instance.
 class NominatimClient {
 
-    // Search radius, in meters, around the current position.
-    const SEARCH_RADIUS_M = 500;
+    // Search radius, in meters, around the current position. 1 km
+    // rather than 500 m: OSM's Zabka coverage is patchy in places,
+    // and a wider net keeps the 5-store menu populated instead of
+    // going stale when the immediate area has nothing mapped.
+    const SEARCH_RADIUS_M = 1000;
     // Backoff for retries after a failed (non-200 / network error)
     // request. The delay grows with each consecutive failure, capped
     // at RETRY_MAX_DELAY_MS.
