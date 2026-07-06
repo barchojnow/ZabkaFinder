@@ -1,0 +1,19 @@
+<strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <!-- Polish strings, applied automatically on watches whose system
+         language is Polish. No diacritics on purpose: glyph support
+         varies across Garmin's built-in fonts. -->
+    <string id="AppName">ZabkaFinder</string>
+
+    <string id="StatusSearchingGps">szukam gps...</string>
+    <string id="StatusSearchingStore">szukam zabki...</string>
+    <string id="StatusNoGps">brak GPS</string>
+    <string id="StatusNoStore">brak zabki w poblizu</string>
+    <string id="ErrorTimeout">blad: timeout</string>
+    <string id="ErrorPrefix">blad: </string>
+
+    <string id="MenuTitle">Najblizsze Zabki</string>
+    <string id="StoreFallbackName">Zabka</string>
+
+    <string id="AwayTitle">Oddalasz sie! </string>
+    <string id="AwayHint">START: dalej / MENU: lista</string>
+</strings>

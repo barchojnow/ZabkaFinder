@@ -1,3 +1,19 @@
 <strings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+    <!-- Default language: English. Polish overrides live in
+         resources-pol/strings/strings.xml and are picked automatically
+         on watches set to Polish. -->
     <string id="AppName">ZabkaFinder</string>
+
+    <string id="StatusSearchingGps">searching GPS...</string>
+    <string id="StatusSearchingStore">searching for Zabka...</string>
+    <string id="StatusNoGps">no GPS</string>
+    <string id="StatusNoStore">no Zabka nearby</string>
+    <string id="ErrorTimeout">error: timeout</string>
+    <string id="ErrorPrefix">error: </string>
+
+    <string id="MenuTitle">Nearest Zabkas</string>
+    <string id="StoreFallbackName">Zabka</string>
+
+    <string id="AwayTitle">Moving away! </string>
+    <string id="AwayHint">START: continue / MENU: list</string>
 </strings>

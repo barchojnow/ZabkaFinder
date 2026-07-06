@@ -10,10 +10,14 @@ class ZabkaFinderDelegate extends WatchUi.BehaviorDelegate {
     const MENU_MAX_ITEMS = 5;
 
     private var view as ZabkaFinderView;
+    private var strMenuTitle as Lang.String;
+    private var strStoreFallback as Lang.String;
 
     function initialize(view as ZabkaFinderView) {
         BehaviorDelegate.initialize();
         self.view = view;
+        strMenuTitle = WatchUi.loadResource(Rez.Strings.MenuTitle) as Lang.String;
+        strStoreFallback = WatchUi.loadResource(Rez.Strings.StoreFallbackName) as Lang.String;
     }
 
     // On touch devices a screen tap maps to the select behavior; on
@@ -52,11 +56,11 @@ class ZabkaFinderDelegate extends WatchUi.BehaviorDelegate {
             return false;
         }
 
-        var menu = new WatchUi.Menu2({ :title => "Najblizsze Zabki" });
+        var menu = new WatchUi.Menu2({ :title => strMenuTitle });
         for (var i = 0; i < stores.size(); i++) {
             var s = stores[i] as Lang.Dictionary;
             var dist = s[:dist] as Lang.Double;
-            var addr = (s[:addr] != null) ? s[:addr] as Lang.String : "Zabka";
+            var addr = (s[:addr] != null) ? s[:addr] as Lang.String : strStoreFallback;
             // The item id is simply the index into the view's sorted
             // store list, which selectStore() maps back to coordinates.
             menu.addItem(new WatchUi.MenuItem(

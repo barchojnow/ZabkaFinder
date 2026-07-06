@@ -50,17 +50,37 @@ class ZabkaFinderView extends WatchUi.View {
     // How long the prompt waits for a decision before automatically
     // switching to the nearest store.
     const AWAY_PROMPT_TIMEOUT_MS = 15000;
+    // Above this ground speed the GPS course-over-ground replaces the
+    // magnetic compass as the heading source. GPS course is immune to
+    // compass miscalibration and wrist tilt, which in the field can
+    // throw the compass off by 90-180 degrees; the compass takes over
+    // again when standing (GPS course is meaningless when still).
+    const GPS_HEADING_MIN_SPEED_MPS = 1.0;
 
     // --- State --------------------------------------------------------------
 
     private var logo;
     private var heading as Lang.Float = 0.0f;
+    // True while heading comes from GPS course (walking); blocks the
+    // noisier compass callback from overwriting it.
+    private var gpsHeadingActive as Lang.Boolean = false;
     // Smoothed arrow angle actually used for drawing; eases towards
     // the target angle on every redraw instead of snapping.
     private var displayedAngle as Lang.Float = 0.0f;
-    // User-facing status text. Kept in Polish, without diacritics
-    // (for font compatibility), on purpose.
-    private var status as Lang.String = "szukam gps...";
+    // User-facing status text, set from Rez.Strings (English default,
+    // Polish via resources-pol) in initialize().
+    private var status as Lang.String = "";
+
+    // Localized strings, loaded once - status/prompt texts are used
+    // on every redraw, so they shouldn't go through loadResource
+    // each time.
+    private var strSearchGps as Lang.String = "";
+    private var strSearchStore as Lang.String = "";
+    private var strNoStore as Lang.String = "";
+    private var strErrTimeout as Lang.String = "";
+    private var strErrPrefix as Lang.String = "";
+    private var strAwayTitle as Lang.String = "";
+    private var strAwayHint as Lang.String = "";
     private var distance as Lang.Float = 0.0f;
     private var zabkaBearing as Lang.Float = 0.0f;
 
@@ -110,6 +130,15 @@ class ZabkaFinderView extends WatchUi.View {
     function initialize() {
         View.initialize();
         client = new NominatimClient(method(:onSearchResult));
+
+        strSearchGps = WatchUi.loadResource(Rez.Strings.StatusSearchingGps) as Lang.String;
+        strSearchStore = WatchUi.loadResource(Rez.Strings.StatusSearchingStore) as Lang.String;
+        strNoStore = WatchUi.loadResource(Rez.Strings.StatusNoStore) as Lang.String;
+        strErrTimeout = WatchUi.loadResource(Rez.Strings.ErrorTimeout) as Lang.String;
+        strErrPrefix = WatchUi.loadResource(Rez.Strings.ErrorPrefix) as Lang.String;
+        strAwayTitle = WatchUi.loadResource(Rez.Strings.AwayTitle) as Lang.String;
+        strAwayHint = WatchUi.loadResource(Rez.Strings.AwayHint) as Lang.String;
+        status = strSearchGps;
     }
 
     // Loads the logo bitmap once, when the layout is created.
@@ -158,11 +187,21 @@ class ZabkaFinderView extends WatchUi.View {
         myLat = loc[0].toDouble();
         myLon = loc[1].toDouble();
 
+        // While actually moving, trust the GPS course-over-ground
+        // over the magnetic compass (see GPS_HEADING_MIN_SPEED_MPS).
+        var spd = info.speed;
+        if (spd != null && spd >= GPS_HEADING_MIN_SPEED_MPS && info.heading != null) {
+            heading = info.heading as Lang.Float;
+            gpsHeadingActive = true;
+        } else {
+            gpsHeadingActive = false;
+        }
+
         if (zabkaLat == null) {
             // No target yet: request one, respecting the client's
             // retry backoff so we don't hammer the API on every fix.
             if (client.shouldRequest()) {
-                status = "szukam zabki...";
+                status = strSearchStore;
                 client.search(myLat as Lang.Double, myLon as Lang.Double);
             }
         } else {
@@ -255,16 +294,16 @@ class ZabkaFinderView extends WatchUi.View {
                 status = distance.format("%.0f") + " m";
             } else if (!hadTarget) {
                 // Nothing known at all yet.
-                status = "brak zabki w poblizu";
+                status = strNoStore;
             }
         } else if (!hadTarget) {
             // Errors only surface while we have nothing to guide to;
             // during background refreshes they stay silent (the
             // client's backoff already schedules the retry).
             if (responseCode == client.TIMEOUT_RESPONSE_CODE) {
-                status = "blad: timeout";
+                status = strErrTimeout;
             } else {
-                status = "blad: " + responseCode;
+                status = strErrPrefix + responseCode;
             }
         }
 
@@ -539,12 +578,17 @@ class ZabkaFinderView extends WatchUi.View {
 
     // --- Compass -------------------------------------------------------------
 
-    // Called whenever a new compass heading is available.
+    // Called whenever a new compass heading is available. The compass
+    // only drives the arrow while standing still - when walking, the
+    // GPS course set in onPosition() wins (it's far more reliable in
+    // the field).
     function onSensorData(sensorInfo as Sensor.Info) as Void {
-        if (sensorInfo.heading != null) {
+        if (!gpsHeadingActive && sensorInfo.heading != null) {
             heading = sensorInfo.heading as Lang.Float;
-            WatchUi.requestUpdate();
         }
+        // Redraw either way: the smoothed arrow keeps easing towards
+        // the target angle between heading changes.
+        WatchUi.requestUpdate();
     }
 
     // --- Drawing -------------------------------------------------------------
@@ -586,11 +630,11 @@ class ZabkaFinderView extends WatchUi.View {
 
         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, 24 * s, Graphics.FONT_SMALL,
-                    "Oddalasz sie! " + remainingS + "s", Graphics.TEXT_JUSTIFY_CENTER);
+                    strAwayTitle + remainingS + "s", Graphics.TEXT_JUSTIFY_CENTER);
 
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, 62 * s, Graphics.FONT_XTINY,
-                    "START: dalej / MENU: lista", Graphics.TEXT_JUSTIFY_CENTER);
+                    strAwayHint, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
     // Color used for both the arrow and the distance readout: gray

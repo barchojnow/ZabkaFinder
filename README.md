@@ -13,25 +13,32 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
    [Nominatim API](https://nominatim.org/) (OpenStreetMap's
    search/geocoding service — the same one behind the search box on
    openstreetmap.org) for places named "Zabka", restricted to a
-   bounding box of roughly 500 meters around the current position.
+   bounding box of roughly 1 km around the current position.
    The app previously used the Overpass API directly, but switched to
    Nominatim after Overpass's volunteer-run public infrastructure
    became intermittently unusable (see "Known limitations" below for
    the history).
-3. All returned results (up to 20) are filtered to the true 500 m
+3. All returned results (up to 20) are filtered to the true 1 km
    circular radius, sorted ascending by great-circle **distance**
    ([Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula),
    Earth radius ≈ 6,371,000 m), and the widget locks onto the nearest
-   one, computing the **initial compass bearing** towards it.
+   one, computing the **initial compass bearing** towards it. Fresh
+   results are **merged** with previously known stores still in range
+   (duplicates detected within 25 m), so the list only gains
+   knowledge as you walk even when Nominatim's relevance ranking
+   drops a result between calls.
 4. **Store selection menu**: tapping the screen (touch devices) or
    pressing START (button devices) opens a native `Menu2` listing the
    5 nearest stores — street address as the title, live distance as
    the subtitle. Picking one retargets the arrow. GPS and the compass
    keep running while the menu is open, so distances stay fresh and
    there's no fix re-acquisition after returning.
-5. The on-screen arrow eases towards the target angle (device compass
-   heading minus bearing to the store) on every redraw instead of
-   snapping instantly, which smooths out jitter from noisy compass
+5. **Hybrid heading**: while walking (ground speed ≥ 1 m/s) the arrow
+   is driven by the GPS course-over-ground, which is immune to
+   compass miscalibration and wrist tilt; when standing still it
+   falls back to the magnetic compass. The arrow eases towards the
+   target angle (heading minus bearing to the store) on every redraw
+   instead of snapping instantly, which smooths out jitter from noisy
    readings.
 6. The arrow and distance readout change color depending on state:
    gray while searching, orange once the store is found, and green
@@ -94,7 +101,9 @@ source/
 resources/
   drawables/                  App icon and logo bitmaps (base, 416x416 screens)
   layouts/                    Layout XML (currently unused placeholder layout)
-  strings/                    Localized strings (app name)
+  strings/                    UI strings - English (default language)
+resources-pol/
+  strings/                    Polish strings (auto-selected on Polish-language watches)
 variants/                     Per-device-class drawables, mapped in monkey.jungle:
   small-218 … small-280       pre-scaled logo + 40px launcher icon (Fenix 7, FR 255/955)
   mid-360                     logo 69px + 60px launcher icon (FR 265S)
@@ -132,6 +141,13 @@ Declared in `manifest.xml` (`minApiLevel 4.0.0`):
 
 On touch devices the store menu opens with a screen tap; on 5-button
 devices (Fenix, Forerunner) with the START key.
+
+### Languages
+
+English (default) and Polish, selected automatically from the
+watch's system language. All UI strings live in
+`resources/strings/strings.xml` (English) with Polish overrides in
+`resources-pol/strings/strings.xml`.
 
 ## Permissions used
 
@@ -181,6 +197,12 @@ for details.
   incomplete OSM data fall back to a generic "Zabka" label in the
   menu. Polish diacritics are folded to ASCII for font compatibility.
 - No support for favorites.
+
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md) — the short version: the only data that
+ever leaves the watch is an approximate location sent to Nominatim to
+find nearby stores; nothing is collected or stored by the app.
 
 ## License
 
