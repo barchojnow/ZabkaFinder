@@ -7,6 +7,7 @@
     <string id="StatusSearchingGps">szukam gps...</string>
     <string id="StatusSearchingStore">szukam zabki...</string>
     <string id="StatusNoGps">brak GPS</string>
+    <string id="StatusNoPhone">polacz z telefonem</string>
     <string id="StatusNoStore">brak zabki w poblizu</string>
     <string id="ErrorTimeout">blad: timeout</string>
     <string id="ErrorPrefix">blad: </string>

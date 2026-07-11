@@ -12,23 +12,86 @@ project.manifest = manifest.xml
 # Folder naming: <class>-<screen px>[-<launcher px>]. The 416 screens
 # share the base 80px logo and differ only in launcher size.
 
+# --- 208x208 ---------------------------------------------------------
+fr55.resourcePath = $(fr55.resourcePath);variants/small-208
+
+# --- 218x218 ---------------------------------------------------------
+fenix5s.resourcePath = $(fenix5s.resourcePath);variants/small-218;variants/launcher-36
 fr255s.resourcePath = $(fr255s.resourcePath);variants/small-218
 fr255sm.resourcePath = $(fr255sm.resourcePath);variants/small-218
 
+# --- 240x240 ---------------------------------------------------------
+fenix5.resourcePath = $(fenix5.resourcePath);variants/small-240
+fenix5plus.resourcePath = $(fenix5plus.resourcePath);variants/small-240
+fenix5splus.resourcePath = $(fenix5splus.resourcePath);variants/small-240
+fenix5x.resourcePath = $(fenix5x.resourcePath);variants/small-240
+fenix5xplus.resourcePath = $(fenix5xplus.resourcePath);variants/small-240
+fenix6s.resourcePath = $(fenix6s.resourcePath);variants/small-240
+fenix6spro.resourcePath = $(fenix6spro.resourcePath);variants/small-240
 fenix7s.resourcePath = $(fenix7s.resourcePath);variants/small-240
+fenix7spro.resourcePath = $(fenix7spro.resourcePath);variants/small-240
+fr245.resourcePath = $(fr245.resourcePath);variants/small-240
+fr245m.resourcePath = $(fr245m.resourcePath);variants/small-240
+fr645.resourcePath = $(fr645.resourcePath);variants/small-240
+fr645m.resourcePath = $(fr645m.resourcePath);variants/small-240
+fr745.resourcePath = $(fr745.resourcePath);variants/small-240
+fr935.resourcePath = $(fr935.resourcePath);variants/small-240
+fr945.resourcePath = $(fr945.resourcePath);variants/small-240
+fr945lte.resourcePath = $(fr945lte.resourcePath);variants/small-240
 
+# --- 260x260 ---------------------------------------------------------
+fenix6.resourcePath = $(fenix6.resourcePath);variants/small-260
+fenix6pro.resourcePath = $(fenix6pro.resourcePath);variants/small-260
 fenix7.resourcePath = $(fenix7.resourcePath);variants/small-260
+fenix7pro.resourcePath = $(fenix7pro.resourcePath);variants/small-260
+fenix7pronowifi.resourcePath = $(fenix7pronowifi.resourcePath);variants/small-260
+fenix8solar47mm.resourcePath = $(fenix8solar47mm.resourcePath);variants/small-260
 fr255.resourcePath = $(fr255.resourcePath);variants/small-260
 fr255m.resourcePath = $(fr255m.resourcePath);variants/small-260
 fr955.resourcePath = $(fr955.resourcePath);variants/small-260
 
+# --- 280x280 ---------------------------------------------------------
+enduro.resourcePath = $(enduro.resourcePath);variants/small-280
+enduro3.resourcePath = $(enduro3.resourcePath);variants/small-280
+fenix6xpro.resourcePath = $(fenix6xpro.resourcePath);variants/small-280
 fenix7x.resourcePath = $(fenix7x.resourcePath);variants/small-280
+fenix7xpro.resourcePath = $(fenix7xpro.resourcePath);variants/small-280
+fenix7xpronowifi.resourcePath = $(fenix7xpronowifi.resourcePath);variants/small-280
+fenix8solar51mm.resourcePath = $(fenix8solar51mm.resourcePath);variants/small-280
 
+# --- 360x360 ---------------------------------------------------------
 fr265s.resourcePath = $(fr265s.resourcePath);variants/mid-360
+venu2s.resourcePath = $(venu2s.resourcePath);variants/mid-360;variants/launcher-61
 
+# --- 390x390 ---------------------------------------------------------
+epix2pro42mm.resourcePath = $(epix2pro42mm.resourcePath);variants/mid-390
+fr165.resourcePath = $(fr165.resourcePath);variants/mid-390;variants/launcher-54
+fr165m.resourcePath = $(fr165m.resourcePath);variants/mid-390;variants/launcher-54
+fr170.resourcePath = $(fr170.resourcePath);variants/mid-390;variants/launcher-54
+fr170m.resourcePath = $(fr170m.resourcePath);variants/mid-390;variants/launcher-54
+fr57042mm.resourcePath = $(fr57042mm.resourcePath);variants/mid-390;variants/launcher-54
+fr70.resourcePath = $(fr70.resourcePath);variants/mid-390;variants/launcher-54
+venu.resourcePath = $(venu.resourcePath);variants/mid-390
+venud.resourcePath = $(venud.resourcePath);variants/mid-390
+venu3s.resourcePath = $(venu3s.resourcePath);variants/mid-390;variants/launcher-70
+venu441mm.resourcePath = $(venu441mm.resourcePath);variants/mid-390;variants/launcher-54
+
+# --- 416x416 ---------------------------------------------------------
 epix2.resourcePath = $(epix2.resourcePath);variants/large-416-60
 fr265.resourcePath = $(fr265.resourcePath);variants/large-416-60
+fenix843mm.resourcePath = $(fenix843mm.resourcePath);variants/large-416-60
+fenixe.resourcePath = $(fenixe.resourcePath);variants/large-416-60
+epix2pro47mm.resourcePath = $(epix2pro47mm.resourcePath);variants/large-416-60
 
 venu2.resourcePath = $(venu2.resourcePath);variants/large-416-70
+venu2plus.resourcePath = $(venu2plus.resourcePath);variants/large-416-70
 
+# --- 454x454 ---------------------------------------------------------
+fenix847mm.resourcePath = $(fenix847mm.resourcePath);variants/large-454
+fenix8pro47mm.resourcePath = $(fenix8pro47mm.resourcePath);variants/large-454
+epix2pro51mm.resourcePath = $(epix2pro51mm.resourcePath);variants/large-454;variants/launcher-60
+fr57047mm.resourcePath = $(fr57047mm.resourcePath);variants/large-454
 fr965.resourcePath = $(fr965.resourcePath);variants/large-454
+fr970.resourcePath = $(fr970.resourcePath);variants/large-454
+venu3.resourcePath = $(venu3.resourcePath);variants/large-454;variants/launcher-70
+venu445mm.resourcePath = $(venu445mm.resourcePath);variants/large-454

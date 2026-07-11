@@ -1,7 +1,7 @@
 import Toybox.Lang;
 import Toybox.WatchUi;
 
-// KROK 4: input handling for the main view. A tap on the screen (or
+// Input handling for the main view. A tap on the screen (or
 // the START/select button on 5-button devices like Fenix/Forerunner)
 // opens a native Menu2 listing the 5 nearest stores; picking one
 // retargets the arrow on the main screen.

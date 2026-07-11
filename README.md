@@ -94,9 +94,12 @@ manifest.xml                  Connect IQ app manifest (permissions, target devic
 monkey.jungle                 Build configuration + per-device launcher icon mapping
 source/
   ZabkaFinderApp.mc           Application entry point (wires view + input delegate)
-  ZabkaFinderView.mc          Main view: UI state, GPS/compass handling, drawing
+  ZabkaFinderView.mc          Main view: lifecycle, GPS/compass handling, drawing
   ZabkaFinderDelegate.mc      Input handling + the 5-nearest-stores Menu2
   NominatimClient.mc          Nominatim requests, watchdog, retry backoff, GeoJSON parsing
+  StoreList.mc                Store collection: radius filtering, merging, sorting
+  ProximityAlerts.mc          Arrival vibration + walking-away prompt state machines
+  TextFit.mc                  Adaptive font sizing for round screens
   GeoMath.mc                  Pure math: Haversine distance, bearing, angle normalization
 resources/
   drawables/                  App icon and logo bitmaps (base, 416x416 screens)
@@ -128,16 +131,25 @@ compiled in full for every device).
 
 ### Supported devices
 
-Declared in `manifest.xml` (`minApiLevel 4.0.0`):
+Declared in `manifest.xml` (`minApiLevel 3.1.0`) — all round-screen
+Fenix, Enduro, Epix, Forerunner and Venu models from the Fenix 5 /
+FR 245 / Venu 1 generation onwards (67 products):
 
 | Series | Product IDs |
 |---|---|
-| Venu 2 | `venu2` |
-| Fenix 7 | `fenix7`, `fenix7s`, `fenix7x` |
-| Epix (Gen 2) | `epix2` |
-| Forerunner 255 | `fr255`, `fr255m`, `fr255s`, `fr255sm` |
-| Forerunner 265 | `fr265`, `fr265s` |
-| Forerunner 955 / 965 | `fr955`, `fr965` |
+| Fenix 5 | `fenix5`, `fenix5s`, `fenix5x`, `fenix5plus`, `fenix5splus`, `fenix5xplus` |
+| Fenix 6 | `fenix6`, `fenix6pro`, `fenix6s`, `fenix6spro`, `fenix6xpro` |
+| Fenix 7 | `fenix7`, `fenix7s`, `fenix7x`, `fenix7pro`, `fenix7pronowifi`, `fenix7spro`, `fenix7xpro`, `fenix7xpronowifi` |
+| Fenix 8 / E | `fenix843mm`, `fenix847mm`, `fenix8pro47mm`, `fenix8solar47mm`, `fenix8solar51mm`, `fenixe` |
+| Enduro | `enduro`, `enduro3` |
+| Epix | `epix2`, `epix2pro42mm`, `epix2pro47mm`, `epix2pro51mm` |
+| Forerunner | `fr55`, `fr70`, `fr165(m)`, `fr170(m)`, `fr245(m)`, `fr255(m/s/sm)`, `fr265(s)`, `fr57042mm`, `fr57047mm`, `fr645(m)`, `fr745`, `fr935`, `fr945(lte)`, `fr955`, `fr965`, `fr970` |
+| Venu | `venu`, `venud`, `venu2`, `venu2plus`, `venu2s`, `venu3`, `venu3s`, `venu441mm`, `venu445mm` |
+
+Not supported: devices below Connect IQ 3.1 (Fenix 3, Fenix Chronos,
+FR 230/235/630/735XT/920XT — no `Menu2` API), FR 45 (no widget
+support at all) and rectangular screens (Venu Sq/Sq 2, Venu X1) —
+the layout is designed for round displays.
 
 On touch devices the store menu opens with a screen tap; on 5-button
 devices (Fenix, Forerunner) with the START key.

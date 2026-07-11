@@ -7,6 +7,7 @@
     <string id="StatusSearchingGps">searching GPS...</string>
     <string id="StatusSearchingStore">searching for Zabka...</string>
     <string id="StatusNoGps">no GPS</string>
+    <string id="StatusNoPhone">connect your phone</string>
     <string id="StatusNoStore">no Zabka nearby</string>
     <string id="ErrorTimeout">error: timeout</string>
     <string id="ErrorPrefix">error: </string>

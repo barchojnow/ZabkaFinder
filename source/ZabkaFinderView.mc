@@ -1,33 +1,29 @@
-import Toybox.Attention;
+import Toybox.Communications;
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.Math;
 import Toybox.Position;
 import Toybox.Sensor;
 import Toybox.System;
-import Toybox.Timer;
 import Toybox.WatchUi;
 
 // Main view of the widget: an arrow pointing towards the selected
-// "Zabka" store plus the distance to it. All networking lives in
-// NominatimClient, all math in GeoMath; this file only manages UI
-// state, sensors and drawing.
+// "Zabka" store plus the distance to it. This file owns the widget
+// lifecycle, GPS/compass handling and drawing; everything else lives
+// in focused collaborators:
+//   NominatimClient  - networking, watchdog, retry backoff
+//   StoreList        - store collection, filtering/merging/sorting
+//   ProximityAlerts  - arrival vibration + walking-away prompt logic
+//   GeoMath          - distance/bearing/angle math
+//   TextFit          - round-screen adaptive font sizing
 class ZabkaFinderView extends WatchUi.View {
 
-    // Below this distance the arrow/text switch to a "you're close"
-    // color, the tip starts pulsing and a one-shot vibration fires.
-    const CLOSE_DISTANCE_M = 30.0;
-    // The vibration re-arms only after walking back out past this
-    // distance (hysteresis), so GPS jitter around the 30 m line can't
-    // retrigger it over and over.
-    const VIBE_REARM_DISTANCE_M = 50.0;
     // How much of the remaining angle we close per redraw (0..1).
     // Lower = smoother/slower, higher = snappier but more jittery.
     const ANGLE_SMOOTHING = 0.25;
     // All pixel offsets below were originally tuned on the Venu 2
-    // (416x416) and are now scaled by dc.getWidth()/REF_SIZE, so the
-    // layout keeps its proportions on smaller screens (Fenix 7S =
-    // 240x240, FR 255 = 260x260, ...).
+    // (416x416) and are scaled by dc.getWidth()/REF_SIZE, so the
+    // layout keeps its proportions on every screen size.
     const REF_SIZE = 416.0f;
     // Background re-search: once the user has walked this far from
     // where the last successful search ran, the store list is stale
@@ -42,14 +38,6 @@ class ZabkaFinderView extends WatchUi.View {
     // vibration latch isn't re-armed for a "new" target that's
     // actually the one we're already walking to.
     const TARGET_CHANGE_EPSILON_M = 2.0;
-    // "Walking away" event for manually picked stores: fires once
-    // the distance to the chosen store grows this much above the
-    // minimum reached since it was picked (GPS noise won't produce
-    // a 75 m monotonic drift).
-    const AWAY_TRIGGER_DELTA_M = 75.0;
-    // How long the prompt waits for a decision before automatically
-    // switching to the nearest store.
-    const AWAY_PROMPT_TIMEOUT_MS = 15000;
     // Above this ground speed the GPS course-over-ground replaces the
     // magnetic compass as the heading source. GPS course is immune to
     // compass miscalibration and wrist tilt, which in the field can
@@ -77,10 +65,12 @@ class ZabkaFinderView extends WatchUi.View {
     private var strSearchGps as Lang.String = "";
     private var strSearchStore as Lang.String = "";
     private var strNoStore as Lang.String = "";
+    private var strNoPhone as Lang.String = "";
     private var strErrTimeout as Lang.String = "";
     private var strErrPrefix as Lang.String = "";
     private var strAwayTitle as Lang.String = "";
     private var strAwayHint as Lang.String = "";
+
     private var distance as Lang.Float = 0.0f;
     private var zabkaBearing as Lang.Float = 0.0f;
 
@@ -89,21 +79,12 @@ class ZabkaFinderView extends WatchUi.View {
     private var zabkaLat as Lang.Double or Null = null;
     private var zabkaLon as Lang.Double or Null = null;
 
-    // All stores from the last successful search, each a Dictionary
-    // {:lat, :lon, :addr}, sorted ascending by distance at receive time.
-    private var stores as Lang.Array = [];
-
     // True while the store-selection Menu2 is on top of this view.
     // onHide() then keeps GPS/compass running, so the distance keeps
     // updating and there's no slow GPS re-acquisition after popping
     // back - onHide should only shut things down when the widget is
     // actually going away.
     private var menuOpen as Lang.Boolean = false;
-
-    // One-shot latch for the proximity vibration (KROK 2): true once
-    // we've vibrated for the current approach; re-armed by hysteresis
-    // or by picking a new target from the menu.
-    private var hasVibrated as Lang.Boolean = false;
 
     // True when the current target was explicitly picked from the
     // menu. Background re-searches then refresh the store list but
@@ -116,24 +97,20 @@ class ZabkaFinderView extends WatchUi.View {
     private var lastSearchLon as Lang.Double or Null = null;
     private var lastSearchTimeMs as Lang.Number = 0;
 
-    // --- "Walking away from manual target" event ---------------------------
-    // Smallest distance to the manually picked store since it was
-    // picked; the away-event triggers when the current distance
-    // exceeds this baseline by AWAY_TRIGGER_DELTA_M.
-    private var minManualDistance as Lang.Float = 1000000.0f;
-    private var awayPromptActive as Lang.Boolean = false;
-    private var awayPromptDeadlineMs as Lang.Number = 0;
-    private var awayTimer as Timer.Timer or Null = null;
-
     private var client as NominatimClient;
+    private var storeList as StoreList;
+    private var alerts as ProximityAlerts;
 
     function initialize() {
         View.initialize();
         client = new NominatimClient(method(:onSearchResult));
+        storeList = new StoreList();
+        alerts = new ProximityAlerts(method(:onAwayAutoSwitch));
 
         strSearchGps = WatchUi.loadResource(Rez.Strings.StatusSearchingGps) as Lang.String;
         strSearchStore = WatchUi.loadResource(Rez.Strings.StatusSearchingStore) as Lang.String;
         strNoStore = WatchUi.loadResource(Rez.Strings.StatusNoStore) as Lang.String;
+        strNoPhone = WatchUi.loadResource(Rez.Strings.StatusNoPhone) as Lang.String;
         strErrTimeout = WatchUi.loadResource(Rez.Strings.ErrorTimeout) as Lang.String;
         strErrPrefix = WatchUi.loadResource(Rez.Strings.ErrorPrefix) as Lang.String;
         strAwayTitle = WatchUi.loadResource(Rez.Strings.AwayTitle) as Lang.String;
@@ -168,8 +145,7 @@ class ZabkaFinderView extends WatchUi.View {
             return;
         }
         client.stopWatchdog();
-        stopAwayTimer();
-        awayPromptActive = false;
+        alerts.reset();
         Sensor.enableSensorEvents(null);
         Position.enableLocationEvents(Position.LOCATION_DISABLE, method(:onPosition));
     }
@@ -200,7 +176,15 @@ class ZabkaFinderView extends WatchUi.View {
         if (zabkaLat == null) {
             // No target yet: request one, respecting the client's
             // retry backoff so we don't hammer the API on every fix.
-            if (client.shouldRequest()) {
+            // HTTP requests go through the paired phone, so without
+            // a phone connection the request is doomed to fail with
+            // -104 (BLE_CONNECTION_UNAVAILABLE) - tell the user what
+            // to fix instead of firing it. Position events keep
+            // coming, so this re-checks automatically after
+            // reconnecting.
+            if (!System.getDeviceSettings().phoneConnected) {
+                status = strNoPhone;
+            } else if (client.shouldRequest()) {
                 status = strSearchStore;
                 client.search(myLat as Lang.Double, myLon as Lang.Double);
             }
@@ -225,6 +209,11 @@ class ZabkaFinderView extends WatchUi.View {
         if (myLat == null || !client.shouldRequest()) {
             return;
         }
+        // Background refreshes silently wait for the phone to come
+        // back instead of burning retries on guaranteed -104s.
+        if (!System.getDeviceSettings().phoneConnected) {
+            return;
+        }
         if (System.getTimer() - lastSearchTimeMs < RESEARCH_MIN_INTERVAL_MS) {
             return;
         }
@@ -240,9 +229,8 @@ class ZabkaFinderView extends WatchUi.View {
         client.search(myLat as Lang.Double, myLon as Lang.Double);
     }
 
-    // Callback from NominatimClient with parsed [lat, lon] pairs (or
-    // null on failure). Filters to the true circular search radius,
-    // sorts ascending by distance and locks onto the nearest store.
+    // Callback from NominatimClient with parsed store entries (or
+    // null on failure). Updates the store list and target selection.
     function onSearchResult(responseCode as Lang.Number, coords as Lang.Array or Null) as Void {
         var hadTarget = (zabkaLat != null);
 
@@ -251,26 +239,20 @@ class ZabkaFinderView extends WatchUi.View {
             lastSearchLon = myLon;
             lastSearchTimeMs = System.getTimer();
 
-            var fresh = buildSortedStores(coords);
+            var freshCount = storeList.update(coords, myLat as Lang.Double,
+                myLon as Lang.Double, client.SEARCH_RADIUS_M);
             System.println("Zabka result: " + coords.size() + " raw, "
-                + fresh.size() + " in range, " + stores.size() + " known");
+                + freshCount + " in range, " + storeList.size() + " known");
 
-            if (fresh.size() > 0) {
+            if (freshCount > 0) {
                 client.registerSuccess();
             } else {
                 client.registerNoResult();
             }
 
-            // Merge instead of replace: previously known stores that
-            // are still within range survive a refresh that didn't
-            // re-find them (Nominatim's relevance ranking can drop
-            // results between calls), so the menu only ever *gains*
-            // knowledge as you walk.
-            stores = mergeStores(fresh);
-
-            if (stores.size() > 0) {
-                sortStoresByCurrentDistance();
-                var nearest = stores[0] as Lang.Dictionary;
+            if (storeList.size() > 0) {
+                storeList.sortByDistance(myLat as Lang.Double, myLon as Lang.Double);
+                var nearest = storeList.nearest() as Lang.Dictionary;
                 var nLat = nearest[:lat] as Lang.Double;
                 var nLon = nearest[:lon] as Lang.Double;
 
@@ -300,7 +282,11 @@ class ZabkaFinderView extends WatchUi.View {
             // Errors only surface while we have nothing to guide to;
             // during background refreshes they stay silent (the
             // client's backoff already schedules the retry).
-            if (responseCode == client.TIMEOUT_RESPONSE_CODE) {
+            if (responseCode == Communications.BLE_CONNECTION_UNAVAILABLE) {
+                // Phone dropped between the connectivity check and
+                // the request itself.
+                status = strNoPhone;
+            } else if (responseCode == client.TIMEOUT_RESPONSE_CODE) {
                 status = strErrTimeout;
             } else {
                 status = strErrPrefix + responseCode;
@@ -310,155 +296,42 @@ class ZabkaFinderView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
-    // Filters raw store entries down to SEARCH_RADIUS_M around the
-    // current position and returns them as {:lat, :lon, :addr}
-    // dictionaries sorted ascending by Haversine distance (insertion
-    // sort - at most 20 entries, so O(n^2) is irrelevant here).
-    private function buildSortedStores(coords as Lang.Array) as Lang.Array {
-        var lat = myLat as Lang.Double;
-        var lon = myLon as Lang.Double;
-
-        var list = [] as Lang.Array;
-        var dists = [] as Lang.Array;
-
-        for (var i = 0; i < coords.size(); i++) {
-            var entry = coords[i] as Lang.Dictionary;
-            var candLat = entry[:lat] as Lang.Double;
-            var candLon = entry[:lon] as Lang.Double;
-            var d = GeoMath.haversineDistance(lat, lon, candLat, candLon);
-            if (d > client.SEARCH_RADIUS_M) {
-                continue;
-            }
-
-            // Insert keeping both arrays sorted ascending by distance.
-            var pos = 0;
-            while (pos < dists.size() && (dists[pos] as Lang.Double) <= d) {
-                pos += 1;
-            }
-            dists.add(0.0d);
-            list.add(null);
-            for (var j = dists.size() - 1; j > pos; j--) {
-                dists[j] = dists[j - 1];
-                list[j] = list[j - 1];
-            }
-            dists[pos] = d;
-            list[pos] = { :lat => candLat, :lon => candLon, :addr => entry[:addr] };
-        }
-        return list;
-    }
-
-    // Combines fresh search results with previously known stores:
-    // old entries survive if they're still within SEARCH_RADIUS_M of
-    // the current position and aren't within 25 m of a fresh entry
-    // (that close = the same store, possibly with slightly different
-    // OSM coordinates). Fresh data wins on duplicates.
-    private function mergeStores(fresh as Lang.Array) as Lang.Array {
-        var lat = myLat as Lang.Double;
-        var lon = myLon as Lang.Double;
-
-        for (var i = 0; i < stores.size(); i++) {
-            var old = stores[i] as Lang.Dictionary;
-            var oLat = old[:lat] as Lang.Double;
-            var oLon = old[:lon] as Lang.Double;
-
-            if (GeoMath.haversineDistance(lat, lon, oLat, oLon) > client.SEARCH_RADIUS_M) {
-                continue;
-            }
-            var duplicate = false;
-            for (var j = 0; j < fresh.size(); j++) {
-                var f = fresh[j] as Lang.Dictionary;
-                if (GeoMath.haversineDistance(oLat, oLon,
-                        f[:lat] as Lang.Double, f[:lon] as Lang.Double) < 25.0) {
-                    duplicate = true;
-                    break;
-                }
-            }
-            if (!duplicate) {
-                fresh.add(old);
-            }
-        }
-        return fresh;
-    }
-
-    // Re-sorts the full store list by distance from the *current*
-    // position, storing the fresh distance in each entry's :dist.
-    // The order from search time goes stale as the user moves, and
-    // it must be re-established on the `stores` array itself (not
-    // just on a copy) because menu item ids are indices into it.
-    private function sortStoresByCurrentDistance() as Void {
-        var lat = myLat as Lang.Double;
-        var lon = myLon as Lang.Double;
-
-        var sorted = [] as Lang.Array;
-        for (var i = 0; i < stores.size(); i++) {
-            var s = stores[i] as Lang.Dictionary;
-            var d = GeoMath.haversineDistance(lat, lon, s[:lat] as Lang.Double, s[:lon] as Lang.Double);
-            s[:dist] = d;
-
-            var pos = 0;
-            while (pos < sorted.size()
-                   && ((sorted[pos] as Lang.Dictionary)[:dist] as Lang.Double) <= d) {
-                pos += 1;
-            }
-            sorted.add(null);
-            for (var j = sorted.size() - 1; j > pos; j--) {
-                sorted[j] = sorted[j - 1];
-            }
-            sorted[pos] = s;
-        }
-        stores = sorted;
-    }
-
-    // Returns up to `max` stores as dictionaries {:lat, :lon, :addr,
-    // :dist} for the selection menu (KROK 4), freshly re-sorted by
-    // distance from the current position.
+    // Returns up to `max` stores for the selection menu.
     function getNearestStores(max as Lang.Number) as Lang.Array {
-        var result = [] as Lang.Array;
         if (myLat == null) {
-            return result;
+            return [] as Lang.Array;
         }
-        sortStoresByCurrentDistance();
-        var count = stores.size() < max ? stores.size() : max;
-        for (var i = 0; i < count; i++) {
-            var s = stores[i] as Lang.Dictionary;
-            result.add({ :lat => s[:lat], :lon => s[:lon], :addr => s[:addr], :dist => s[:dist] });
-        }
-        return result;
+        return storeList.getNearest(max, myLat as Lang.Double, myLon as Lang.Double);
     }
 
     // Called by the menu delegate when the user picks a store from
-    // the Menu2 list: retargets the arrow and re-arms the vibration.
+    // the Menu2 list: retargets the arrow and re-arms the alerts.
     function selectStore(index as Lang.Number) as Void {
-        if (index < 0 || index >= stores.size()) {
+        var s = storeList.get(index);
+        if (s == null) {
             return;
         }
-        var s = stores[index] as Lang.Dictionary;
         // An explicit pick from the menu: background re-searches must
-        // not silently override it.
+        // not silently override it, and any pending away-prompt ends.
         manualSelection = true;
-        // Defensive: a pick always ends any pending away-prompt, and
-        // the baseline must start fresh ABOVE any plausible distance
-        // so calculateRouting() immediately lowers it to the real one.
-        stopAwayTimer();
-        awayPromptActive = false;
-        minManualDistance = 1000000.0f;
+        alerts.onManualPick();
         setTarget(s[:lat] as Lang.Double, s[:lon] as Lang.Double);
         status = distance.format("%.0f") + " m";
         WatchUi.requestUpdate();
     }
 
-    // Sets a new navigation target and resets the one-shot vibration
-    // latch so approaching the *new* store vibrates again.
+    // Sets a new navigation target and re-arms the arrival vibration
+    // so approaching the *new* store vibrates again.
     private function setTarget(lat as Lang.Double, lon as Lang.Double) as Void {
         zabkaLat = lat;
         zabkaLon = lon;
-        hasVibrated = false;
+        alerts.onNewTarget();
         calculateRouting();
     }
 
     // Computes the distance and initial compass bearing from the
-    // user's position to the target store, then runs the proximity
-    // (vibration) check on the fresh distance.
+    // user's position to the target store, then feeds the fresh
+    // distance to the haptic alert state machines.
     function calculateRouting() as Void {
         if (myLat == null || zabkaLat == null) {
             return;
@@ -471,109 +344,32 @@ class ZabkaFinderView extends WatchUi.View {
         distance = GeoMath.haversineDistance(lat1, lon1, lat2, lon2).toFloat();
         zabkaBearing = GeoMath.initialBearing(lat1, lon1, lat2, lon2);
 
-        checkProximityAlert();
-        checkWalkingAway();
+        alerts.onDistanceUpdated(distance, manualSelection, menuOpen);
     }
 
-    // Fires the "walking away" prompt when the user drifts
-    // AWAY_TRIGGER_DELTA_M above the closest they've been to their
-    // manually picked store. GPS-driven (calculateRouting), so it
-    // can't spam from compass redraws.
-    private function checkWalkingAway() as Void {
-        if (!manualSelection || awayPromptActive || menuOpen) {
-            return;
-        }
-        if (distance < minManualDistance) {
-            minManualDistance = distance;
-        } else if (distance > minManualDistance + AWAY_TRIGGER_DELTA_M) {
-            startAwayPrompt();
-        }
-    }
-
-    private function startAwayPrompt() as Void {
-        awayPromptActive = true;
-        awayPromptDeadlineMs = System.getTimer() + AWAY_PROMPT_TIMEOUT_MS;
-        vibrateShort();
-        awayTimer = new Timer.Timer();
-        (awayTimer as Timer.Timer).start(method(:onAwayTimeout), AWAY_PROMPT_TIMEOUT_MS, false);
-        WatchUi.requestUpdate();
-    }
-
-    private function stopAwayTimer() as Void {
-        if (awayTimer != null) {
-            (awayTimer as Timer.Timer).stop();
-            awayTimer = null;
-        }
-    }
+    // --- Away-prompt bridge (state lives in ProximityAlerts) ---------------
 
     function isAwayPromptActive() as Lang.Boolean {
-        return awayPromptActive;
+        return alerts.isAwayActive();
     }
 
-    // User chose (tap/START, or went to the menu) to stay with the
-    // manual target: end the event with a vibration and reset the
-    // baseline so walking away *again* re-triggers it later.
+    // Tap/START during the prompt: keep the user's chosen store.
     function dismissAwayPrompt() as Void {
-        if (!awayPromptActive) {
-            return;
-        }
-        stopAwayTimer();
-        awayPromptActive = false;
-        minManualDistance = distance;
-        vibrateShort();
+        alerts.dismissAway(distance);
         WatchUi.requestUpdate();
     }
 
-    // No decision within 15 s: automatically retarget to whatever
-    // store is nearest now, with a closing vibration.
-    function onAwayTimeout() as Void {
-        awayTimer = null;
-        if (!awayPromptActive) {
-            return;
-        }
-        awayPromptActive = false;
-
-        if (stores.size() > 0 && myLat != null) {
-            sortStoresByCurrentDistance();
-            var nearest = stores[0] as Lang.Dictionary;
+    // Prompt timed out: automatically retarget to whatever store is
+    // nearest now (the closing vibration already happened in alerts).
+    function onAwayAutoSwitch() as Void {
+        if (storeList.size() > 0 && myLat != null) {
+            storeList.sortByDistance(myLat as Lang.Double, myLon as Lang.Double);
+            var nearest = storeList.nearest() as Lang.Dictionary;
             manualSelection = false;
             setTarget(nearest[:lat] as Lang.Double, nearest[:lon] as Lang.Double);
             status = distance.format("%.0f") + " m";
         }
-        // Even with an empty store list the event must end audibly.
-        vibrateShort();
         WatchUi.requestUpdate();
-    }
-
-    // KROK 2: one-shot haptic feedback on entering the 30 m zone.
-    // Lives in the routing logic (driven by GPS fixes), NOT in
-    // onUpdate(), which redraws on every compass event - so it can
-    // never fire once per frame. The hasVibrated latch plus the
-    // re-arm hysteresis guarantee exactly one buzz per approach.
-    private function checkProximityAlert() as Void {
-        if (distance <= CLOSE_DISTANCE_M) {
-            if (!hasVibrated) {
-                hasVibrated = true;
-                vibrateShort();
-            }
-        } else if (distance > VIBE_REARM_DISTANCE_M) {
-            // Walked back out well past the zone: re-arm.
-            hasVibrated = false;
-        }
-    }
-
-    // Short, distinct double pulse. Guarded with `has :vibrate`, as
-    // Attention.vibrate isn't available on every device (and can be
-    // disabled system-wide by the user).
-    private function vibrateShort() as Void {
-        if (Attention has :vibrate) {
-            var pattern = [
-                new Attention.VibeProfile(75, 250),  // 75% strength, 250 ms
-                new Attention.VibeProfile(0, 100),   // pause
-                new Attention.VibeProfile(75, 250)
-            ] as Lang.Array<Attention.VibeProfile>;
-            Attention.vibrate(pattern);
-        }
     }
 
     // --- Compass -------------------------------------------------------------
@@ -601,7 +397,9 @@ class ZabkaFinderView extends WatchUi.View {
         var cy = dc.getHeight() / 2.0;
         var s = dc.getWidth() / REF_SIZE;
 
-        if (logo != null && !awayPromptActive) {
+        var awayActive = alerts.isAwayActive();
+
+        if (logo != null && !awayActive) {
             // The bitmap itself is already the right size for this
             // screen: variants/ folders override LogoIcon with a
             // pre-scaled bitmap per device class (better quality
@@ -612,7 +410,7 @@ class ZabkaFinderView extends WatchUi.View {
         drawArrow(dc, cx, cy, s);
         drawStatus(dc, cx, cy, s);
 
-        if (awayPromptActive) {
+        if (awayActive) {
             // Drawn where the logo normally sits, so nothing overlaps.
             drawAwayPrompt(dc, cx, s);
         }
@@ -623,18 +421,21 @@ class ZabkaFinderView extends WatchUi.View {
     // stay visible underneath - the widget keeps guiding to the
     // manual target until the user (or the timeout) decides.
     function drawAwayPrompt(dc as Graphics.Dc, cx as Lang.Float, s as Lang.Float) as Void {
-        var remainingS = (awayPromptDeadlineMs - System.getTimer()) / 1000;
-        if (remainingS < 0) {
-            remainingS = 0;
-        }
+        // Round screens are narrow near the top, so the prompt sits
+        // lower than the logo it replaces, and both lines auto-fit
+        // to the screen chord at their position.
+        var titleText = strAwayTitle + alerts.awayRemainingSeconds() + "s";
+        var titleY = 52 * s;
+        var titleFont = TextFit.fitFont(dc, titleText, 2, titleY, true); // start at FONT_SMALL
 
         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 24 * s, Graphics.FONT_SMALL,
-                    strAwayTitle + remainingS + "s", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, titleY, titleFont, titleText, Graphics.TEXT_JUSTIFY_CENTER);
+
+        var hintY = 92 * s;
+        var hintFont = TextFit.fitFont(dc, strAwayHint, 4, hintY, true); // XTINY, fit-checked
 
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, 62 * s, Graphics.FONT_XTINY,
-                    strAwayHint, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, hintY, hintFont, strAwayHint, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
     // Color used for both the arrow and the distance readout: gray
@@ -643,7 +444,7 @@ class ZabkaFinderView extends WatchUi.View {
         if (zabkaLat == null) {
             return Graphics.COLOR_LT_GRAY;
         }
-        if (distance <= CLOSE_DISTANCE_M) {
+        if (distance <= alerts.CLOSE_DISTANCE_M) {
             return Graphics.COLOR_GREEN;
         }
         return Graphics.COLOR_ORANGE;
@@ -696,7 +497,7 @@ class ZabkaFinderView extends WatchUi.View {
         dc.setColor(currentAccentColor(), Graphics.COLOR_TRANSPARENT);
         dc.fillPolygon(arrowScreen);
 
-        if (zabkaLat != null && distance <= CLOSE_DISTANCE_M) {
+        if (zabkaLat != null && distance <= alerts.CLOSE_DISTANCE_M) {
             drawCloseIndicator(dc, cx, cy, displayedAngle, s);
         }
     }
@@ -722,23 +523,22 @@ class ZabkaFinderView extends WatchUi.View {
     }
 
     // Draws the status text: the distance in a large colored font
-    // once known, or a smaller plain message otherwise.
+    // once known, or a smaller plain message otherwise. The font
+    // shrinks automatically until the text fits the screen chord.
     function drawStatus(dc as Graphics.Dc, cx as Lang.Float, cy as Lang.Float, s as Lang.Float) as Void {
-        // System fonts don't scale with the screen, so on small
-        // displays (Fenix 7S/FR 255 etc.) drop one font size down or
-        // the text overflows the round screen edges.
-        var small = dc.getWidth() < 300;
-        var font = small ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM;
+        // NOT a FONT_NUMBER_* font for the distance: those only have
+        // digit glyphs, and status includes a trailing " m" suffix.
+        var startIdx = 1; // FONT_MEDIUM for plain messages
         var color = Graphics.COLOR_WHITE;
-
         if (zabkaLat != null) {
-            // NOT a FONT_NUMBER_* font: those only contain digit
-            // glyphs, and status includes a trailing " m" suffix.
-            font = small ? Graphics.FONT_MEDIUM : Graphics.FONT_LARGE;
+            startIdx = 0; // FONT_LARGE for the distance readout
             color = currentAccentColor();
         }
 
+        var yTop = cy + 80 * s;
+        var font = TextFit.fitFont(dc, status, startIdx, yTop, false);
+
         dc.setColor(color, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx, cy + 80 * s, font, status, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(cx, yTop, font, status, Graphics.TEXT_JUSTIFY_CENTER);
     }
 }
