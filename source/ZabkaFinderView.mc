@@ -128,6 +128,35 @@ class ZabkaFinderView extends WatchUi.View {
     function onShow() as Void {
         menuOpen = false;
         Sensor.enableSensorEvents(method(:onSensorData));
+        startPositioning();
+    }
+
+    // Requests the best positioning configuration the device offers.
+    // Multi-GNSS (GPS+GLONASS+Galileo+BeiDou) and SatIQ acquire a fix
+    // noticeably faster than plain GPS, especially on a cold start -
+    // but configuration support only exists on newer devices, so
+    // everything is `has`-guarded with a plain-GPS fallback.
+    private function startPositioning() as Void {
+        if (Position has :hasConfigurationSupport) {
+            // SatIQ: the watch auto-picks the best constellation mix.
+            if (Position has :CONFIGURATION_SAT_IQ
+                && Position.hasConfigurationSupport(Position.CONFIGURATION_SAT_IQ)) {
+                Position.enableLocationEvents({
+                    :acquisitionType => Position.LOCATION_CONTINUOUS,
+                    :configuration => Position.CONFIGURATION_SAT_IQ
+                }, method(:onPosition));
+                return;
+            }
+            if (Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1
+                && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1)) {
+                Position.enableLocationEvents({
+                    :acquisitionType => Position.LOCATION_CONTINUOUS,
+                    :configuration => Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1
+                }, method(:onPosition));
+                return;
+            }
+        }
+        // Older devices: plain GPS, exactly as before.
         Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
     }
 
