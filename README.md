@@ -7,8 +7,12 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
 
 ## How it works
 
-1. On start, the widget requests continuous GPS updates
-   (`Position.LOCATION_CONTINUOUS`).
+1. On start, the widget requests continuous GPS updates using the
+   **best satellite configuration the device supports** — SatIQ, then
+   all-systems multi-band, all-systems, GPS+GLONASS, and finally
+   legacy GPS-only. This matters: the legacy one-argument call
+   defaults to GPS-only, the weakest mode on modern multi-GNSS
+   watches, which in dense urban areas can take minutes to get a fix.
 2. On the first GPS fix, it sends a search query to the
    [Nominatim API](https://nominatim.org/) (OpenStreetMap's
    search/geocoding service — the same one behind the search box on
@@ -36,10 +40,13 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
 5. **Hybrid heading**: while walking (ground speed ≥ 1 m/s) the arrow
    is driven by the GPS course-over-ground, which is immune to
    compass miscalibration and wrist tilt; when standing still it
-   falls back to the magnetic compass. The arrow eases towards the
-   target angle (heading minus bearing to the store) on every redraw
-   instead of snapping instantly, which smooths out jitter from noisy
-   readings.
+   falls back to the magnetic compass. Watches with **no compass at
+   all** (Forerunner 55, original Venu Sq) use the GPS course as the
+   only source, from a gentle walking pace (0.5 m/s). Until some
+   heading is available the arrow stays **gray** — a meaningless
+   direction is worse than none. The arrow eases towards the target
+   angle (heading minus bearing to the store) on every redraw
+   instead of snapping instantly, which smooths out jitter.
 6. The arrow and distance readout change color depending on state:
    gray while searching, orange once the store is found, and green
    with a small pulsing dot once you're within ~30 m of it. Crossing
@@ -188,6 +195,24 @@ Or from the command line with the Connect IQ SDK tools (`monkeyc`,
 `monkeydo`) — see the
 [Connect IQ SDK docs](https://developer.garmin.com/connect-iq/reference-guides/monkey-c-command-line-setup/)
 for details.
+
+## Troubleshooting
+
+**Stuck on "searching GPS..."** — the widget asks for the best
+satellite mode the watch offers, but a cold start still needs open
+sky. Sync the watch with Garmin Connect first (that downloads the
+satellite prediction data; without it a first fix can take minutes),
+then try outdoors rather than indoors or in a narrow street.
+
+**The arrow stays gray / doesn't point anywhere** — some watches have
+no magnetic compass (Forerunner 55, original Venu Sq). There the
+direction comes from the GPS course, which only exists while you're
+moving: take a few steps and the arrow colors up. Distance works
+regardless.
+
+**"connect your phone"** — Connect IQ apps reach the internet through
+the phone's Bluetooth connection, so store search needs the phone
+nearby. Navigation to an already-found store keeps working offline.
 
 ## Known limitations / ideas for improvement
 

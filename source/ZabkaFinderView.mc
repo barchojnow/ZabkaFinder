@@ -5,6 +5,7 @@ import Toybox.Math;
 import Toybox.Position;
 import Toybox.Sensor;
 import Toybox.System;
+import Toybox.Timer;
 import Toybox.WatchUi;
 
 // Main view of the widget: an arrow pointing towards the selected
@@ -44,6 +45,15 @@ class ZabkaFinderView extends WatchUi.View {
     // throw the compass off by 90-180 degrees; the compass takes over
     // again when standing (GPS course is meaningless when still).
     const GPS_HEADING_MIN_SPEED_MPS = 1.0;
+    // On watches with no magnetometer at all the GPS course is the
+    // only heading source, so accept it from a gentle walking pace.
+    const NO_COMPASS_HEADING_MIN_SPEED_MPS = 0.5;
+    // How long we wait for a fix from the device's default GNSS mode
+    // before escalating to an explicit multi-GNSS configuration.
+    const GPS_ESCALATE_MS = 15000;
+    // ...and how long we then give that configuration before giving
+    // up on it and going back to the default mode for good.
+    const GPS_DEESCALATE_MS = 25000;
 
     // --- State --------------------------------------------------------------
 
@@ -52,6 +62,14 @@ class ZabkaFinderView extends WatchUi.View {
     // True while heading comes from GPS course (walking); blocks the
     // noisier compass callback from overwriting it.
     private var gpsHeadingActive as Lang.Boolean = false;
+    // True once ANY heading source has delivered a direction. Until
+    // then the arrow points nowhere meaningful, so it stays gray.
+    private var headingValid as Lang.Boolean = false;
+    // True once the magnetometer has delivered a heading at least
+    // once. Some watches have no compass at all (Forerunner 55, the
+    // original Venu Sq) - there this stays false forever and the GPS
+    // course becomes the only heading source, at any speed.
+    private var hasMagneticHeading as Lang.Boolean = false;
     // Smoothed arrow angle actually used for drawing; eases towards
     // the target angle on every redraw instead of snapping.
     private var displayedAngle as Lang.Float = 0.0f;
@@ -101,6 +119,15 @@ class ZabkaFinderView extends WatchUi.View {
     private var storeList as StoreList;
     private var alerts as ProximityAlerts;
 
+    // Drives the GNSS escalation state machine (see
+    // startPositioning). Cleared by the first position event.
+    private var gpsTimer as Timer.Timer or Null = null;
+    private var gpsEscalated as Lang.Boolean = false;
+    // True once a live position event has arrived. Distinct from
+    // "myLat != null", which is also true for a seeded last-known
+    // position - the escalation must react to the live GPS only.
+    private var gotLiveFix as Lang.Boolean = false;
+
     function initialize() {
         View.initialize();
         client = new NominatimClient(method(:onSearchResult));
@@ -131,33 +158,118 @@ class ZabkaFinderView extends WatchUi.View {
         startPositioning();
     }
 
-    // Requests the best positioning configuration the device offers.
-    // Multi-GNSS (GPS+GLONASS+Galileo+BeiDou) and SatIQ acquire a fix
-    // noticeably faster than plain GPS, especially on a cold start -
-    // but configuration support only exists on newer devices, so
-    // everything is `has`-guarded with a plain-GPS fallback.
+    // GNSS strategy: start with the device's DEFAULT positioning
+    // request - the one that has worked for every user since 1.0 -
+    // and only escalate to an explicit multi-GNSS configuration if
+    // no fix arrives within GPS_ESCALATE_MS.
+    //
+    // Why this order: on modern watches the plain call can land on a
+    // weak GPS-only mode, which in dense cities (exactly where Zabka
+    // stores are) acquires slowly or not at all - that was the
+    // Fenix 7 / Epix Pro complaint. But asking for a configuration
+    // up front is riskier than it looks: hasConfigurationSupport()
+    // only reports what the hardware knows, not what the firmware
+    // will actually serve to a *widget*, and a wrong guess means no
+    // position at all. With 66 supported devices and no way to test
+    // them, default-first is the only honest order: nobody who
+    // worked before can regress, and watches that genuinely starve
+    // on the default get the better constellation mix automatically.
+    //
+    // NOTE: the example in Garmin's own docs for this API is buggy
+    // (assigns a raw symbol instead of the Position.CONFIGURATION_*
+    // constant and skips hasConfigurationSupport), which crashes on
+    // device - do not "fix" this back to match the docs.
     private function startPositioning() as Void {
-        if (Position has :hasConfigurationSupport) {
-            // SatIQ: the watch auto-picks the best constellation mix.
-            if (Position has :CONFIGURATION_SAT_IQ
-                && Position.hasConfigurationSupport(Position.CONFIGURATION_SAT_IQ)) {
-                Position.enableLocationEvents({
-                    :acquisitionType => Position.LOCATION_CONTINUOUS,
-                    :configuration => Position.CONFIGURATION_SAT_IQ
-                }, method(:onPosition));
-                return;
-            }
-            if (Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1
-                && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1)) {
-                Position.enableLocationEvents({
-                    :acquisitionType => Position.LOCATION_CONTINUOUS,
-                    :configuration => Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1
-                }, method(:onPosition));
-                return;
-            }
+        gpsEscalated = false;
+        gotLiveFix = false;
+        startDefaultPositioning();
+
+        // Arm the escalation only if this device has anything better
+        // to offer; otherwise there's nothing to escalate to.
+        if (bestConfiguration() != null) {
+            armGpsTimer(GPS_ESCALATE_MS);
         }
-        // Older devices: plain GPS, exactly as before.
+    }
+
+    private function startDefaultPositioning() as Void {
         Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onPosition));
+        System.println("GPS mode: device default");
+    }
+
+    // The \ GNSS configuration this device reports support for,
+    // or null when the configuration API isn't available at all.
+    private function bestConfiguration() {
+        if (!(Position has :hasConfigurationSupport)) {
+            return null;
+        }
+        if ((Position has :CONFIGURATION_SAT_IQ)
+            && Position.hasConfigurationSupport(Position.CONFIGURATION_SAT_IQ)) {
+            return Position.CONFIGURATION_SAT_IQ;
+        }
+        if ((Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5)
+            && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5)) {
+            return Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5;
+        }
+        if ((Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU)
+            && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU)) {
+            return Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU;
+        }
+        return null;
+    }
+
+    // Timer callback: either escalate to multi-GNSS, or - if that
+    // already happened and still produced nothing - go back to the
+    // default mode and stay there.
+    function onGpsTimer() as Void {
+        gpsTimer = null;
+        if (gotLiveFix) {
+            return; // a real fix arrived in the meantime
+        }
+
+        // Never restart positioning while the GNSS engine is making
+        // progress. Acquisition is incremental (the watch collects
+        // satellite data over seconds), and every enableLocationEvents
+        // call throws that progress away - which would make a cold
+        // start WORSE, not better. Native activities never do this;
+        // they just wait, which is what the GPS progress bar shows.
+        // Only a completely dead engine (no quality at all) is worth
+        // restarting with a different constellation mix.
+        var info = Position.getInfo();
+        if (info != null && info.accuracy != Position.QUALITY_NOT_AVAILABLE) {
+            System.println("GPS: acquiring (quality " + info.accuracy + "), waiting");
+            armGpsTimer(GPS_ESCALATE_MS);
+            return;
+        }
+
+        if (!gpsEscalated) {
+            var config = bestConfiguration();
+            if (config == null) {
+                return;
+            }
+            gpsEscalated = true;
+            Position.enableLocationEvents({
+                :acquisitionType => Position.LOCATION_CONTINUOUS,
+                :configuration => config
+            }, method(:onPosition));
+            System.println("GPS: no fix on default, escalating to multi-GNSS");
+            armGpsTimer(GPS_DEESCALATE_MS);
+        } else {
+            System.println("GPS: multi-GNSS gave no fix either, back to default");
+            startDefaultPositioning();
+        }
+    }
+
+    private function armGpsTimer(delayMs as Lang.Number) as Void {
+        stopGpsTimer();
+        gpsTimer = new Timer.Timer();
+        (gpsTimer as Timer.Timer).start(method(:onGpsTimer), delayMs, false);
+    }
+
+    private function stopGpsTimer() as Void {
+        if (gpsTimer != null) {
+            (gpsTimer as Timer.Timer).stop();
+            gpsTimer = null;
+        }
     }
 
     // Called by the delegate right before pushing the store menu, so
@@ -175,6 +287,7 @@ class ZabkaFinderView extends WatchUi.View {
         }
         client.stopWatchdog();
         alerts.reset();
+        stopGpsTimer();
         Sensor.enableSensorEvents(null);
         Position.enableLocationEvents(Position.LOCATION_DISABLE, method(:onPosition));
     }
@@ -188,16 +301,36 @@ class ZabkaFinderView extends WatchUi.View {
             return;
         }
 
+        // A live fix arrived, so the current GNSS mode works - no
+        // need to escalate (or de-escalate) any more.
+        if (!gotLiveFix) {
+            System.println("GPS: first live fix, quality " + info.accuracy);
+        }
+        gotLiveFix = true;
+        stopGpsTimer();
+
         var loc = (pos as Position.Location).toDegrees();
         myLat = loc[0].toDouble();
         myLon = loc[1].toDouble();
 
-        // While actually moving, trust the GPS course-over-ground
-        // over the magnetic compass (see GPS_HEADING_MIN_SPEED_MPS).
+        // Heading from the GPS course-over-ground. Two cases:
+        //  - watches WITH a compass: the course takes over while
+        //    walking (>= GPS_HEADING_MIN_SPEED_MPS), because in the
+        //    field the magnetometer was off by 90-180 degrees due to
+        //    calibration and wrist tilt;
+        //  - watches WITHOUT a compass (FR 55, original Venu Sq):
+        //    the course is the ONLY source, so accept it from a
+        //    gentle walking pace (0.5 m/s) - below that the arrow
+        //    keeps the last known direction instead of spinning on
+        //    GPS noise.
         var spd = info.speed;
-        if (spd != null && spd >= GPS_HEADING_MIN_SPEED_MPS && info.heading != null) {
+        var minSpeed = hasMagneticHeading
+            ? GPS_HEADING_MIN_SPEED_MPS
+            : NO_COMPASS_HEADING_MIN_SPEED_MPS;
+        if (spd != null && spd >= minSpeed && info.heading != null) {
             heading = info.heading as Lang.Float;
             gpsHeadingActive = true;
+            headingValid = true;
         } else {
             gpsHeadingActive = false;
         }
@@ -408,8 +541,14 @@ class ZabkaFinderView extends WatchUi.View {
     // GPS course set in onPosition() wins (it's far more reliable in
     // the field).
     function onSensorData(sensorInfo as Sensor.Info) as Void {
-        if (!gpsHeadingActive && sensorInfo.heading != null) {
-            heading = sensorInfo.heading as Lang.Float;
+        if (sensorInfo.heading != null) {
+            // A watch that reports a magnetic heading even once has a
+            // compass; that's what drives the arrow when standing.
+            hasMagneticHeading = true;
+            if (!gpsHeadingActive) {
+                heading = sensorInfo.heading as Lang.Float;
+                headingValid = true;
+            }
         }
         // Redraw either way: the smoothed arrow keeps easing towards
         // the target angle between heading changes.
@@ -523,7 +662,14 @@ class ZabkaFinderView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.fillPolygon(outlineScreen);
 
-        dc.setColor(currentAccentColor(), Graphics.COLOR_TRANSPARENT);
+        // Until a heading has arrived from either source, the
+        // arrow's direction is meaningless - keep it gray even if
+        // the store has already been found, so users aren't sent
+        // marching the wrong way. On compass-less watches this also
+        // acts as a subtle "start walking" cue: the arrow colors up
+        // as soon as movement gives us a GPS course.
+        var arrowColor = headingValid ? currentAccentColor() : Graphics.COLOR_LT_GRAY;
+        dc.setColor(arrowColor, Graphics.COLOR_TRANSPARENT);
         dc.fillPolygon(arrowScreen);
 
         if (zabkaLat != null && distance <= alerts.CLOSE_DISTANCE_M) {

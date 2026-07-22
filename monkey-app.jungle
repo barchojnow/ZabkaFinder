@@ -1,0 +1,17 @@
+# Watch-app build of ZabkaFinder (experimental).
+#
+# Same source and resources as the widget, but manifest-app.xml
+# declares type="watch-app" with its own appID. Device apps get
+# activity-grade positioning: the system keeps GPS at full power for
+# as long as the app runs, while widgets are power-capped and can be
+# slow to acquire a first fix. This build exists to measure that
+# difference on real hardware, side by side with the widget.
+#
+# Build it by passing BOTH jungles, later one wins for project.manifest:
+#   VS Code: set "monkeyC.jungleFiles": "monkey.jungle;monkey-app.jungle"
+#   CLI:     monkeyc -f monkey.jungle;monkey-app.jungle ...
+#
+# Everything else (per-device resource variants) comes from
+# monkey.jungle unchanged.
+
+project.manifest = manifest-app.xml

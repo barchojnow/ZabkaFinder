@@ -96,7 +96,11 @@ class NominatimClient {
         var params = {
             "q" => "Zabka",
             "format" => "geojson",
-            "limit" => "20",
+            // 15 rather than 20: a smaller GeoJSON payload means less
+            // memory pressure on budget watches (FR 55 and friends
+            // have very little heap for a widget), while still
+            // covering more stores than any real city block has.
+            "limit" => "15",
             "viewbox" => viewbox,
             "bounded" => "1",
             // Structured address parts (road, house number) in each
@@ -243,11 +247,6 @@ class NominatimClient {
         }
         return out;
     }
-
-    // --- Backoff bookkeeping ---------------------------------------------
-    // The owner reports the *semantic* outcome (success with results,
-    // success without results) after filtering by true radius; network
-    // failures are registered internally.
 
     function registerSuccess() as Void {
         retryCount = 0;
