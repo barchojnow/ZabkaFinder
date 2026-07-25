@@ -214,6 +214,12 @@ regardless.
 the phone's Bluetooth connection, so store search needs the phone
 nearby. Navigation to an already-found store keeps working offline.
 
+**"no internet"** — the phone is paired over Bluetooth, but the
+request never reached the network: mobile data off, airplane mode, a
+captive wifi portal, or the Garmin Connect app killed in the
+background. Fix connectivity on the phone; the widget retries on its
+own with a growing backoff.
+
 ## Known limitations / ideas for improvement
 
 - **History**: this widget originally used the Overpass API

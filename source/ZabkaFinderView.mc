@@ -84,6 +84,7 @@ class ZabkaFinderView extends WatchUi.View {
     private var strSearchStore as Lang.String = "";
     private var strNoStore as Lang.String = "";
     private var strNoPhone as Lang.String = "";
+    private var strNoInternet as Lang.String = "";
     private var strErrTimeout as Lang.String = "";
     private var strErrPrefix as Lang.String = "";
     private var strAwayTitle as Lang.String = "";
@@ -138,6 +139,7 @@ class ZabkaFinderView extends WatchUi.View {
         strSearchStore = WatchUi.loadResource(Rez.Strings.StatusSearchingStore) as Lang.String;
         strNoStore = WatchUi.loadResource(Rez.Strings.StatusNoStore) as Lang.String;
         strNoPhone = WatchUi.loadResource(Rez.Strings.StatusNoPhone) as Lang.String;
+        strNoInternet = WatchUi.loadResource(Rez.Strings.StatusNoInternet) as Lang.String;
         strErrTimeout = WatchUi.loadResource(Rez.Strings.ErrorTimeout) as Lang.String;
         strErrPrefix = WatchUi.loadResource(Rez.Strings.ErrorPrefix) as Lang.String;
         strAwayTitle = WatchUi.loadResource(Rez.Strings.AwayTitle) as Lang.String;
@@ -444,12 +446,20 @@ class ZabkaFinderView extends WatchUi.View {
             // Errors only surface while we have nothing to guide to;
             // during background refreshes they stay silent (the
             // client's backoff already schedules the retry).
-            if (responseCode == Communications.BLE_CONNECTION_UNAVAILABLE) {
+            if (responseCode == client.TIMEOUT_RESPONSE_CODE) {
+                status = strErrTimeout;
+            } else if (responseCode == Communications.BLE_CONNECTION_UNAVAILABLE) {
                 // Phone dropped between the connectivity check and
                 // the request itself.
                 status = strNoPhone;
-            } else if (responseCode == client.TIMEOUT_RESPONSE_CODE) {
-                status = strErrTimeout;
+            } else if (responseCode < 0) {
+                // Every Connect IQ transport error is negative (HTTP
+                // statuses are positive), and from the user's point
+                // of view they all mean the same thing: the phone is
+                // paired but the request never reached the internet
+                // (no data, airplane mode, captive wifi, BLE hiccup).
+                // Showing "blad: -300" helps nobody - say what to fix.
+                status = strNoInternet;
             } else {
                 status = strErrPrefix + responseCode;
             }
