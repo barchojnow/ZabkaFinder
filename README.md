@@ -191,6 +191,36 @@ Using the Monkey C VS Code extension:
    device in the manifest at once — useful as a quick all-devices
    compile check.
 
+### Tests
+
+`source/tests/` holds unit tests for the pure logic — `GeoMath`
+(Haversine distance, initial bearing, angle normalization) and
+`StoreList` (radius filtering, merge/dedup, distance sorting). They
+use the Connect IQ test framework: functions are annotated `(:test)`,
+so they're compiled into test builds only and never ship in a
+release binary.
+
+Run them with **"Monkey C: Run Tests"** in VS Code, or from the CLI
+with `monkeydo <prg> <device> -t`. Reference distances were computed
+independently rather than captured from the code, so a regression
+can't redefine its own expected result.
+
+`tools/run-tests.ps1` runs the suite across several devices in one
+command (the simulator only runs one device at a time, so it loops):
+
+```powershell
+.\tools\run-tests.ps1                    # representative device set
+.\tools\run-tests.ps1 -Devices venu2     # a single device
+.\tools\run-tests.ps1 -All               # every product in the manifest
+```
+
+The tested logic is device-independent, so the default set covers
+what actually varies — tightest memory (`fr55`), oldest API
+(`fenix5`), touch (`venu2`) and newest hardware (`fenix847mm`).
+`-All` exists for completeness but takes ~30 minutes for little
+extra signal; `Export Project` already proves the code compiles on
+every product.
+
 Or from the command line with the Connect IQ SDK tools (`monkeyc`,
 `monkeydo`) — see the
 [Connect IQ SDK docs](https://developer.garmin.com/connect-iq/reference-guides/monkey-c-command-line-setup/)
