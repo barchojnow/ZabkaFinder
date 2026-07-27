@@ -8,11 +8,21 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
 ## How it works
 
 1. On start, the widget requests continuous GPS updates using the
-   **best satellite configuration the device supports** — SatIQ, then
-   all-systems multi-band, all-systems, GPS+GLONASS, and finally
-   legacy GPS-only. This matters: the legacy one-argument call
-   defaults to GPS-only, the weakest mode on modern multi-GNSS
-   watches, which in dense urban areas can take minutes to get a fix.
+   **device's default positioning mode**, and escalates only if that
+   fails: no fix within 15 s → ask for the best GNSS configuration
+   the watch reports (SatIQ, all-systems multi-band, all-systems);
+   still nothing after 25 s → fall back to the default and stay
+   there. Escalation is skipped entirely while the GNSS engine
+   reports progress, because every `enableLocationEvents` call
+   restarts satellite acquisition.
+
+   Default-first is deliberate. Asking for a "better" configuration
+   up front looks tempting, but `hasConfigurationSupport()` only
+   reports what the *hardware* knows — not what the firmware actually
+   serves to a widget. Fenix 7 and Epix Pro accept such a request and
+   then deliver no position at all, which is exactly how v1.1.1
+   broke them. With 66 devices and no way to test them, the only safe
+   order is "start with what already works everywhere".
 2. On the first GPS fix, it sends a search query to the
    [Nominatim API](https://nominatim.org/) (OpenStreetMap's
    search/geocoding service — the same one behind the search box on
@@ -22,7 +32,7 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
    Nominatim after Overpass's volunteer-run public infrastructure
    became intermittently unusable (see "Known limitations" below for
    the history).
-3. All returned results (up to 20) are filtered to the true 1 km
+3. All returned results (up to 15) are filtered to the true 1 km
    circular radius, sorted ascending by great-circle **distance**
    ([Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula),
    Earth radius ≈ 6,371,000 m), and the widget locks onto the nearest
@@ -71,12 +81,18 @@ you walk — and lets you pick from the 5 nearest stores in a menu.
 9. Only one Nominatim request is in flight at a time, bounded by a
    25-second client-side watchdog timer — if a response (success or
    error) doesn't arrive in time, the request is abandoned outright
-   so the widget never gets stuck showing "szukam zabki..."
+   so the widget never gets stuck on "searching for Zabka..."
    indefinitely, regardless of why the network call didn't complete.
    Any failure retries with a growing backoff (5s, 10s, 15s, …
    capped at 30s). If a request succeeds but finds nothing nearby, it
    quietly re-checks every 10 seconds as you keep walking, without
    spamming the API.
+10. **Error messages are rules, not lookup tables**: HTTP statuses are
+    positive, Connect IQ transport errors are negative — so `-104`
+    becomes "connect your phone", every other negative code becomes
+    "no internet", and positive codes are shown with their number
+    because they describe the server rather than the user's setup.
+    That way a new transport error code doesn't need a new release.
 
 ## Usage of the Nominatim API
 
@@ -98,7 +114,8 @@ rather than relying indefinitely on the shared public one.
 
 ```
 manifest.xml                  Connect IQ app manifest (permissions, target devices, etc.)
-monkey.jungle                 Build configuration + per-device launcher icon mapping
+monkey.jungle                 Build config + per-device resource variant mapping
+PRIVACY.md                    Privacy policy (linked from the store listing)
 source/
   ZabkaFinderApp.mc           Application entry point (wires view + input delegate)
   ZabkaFinderView.mc          Main view: lifecycle, GPS/compass handling, drawing
@@ -108,39 +125,53 @@ source/
   ProximityAlerts.mc          Arrival vibration + walking-away prompt state machines
   TextFit.mc                  Adaptive font sizing for round screens
   GeoMath.mc                  Pure math: Haversine distance, bearing, angle normalization
+  tests/                      Unit tests for GeoMath and StoreList ((:test) annotated)
+tools/
+  run-tests.ps1               Runs the test suite across several devices in one command
 resources/
   drawables/                  App icon and logo bitmaps (base, 416x416 screens)
   layouts/                    Layout XML (currently unused placeholder layout)
   strings/                    UI strings - English (default language)
 resources-pol/
   strings/                    Polish strings (auto-selected on Polish-language watches)
-variants/                     Per-device-class drawables, mapped in monkey.jungle:
-  small-218 … small-280       pre-scaled logo + 40px launcher icon (Fenix 7, FR 255/955)
-  mid-360                     logo 69px + 60px launcher icon (FR 265S)
-  large-416-60 / -70          launcher icon only, logo from base (Epix 2/FR 265, Venu 2)
-  large-454                   logo 87px + 65px launcher icon (FR 965)
+variants/                     Per-device drawables, mapped in monkey.jungle:
+  small-208 … small-280       pre-scaled logo + launcher icon (208/218/240/260/280 px screens)
+  mid-360, mid-390            logo 69/75px + launcher icon
+  large-416-60 / -70          launcher icon only, logo from base (416 px screens)
+  large-454                   logo 87px + 65px launcher icon
+  launcher-36 … launcher-70   launcher icon only, layered on top of a screen variant
+                              where a device's icon size doesn't match its screen class
+store_assets/                 Store listing graphics and screenshots (not part of the build)
 ```
 
-The UI layout is resolution-independent: all pixel offsets are scaled
-by `screenWidth / 416` (the Venu 2 reference size), fonts drop one
-size on screens narrower than 300 px, and logo/launcher bitmaps are
-shipped pre-scaled per device class via the `variants/` mappings in
-`monkey.jungle` (they can't live inside `resources/`, which is
-compiled in full for every device).
+Two things make one binary fit 66 different watches:
+
+- **Layout scales with the screen.** Every pixel offset is multiplied
+  by `screenWidth / 416` (the Venu 2 reference size), and text picks
+  the largest font that fits the round screen's *chord* at its own
+  vertical position (`TextFit`) — so labels never clip, whatever the
+  language or screen size.
+- **Bitmaps are pre-scaled per device**, since runtime scaling isn't
+  available everywhere and looks worse. The `variants/` folders can't
+  live inside `resources/` (which is compiled in full for every
+  device), so `monkey.jungle` maps each product to its variant path
+  explicitly; the last path wins on conflicting resource ids, which
+  is how `launcher-*` overrides just the icon.
 
 ## Requirements
 
 - [Garmin Connect IQ SDK](https://developer.garmin.com/connect-iq/sdk/)
   — with device files for all target devices downloaded via the SDK
   Manager
-- A Garmin device (or simulator) with GPS, a compass sensor, and
-  Wi-Fi/Bluetooth connectivity for network requests
+- A Garmin device (or simulator) with GPS and a phone connection for
+  network requests. A magnetic compass is optional — watches without
+  one derive heading from the GPS course while moving.
 
 ### Supported devices
 
 Declared in `manifest.xml` (`minApiLevel 3.1.0`) — all round-screen
 Fenix, Enduro, Epix, Forerunner and Venu models from the Fenix 5 /
-FR 245 / Venu 1 generation onwards (67 products):
+FR 245 / Venu 1 generation onwards (65 products):
 
 | Series | Product IDs |
 |---|---|
@@ -201,9 +232,11 @@ so they're compiled into test builds only and never ship in a
 release binary.
 
 Run them with **"Monkey C: Run Tests"** in VS Code, or from the CLI
-with `monkeydo <prg> <device> -t`. Reference distances were computed
-independently rather than captured from the code, so a regression
-can't redefine its own expected result.
+with `monkeydo <prg> <device> /t` (slash flags on Windows). Reference
+distances were computed independently rather than captured from the
+code, so a regression can't redefine its own expected result — and
+several tests exist because the bug happened first: menu order that
+froze at search time, and stores lost when a refresh omitted them.
 
 `tools/run-tests.ps1` runs the suite across several devices in one
 command (the simulator only runs one device at a time, so it loops):
@@ -213,6 +246,10 @@ command (the simulator only runs one device at a time, so it loops):
 .\tools\run-tests.ps1 -Devices venu2     # a single device
 .\tools\run-tests.ps1 -All               # every product in the manifest
 ```
+
+It starts the simulator if needed, prints a per-device summary and
+exits non-zero on any failure. (If PowerShell blocks it, run
+`powershell -ExecutionPolicy Bypass -File .\tools\run-tests.ps1`.)
 
 The tested logic is device-independent, so the default set covers
 what actually varies — tightest memory (`fr55`), oldest API
@@ -262,13 +299,21 @@ own with a growing backoff.
   issue at the time, not specific to this app. The widget was
   switched to Nominatim as a result; see "How it works" above.
 - Nominatim returns a capped, relevance-ranked "collection of best
-  matches" (`limit=20` here) rather than an exhaustive enumeration
+  matches" (`limit=15` here) rather than an exhaustive enumeration
   like Overpass does — in an unusually dense cluster of matching
   results this could in theory miss the true nearest one, though in
   practice this hasn't been an issue for a single small area.
 - Store addresses come from OSM `addressdetails`; stores with
   incomplete OSM data fall back to a generic "Zabka" label in the
   menu. Polish diacritics are folded to ASCII for font compatibility.
+- **Two stores closer than 25 m to each other collapse into one
+  menu entry.** That threshold exists to deduplicate the *same* shop
+  coming back with slightly different OSM coordinates between
+  refreshes, but it can't tell that apart from two genuinely distinct
+  Zabkas in one building or on opposite sides of a mall entrance —
+  so one of them is dropped. Fixing it properly means matching on
+  OSM element identity (`osm_id`) instead of proximity, which the
+  current GeoJSON parsing doesn't keep.
 - No support for favorites.
 
 ## Privacy
