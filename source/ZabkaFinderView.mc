@@ -133,7 +133,7 @@ class ZabkaFinderView extends WatchUi.View {
         View.initialize();
         client = new NominatimClient(method(:onSearchResult));
         storeList = new StoreList();
-        alerts = new ProximityAlerts(method(:onAwayAutoSwitch));
+        alerts = new ProximityAlerts(method(:onAwayAutoSwitch), new Vibrator(), new Scheduler());
 
         strSearchGps = WatchUi.loadResource(Rez.Strings.StatusSearchingGps) as Lang.String;
         strSearchStore = WatchUi.loadResource(Rez.Strings.StatusSearchingStore) as Lang.String;

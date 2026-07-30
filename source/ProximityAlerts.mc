@@ -1,7 +1,5 @@
-import Toybox.Attention;
 import Toybox.Lang;
 import Toybox.System;
-import Toybox.Timer;
 import Toybox.WatchUi;
 
 // Haptic feedback state machines: the one-shot arrival vibration
@@ -9,6 +7,11 @@ import Toybox.WatchUi;
 // store" prompt with its 15-second decision timer. Owns no UI - the
 // view draws the prompt and decides what happens on timeout via the
 // callback passed to the constructor.
+//
+// Both side effects (buzzing, scheduling) are injected rather than
+// called directly, so unit tests can substitute a vibrator that just
+// counts calls and a scheduler whose timer the test fires by hand.
+// See ProximityAlertsTest.
 class ProximityAlerts {
 
     // Below this distance the arrival vibration fires (the view also
@@ -33,13 +36,17 @@ class ProximityAlerts {
     private var minManualDistance as Lang.Float = 1000000.0f;
     private var awayActive as Lang.Boolean = false;
     private var awayDeadlineMs as Lang.Number = 0;
-    private var awayTimer as Timer.Timer or Null = null;
 
     // Invoked when the prompt times out without a decision.
     private var timeoutCallback as (Method() as Void);
+    // Injected side effects (Vibrator / Scheduler in production).
+    private var vibrator;
+    private var scheduler;
 
-    function initialize(onTimeout as (Method() as Void)) {
+    function initialize(onTimeout as (Method() as Void), vibrator, scheduler) {
         timeoutCallback = onTimeout;
+        self.vibrator = vibrator;
+        self.scheduler = scheduler;
     }
 
     // Called on every GPS-driven distance update (never from redraws,
@@ -51,7 +58,7 @@ class ProximityAlerts {
         if (distance <= CLOSE_DISTANCE_M) {
             if (!hasVibrated) {
                 hasVibrated = true;
-                vibrateShort();
+                vibrate();
             }
         } else if (distance > VIBE_REARM_DISTANCE_M) {
             hasVibrated = false;
@@ -77,7 +84,7 @@ class ProximityAlerts {
     // reset the baseline ABOVE any plausible distance, so the next
     // distance update lowers it to the real one.
     function onManualPick() as Void {
-        stopAwayTimer();
+        scheduler.stop();
         awayActive = false;
         minManualDistance = 1000000.0f;
     }
@@ -99,57 +106,39 @@ class ProximityAlerts {
         if (!awayActive) {
             return;
         }
-        stopAwayTimer();
+        scheduler.stop();
         awayActive = false;
         minManualDistance = currentDistance;
-        vibrateShort();
+        vibrate();
     }
 
     // Full teardown for View.onHide().
     function reset() as Void {
-        stopAwayTimer();
+        scheduler.stop();
         awayActive = false;
     }
 
     private function startAwayPrompt() as Void {
         awayActive = true;
         awayDeadlineMs = System.getTimer() + AWAY_PROMPT_TIMEOUT_MS;
-        vibrateShort();
-        awayTimer = new Timer.Timer();
-        (awayTimer as Timer.Timer).start(method(:onAwayTimerFired), AWAY_PROMPT_TIMEOUT_MS, false);
+        vibrate();
+        scheduler.start(method(:onAwayTimerFired), AWAY_PROMPT_TIMEOUT_MS);
         WatchUi.requestUpdate();
     }
 
-    private function stopAwayTimer() as Void {
-        if (awayTimer != null) {
-            (awayTimer as Timer.Timer).stop();
-            awayTimer = null;
-        }
-    }
-
     // Timer callback: end the event audibly and let the owner decide
-    // what to retarget to.
+    // what to retarget to. Public so tests can trigger the timeout
+    // without waiting 15 seconds.
     function onAwayTimerFired() as Void {
-        awayTimer = null;
         if (!awayActive) {
             return;
         }
         awayActive = false;
-        vibrateShort();
+        vibrate();
         timeoutCallback.invoke();
     }
 
-    // Short, distinct double pulse. Guarded with `has :vibrate`, as
-    // Attention.vibrate isn't available on every device (and can be
-    // disabled system-wide by the user).
-    function vibrateShort() as Void {
-        if (Attention has :vibrate) {
-            var pattern = [
-                new Attention.VibeProfile(75, 250),  // 75% strength, 250 ms
-                new Attention.VibeProfile(0, 100),   // pause
-                new Attention.VibeProfile(75, 250)
-            ] as Lang.Array<Attention.VibeProfile>;
-            Attention.vibrate(pattern);
-        }
+    private function vibrate() as Void {
+        vibrator.vibrate();
     }
 }

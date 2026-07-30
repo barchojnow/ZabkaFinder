@@ -125,7 +125,8 @@ source/
   ProximityAlerts.mc          Arrival vibration + walking-away prompt state machines
   TextFit.mc                  Adaptive font sizing for round screens
   GeoMath.mc                  Pure math: Haversine distance, bearing, angle normalization
-  tests/                      Unit tests for GeoMath and StoreList ((:test) annotated)
+  Effects.mc                  Vibrator + Scheduler: the injectable side effects
+  tests/                      Unit tests, (:test) annotated (GeoMath, StoreList, ProximityAlerts)
 tools/
   run-tests.ps1               Runs the test suite across several devices in one command
 resources/
@@ -224,12 +225,21 @@ Using the Monkey C VS Code extension:
 
 ### Tests
 
-`source/tests/` holds unit tests for the pure logic — `GeoMath`
-(Haversine distance, initial bearing, angle normalization) and
-`StoreList` (radius filtering, merge/dedup, distance sorting). They
-use the Connect IQ test framework: functions are annotated `(:test)`,
-so they're compiled into test builds only and never ship in a
-release binary.
+`source/tests/` holds unit tests for the logic that can be verified
+off-device — `GeoMath` (Haversine distance, initial bearing, angle
+normalization), `StoreList` (radius filtering, merge/dedup, distance
+sorting) and `ProximityAlerts` (arrival buzz, hysteresis, the
+walking-away prompt). They use the Connect IQ test framework:
+functions are annotated `(:test)`, so they're compiled into test
+builds only and never ship in a release binary.
+
+`ProximityAlerts` is testable because its two side effects — buzzing
+and scheduling — are injected (`Effects.mc` in production, fakes in
+tests). The state machine decides *when* to buzz; the test counts
+buzzes and fires the timeout by hand instead of waiting 15 seconds.
+That's how "exactly one vibration per approach", the rule the whole
+latch-and-hysteresis design exists for, becomes an assertion rather
+than a hope.
 
 Run them with **"Monkey C: Run Tests"** in VS Code, or from the CLI
 with `monkeydo <prg> <device> /t` (slash flags on Windows). Reference
